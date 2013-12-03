@@ -29,6 +29,8 @@ def main(templateListFilename):
     
     inRef = False
     inLink = False
+    inOutlink = False
+    inComment = False
 
     found = 0
     
@@ -48,6 +50,8 @@ def main(templateListFilename):
             inTmp = False
             inRef = False
             inLink = False
+            inOutlink = False
+            inComment = False
             link = ""
             content = ""
             template = ""
@@ -60,12 +64,10 @@ def main(templateListFilename):
             c = c + 1
 
 
-            if c > 0:
-                break
-            #if found:
-            #    print line[:-1]
-            #    fp = fp + 1
-            #sys.stderr.write("read "+str(c)+" pages.\n")
+            #if c > 10:
+            #    break
+            fp = fp + 1
+            sys.stderr.write("#"+str(c)+" "+title+"("+tid+").\n")
 
         if inPage:
             if "    <title>" in line:
@@ -80,7 +82,28 @@ def main(templateListFilename):
                 line = line.split("</text>")[0]
                 #print line
                 inArticle = False
+                #print template,content
 
+                print "<page>\n<title>\n"+title+"\n</title>\n<id>\n"+tid+"\n</id>\n<template>\n"+template+"\n</template>"
+                print "<content>"
+
+                j = 0
+                for lll in content.split("\n"):
+                    j = j+1;
+                    if "* " == lll or lll == "" or lll == "*" or lll == "**":
+                        pass
+                        #print "yaaa"
+                    else:
+                        if len(lll) > 3 and (lll[0:2] == "***" or lll[0:2] == "---"):
+                            print lll[3:]
+                        elif len(lll) > 2 and (lll[0:1] == "**" or lll[0:1] == "--"):
+                            print lll[2:]
+                        elif len(lll) > 1 and (lll[0] == "*" or lll[0] == "-"):
+                            print lll[1:]
+                        else:
+                            print lll
+
+                print "</content>\n</page>"
             if inArticle:
 
                 lineString = line.replace("&lt;references/&gt;","")\
@@ -92,6 +115,7 @@ def main(templateListFilename):
                     .replace("]]",chr(6))\
                     .replace("&lt;!--",chr(7))\
                     .replace("--&gt;",chr(8))\
+                    .replace("&quot;","\"")\
                     .replace("'''","")\
                     .replace("''","")
 
@@ -99,52 +123,97 @@ def main(templateListFilename):
 
                 for char in lineString:
 
-                    if char == chr(1) or char == chr(7):
+                    if char == chr(1): #or char == chr(7):
                         inRef = True
                         continue
-                    elif char == chr(2) or char == chr(8):
+                    elif char == chr(2):  #or char == chr(8):
                         inRef = False
                         continue
+                    elif char == chr(7):
+                        if inRef:
+                            continue
+                        inComment = True
+                    elif char == chr(8):
+                        if inRef:
+                            continue
+                        inComment = False
                     elif char == chr(3):
+                        if inRef or inComment:
+                            continue
+
                         inTmp = True
-                        deep = deep + 1
-                        #print "{{{"+str(deep)
+                        deep = deep + 1 
+                        #print "{{{"+str(deep),line
                     elif char == chr(4):
+                        if inRef or inComment:
+                            continue
+                        
                         deep = deep - 1
-                        #print str(deep)+"}}}"
+                        #print str(deep)+"}}}",lineString
                         if deep == 0:
                             inTmp = False
                             if found == 1:
                                 template = template+"}}"
-                                print template
+                                template = template.replace(chr(3),"{{").replace(chr(4),"}}")
+                                #print template
                             found = 0
                             #print "-}}}"
                             continue
                             
                     elif char == chr(5):
+                        
+                        if inRef or inComment:
+                            continue
+
                         inLink = True
                         link = ""
                         continue
                     elif char == chr(6):
+
+                        if inRef or inComment:
+                            continue
+
                         inLink = False
-                        
+                       
+                        if "Category:" in link:
+                            continue
+                            #print link
+
                         link = link.split("|")
                         if len(link) == 1:
                             link = link[0]
                         else:
-                            link = link[1]
+                            # FIXME
+                            link = link[-1]
 
                         if inTmp and found == 1:
                             template = template + link 
 
                         if not inTmp and not inRef:
-                            print "[["+link+"]]"
+                            content = content + link
+                            #print "[["+link+"]]"
                         continue
-                       
+                    
+                    elif char == "[":
+                        if inRef or inComment:
+                            continue
+                        inOutlink = True
+
+                    elif char == "]":
+                        if inRef or inComment:
+                            continue
+                        inOutlink = False
+                        continue
 
                     if inRef:
                         continue
                     
+                    if inOutlink:
+                        continue
+
+                    if inComment:
+                        continue
+
                     if inTmp:
                         if found == 1:
                             if inLink:
@@ -176,7 +245,7 @@ def main(templateListFilename):
                         if inLink:
                             link = link + char
                         else:
-                            print char,
+                            content = content + char
 
                 #if "{{" in line:
                 #    for temp in tempList:
@@ -203,7 +272,7 @@ def main(templateListFilename):
             #else:
             #    print line[:-1]
         
-    #sys.stderr.write("found "+str(fp)+" pages.\n")
+    sys.stderr.write("found "+str(fp)+" pages.\n")
     #print '<!-- ',fp,'/',c,'-->'
 
 
