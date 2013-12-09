@@ -8,9 +8,13 @@ Projizz I/O Pre-process
         * enwiki-latest-pages-articles
         * on QCLab (~50G, xml format)
 * 2013/11/19 - Distribute to machines
+* 2013/11/20 - 將有{{Infobox P*的文章抽出完成。
+* 2013/11/21 - 再分佈，第二次grep
 
 # Plan
 - :white_check_mark: Dump/Download
 - Preprocess - parse/extract the articles we want
-    - need a xml parser
+    - :white_check_mark: need a xml parser (1)
     - :white_check_mark: distribute to linux\* or nlg\* server (人工Map-Reduce)
+    - xml -> 文章/template info
+- Patterns Extraction?
