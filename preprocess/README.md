@@ -16,5 +16,5 @@ Projizz I/O Pre-process
 - Preprocess - parse/extract the articles we want
     - :white_check_mark: need a xml parser (1)
     - :white_check_mark: distribute to linux\* or nlg\* server (人工Map-Reduce)
-    - xml -> 文章/template info
+    - :white_check_mark: xml -> 文章/template info
 - Patterns Extraction?
