@@ -6,5 +6,6 @@ Notes
 * {{Inforbox [Template Name]
 |( )*key( )*=()*value
 
-* What I want?
+# 2013.12.12
 
+* [key] [value] [Template] [ArticleID] [sen]
