@@ -32,6 +32,8 @@ def main(templateListFilename):
     inOutlink = False
     inComment = False
 
+    beforeNS = False
+
     found = 0
     
     link = ""
@@ -52,6 +54,7 @@ def main(templateListFilename):
             inLink = False
             inOutlink = False
             inComment = False
+            beforeNS = False
             link = ""
             content = ""
             template = ""
@@ -72,8 +75,11 @@ def main(templateListFilename):
         if inPage:
             if "    <title>" in line:
                 title = line.split(">")[1].split("<")[0]
-            elif "    <id>" in line:
+            elif "    <ns>" in line:
+                beforeNS = True
+            elif "    <id>" in line and beforeNS:
                 tid   = line.split(">")[1].split("<")[0]
+                beforeNS = False
             elif "      <text xml:space=\"preserve\">" in line:
                 line = line.split("<text xml:space=\"preserve\">")[1]
                 inArticle = True
