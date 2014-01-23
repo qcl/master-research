@@ -15,3 +15,10 @@ Notes
 2. Find out all possible template in template
 3. Find value of key, jizz
 
+# 2014.01.21
+* raw infobox properties
+    http://wiki.dbpedia.org/Downloads39#raw-infobox-properties
+* raw infobox properties definitions
+    10w
+    need to parse to identify what really be used
+* ontology 
