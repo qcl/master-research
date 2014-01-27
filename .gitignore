@@ -2,3 +2,6 @@
 *.swp
 *~
 preprocess/*.xml
+*.tar.gz
+
+patty/dataset/*
