@@ -6,3 +6,6 @@ preprocess/*.xml
 
 patty/dataset/*
 patty/dataset
+
+yago/dataset/*
+yago/dataset
