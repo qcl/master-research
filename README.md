@@ -2,8 +2,15 @@ Projizz I/O
 -----------
 Preprocess for KBA - filter target attributes/properties rapidly.
 
+# Motivation
+Linguistic knowledge --> world knowledge
+
+* World knowledge varies with time
+* How to acquire knowledge from heterogeneous resources to reflect the changes of real wrold is very important ([KBA](http://trec-kba.org/))
+
+
 # Problem
-Given a _target entity_ to be tracked, find its _(new)_ _related_ _information_ from heterogeneous resources.
+Given a _target entity_ to be tracked, find its _(new)_ _related_ _information_ from heterogeneous resources *effectively* because large volume of data are created.
 
 * Target entity 
     * Different patterns related to the entity type
@@ -23,8 +30,11 @@ Given a _target entity_ to be tracked, find its _(new)_ _related_ _information_ 
         * wiki
         * dbpedia
     * acc, prec, recall
-    * TREC KBA
+    * TREC KBA  -> to read KBA for more information.
     * Testing Dataset
+
+## Issues
+
 
 
 # Schedule
