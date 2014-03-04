@@ -34,7 +34,30 @@ Given a _target entity_ to be tracked, find its _(new)_ _related_ _information_ 
     * Testing Dataset
 
 ## Issues
+###Target
+Target entities have different types, different types have different patterns, different patterns related to differnet types. 
 
+Note that
+* Type
+* Pattern
+* Feature
+* Information
+
+1. Information related to human
+    * How many features are related to human ?
+    * What kinds of features are related to human ?
+    * What kinds of patterns can be used to find the features ?
+2. Tell out Dynamic and Static information
+    * What kinds of features are dynamic, and what kinds of features are static?
+    * In other words, what knowledge is unchanged?
+3. Tell out the position of the information
+4. Tell out if the information is related to the interesting targets
+
+###Efficiency
+
+###Effectiveness
+
+###Statistics
 
 
 # Schedule
