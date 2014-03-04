@@ -43,6 +43,7 @@ Note that
 * Feature
 * Information
 
+
 1. Information related to human
     * How many features are related to human ?
     * What kinds of features are related to human ?
@@ -54,11 +55,34 @@ Note that
 4. Tell out if the information is related to the interesting targets
 
 ###Efficiency
+* Data sturcture and algorithms
+* Filtering: (1) and (2)
+* Extract: (3) and (4)
+* Efficient Filtering, e.g.
+    * birth (n patterns related to birth)
+    * occupation change (m patterns related to this move)
+* If topic model is suitable:
+    * birth is a topic, occupation change is a topic,...
 
 ###Effectiveness
+* Patterns
+    1. entity types
+    2. dynamic (new) v.s. static 
+    3. related information, related to some patterns
+    4. exact information, target entites, mention disambiguation
+
+###Others (暫時沒想到分法)
+* Pattern coverage
+* Pattern use
 
 ###Statistics
+* Statistics of samples
+* Distribution of features
+* Number of features/wiki
 
+* How to sample data from wiki for testing?
+* Testing effectiveness and efficient
+    * Efficiency: enough documents, number of documents created by human per second, ...
 
 # Schedule
 
