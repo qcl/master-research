@@ -21,7 +21,7 @@
 1	wordnet_ballplayer_109835506
 1	wordnet_banker_109837824
 1	wordnet_basketball_player_109842047
-0	wordnet_battle_100953559    act
+0	wordnet_battle_100953559    event
 1	wordnet_biologist_109855630
 0	wordnet_book_106410904  artifact 
 1	wordnet_boxer_109870208
@@ -35,13 +35,13 @@
 1	wordnet_comedian_109940146
 0	wordnet_company_108058098   org
 1	wordnet_composer_109947232
-0	wordnet_computer_game_100458890 game    diversion   activity    act
-0	wordnet_conference_108308497    social_group    group
-0	wordnet_conflict_100958896  group_action    act
+0	wordnet_computer_game_100458890 game    diversion   activity    act event
+0	wordnet_conference_108308497    social_group    group   abstraction
+0	wordnet_conflict_100958896  group_action    act event
 0	wordnet_consequence_111410625   phenomenon
 0	wordnet_country_108544813   location
 1	wordnet_cricketer_109977326
-0	wordnet_crime_100766234 activity 
+0	wordnet_crime_100766234 activity    event 
 1	wordnet_criminal_109977660
 1	wordnet_cyclist_109986189
 0	wordnet_dam_103160309   artifact
@@ -56,7 +56,7 @@
 1	wordnet_duke_110038620
 1	wordnet_economist_110043643
 1	wordnet_editor_110044879
-0	wordnet_election_100181781  vote    group_action    act
+0	wordnet_election_100181781  vote    group_action    act event
 1	wordnet_emperor_110053004
 1	wordnet_engineer_109615807
 0	wordnet_enterprise_108056231    org
@@ -76,7 +76,7 @@
 0	wordnet_hurricane_111467018 phenomenon
 1	wordnet_immigrant_110199489
 0	wordnet_institute_108407330 org
-0	wordnet_invasion_100976531  act
+0	wordnet_invasion_100976531  act event
 1	wordnet_inventor_110214637
 0	wordnet_island_103587318    location
 1	wordnet_journalist_110224578
@@ -136,7 +136,7 @@
 0	wordnet_publication_106589574   artifact
 1	wordnet_reformer_110515194
 0	wordnet_revolution_107424109    event
-0	wordnet_riot_101170502      act
+0	wordnet_riot_101170502      act event
 0	wordnet_river_109411430     body_of_water
 1	wordnet_ruler_110541229
 1	wordnet_runner_110542888
@@ -150,7 +150,7 @@
 1	wordnet_soccer_player_110618342
 1	wordnet_social_scientist_110619642
 1	wordnet_socialist_110618848
-0	wordnet_song_107048000  communication
+0	wordnet_song_107048000  communication   abstraction
 1	wordnet_songwriter_110624540
 1	wordnet_sovereign_110628644
 1	wordnet_spiritual_leader_109505153
@@ -169,6 +169,6 @@
 0	wordnet_village_108672738   location
 1	wordnet_violinist_110754578
 0	wordnet_war_100973077   event
-0	wordnet_windstorm_111527014 natural_elevation
+0	wordnet_windstorm_111527014 natural_elevation   geological_formation
 1	wordnet_wrestler_110793168
 1	wordnet_writer_110794014
