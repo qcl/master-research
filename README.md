@@ -95,6 +95,8 @@ Note that
 # Tools
 * MongoDB
 * Stanford parser?
+* Python
+    * [RDFLib](https://github.com/RDFLib/rdflib)
 
 # Dataset (may) Used
 * [DBpedia](http://wiki.dbpedia.org/Datasets)
