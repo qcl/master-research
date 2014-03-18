@@ -1,0 +1,5494 @@
+[
+	{
+		"property" : "http://dbpedia.org/ontology/diseasesdb",
+		"count" : 2944
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/icd9",
+		"count" : 622
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/omim",
+		"count" : 2750
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/medlineplus",
+		"count" : 1418
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/emedicineSubject",
+		"count" : 2105
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/emedicineTopic",
+		"count" : 2096
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meshId",
+		"count" : 2841
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/name",
+		"count" : 2262599
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/birthYear",
+		"count" : 96666
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deathYear",
+		"count" : 41925
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/region",
+		"count" : 68009
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/era",
+		"count" : 961
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/philosophicalSchool",
+		"count" : 1469
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mainInterest",
+		"count" : 2783
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notableIdea",
+		"count" : 930
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/influencedBy",
+		"count" : 21525
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/influenced",
+		"count" : 10661
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/country",
+		"count" : 637134
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/demonym",
+		"count" : 507
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/language",
+		"count" : 84802
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capital",
+		"count" : 3921
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/largestCity",
+		"count" : 2197
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaTotal",
+		"count" : 166284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaLand",
+		"count" : 76223
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaWater",
+		"count" : 73198
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maximumElevation",
+		"count" : 37885
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/minimumElevation",
+		"count" : 36958
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/otherParty",
+		"count" : 2120
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/birthDate",
+		"count" : 375619
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/birthPlace",
+		"count" : 469843
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deathDate",
+		"count" : 105305
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deathPlace",
+		"count" : 145181
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/restingPlace",
+		"count" : 15556
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/party",
+		"count" : 53727
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spouse",
+		"count" : 24706
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/child",
+		"count" : 10411
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/serviceStartYear",
+		"count" : 18265
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/serviceEndYear",
+		"count" : 17150
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/militaryRank",
+		"count" : 2184
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/battle",
+		"count" : 83284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/successor",
+		"count" : 72025
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/office",
+		"count" : 82134
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/activeYearsStartDate",
+		"count" : 107611
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/activeYearsEndDate",
+		"count" : 92149
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vicePresident",
+		"count" : 787
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/termPeriod",
+		"count" : 60800
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/director",
+		"count" : 87772
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/producer",
+		"count" : 208960
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/writer",
+		"count" : 147502
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/starring",
+		"count" : 281891
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicComposer",
+		"count" : 44203
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/runtime",
+		"count" : 196492
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/doctoralAdvisor",
+		"count" : 4167
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/doctoralStudent",
+		"count" : 5543
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nationality",
+		"count" : 78858
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/almaMater",
+		"count" : 65128
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/field",
+		"count" : 28061
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/knownFor",
+		"count" : 28045
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/award",
+		"count" : 63446
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notableWork",
+		"count" : 4555
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pseudonym",
+		"count" : 2403
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/birthName",
+		"count" : 44994
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ethnicity",
+		"count" : 4146
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/activeYearsStartYear",
+		"count" : 147778
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/activeYearsEndYear",
+		"count" : 67166
+	},
+	{
+		"property" : "http://www.w3.org/2004/02/skos/core#subject",
+		"count" : 1890
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/occupation",
+		"count" : 251989
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/title",
+		"count" : 129949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/anthem",
+		"count" : 631
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentType",
+		"count" : 6903
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currency",
+		"count" : 1197
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/longName",
+		"count" : 387
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/officialLanguage",
+		"count" : 229
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leaderTitle",
+		"count" : 53795
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leaderName",
+		"count" : 17577
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foundingDate",
+		"count" : 18394
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationDensity",
+		"count" : 80208
+	},
+	{
+		"property" : "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+		"count" : 472799
+	},
+	{
+		"property" : "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+		"count" : 474565
+	},
+	{
+		"property" : "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+		"count" : 474565
+	},
+	{
+		"property" : "http://www.georss.org/georss/point",
+		"count" : 472799
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/plays",
+		"count" : 2810
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/careerPrizeMoney",
+		"count" : 2558
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/residence",
+		"count" : 42647
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/height",
+		"count" : 84905
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/weight",
+		"count" : 57181
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/author",
+		"count" : 45791
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/publisher",
+		"count" : 58968
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfPages",
+		"count" : 20181
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isbn",
+		"count" : 22734
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/oclc",
+		"count" : 16346
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dcc",
+		"count" : 5132
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lcc",
+		"count" : 6677
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/previousWork",
+		"count" : 131313
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subsequentWork",
+		"count" : 132823
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ethnicGroup",
+		"count" : 658
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/percentageOfAreaWater",
+		"count" : 10000
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/composer",
+		"count" : 9348
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/type",
+		"count" : 339987
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/abbreviation",
+		"count" : 7270
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/purpose",
+		"count" : 3177
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/headquarter",
+		"count" : 30917
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/membership",
+		"count" : 2120
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/homepage",
+		"count" : 273410
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/literaryGenre",
+		"count" : 27233
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/commandModule",
+		"count" : 20
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/serviceModule",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lunarModule",
+		"count" : 18
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/booster",
+		"count" : 77
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/callSign",
+		"count" : 3554
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crewSize",
+		"count" : 230
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launchPad",
+		"count" : 282
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launchDate",
+		"count" : 86
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lunarOrbitTime",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/missionDuration",
+		"count" : 64
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/previousMission",
+		"count" : 426
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nextMission",
+		"count" : 430
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lunarEvaTime",
+		"count" : 13
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lunarSurfaceTime",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lunarSampleMass",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/landingDate",
+		"count" : 357
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crewMember",
+		"count" : 215
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/kingdom",
+		"count" : 220151
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/phylum",
+		"count" : 178503
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/class",
+		"count" : 240885
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/order",
+		"count" : 249007
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/family",
+		"count" : 306038
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/binomialAuthority",
+		"count" : 69407
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/conservationStatus",
+		"count" : 46313
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/conservationStatusSystem",
+		"count" : 45214
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ethnicGroupsInYear",
+		"count" : 99
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ageRange",
+		"count" : 828
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/allegiance",
+		"count" : 19508
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/militaryCommand",
+		"count" : 24878
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/academicAdvisor",
+		"count" : 741
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/academicDiscipline",
+		"count" : 6062
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/frequencyOfPublication",
+		"count" : 4480
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstPublicationYear",
+		"count" : 4811
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/openAccessContent",
+		"count" : 678
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/issn",
+		"count" : 9667
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/place",
+		"count" : 20882
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/territory",
+		"count" : 2049
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/result",
+		"count" : 13231
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/combatant",
+		"count" : 28176
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/commander",
+		"count" : 36585
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/strength",
+		"count" : 28077
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/causalties",
+		"count" : 14150
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/date",
+		"count" : 11953
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/developer",
+		"count" : 25896
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/genre",
+		"count" : 470106
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/computingPlatform",
+		"count" : 44194
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/designer",
+		"count" : 9582
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cpu",
+		"count" : 1200
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/predecessor",
+		"count" : 17243
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parent",
+		"count" : 23085
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/alias",
+		"count" : 42582
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leaderParty",
+		"count" : 4391
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/elevation",
+		"count" : 218262
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationTotal",
+		"count" : 264059
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationMetro",
+		"count" : 1712
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/postalCode",
+		"count" : 164735
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaCode",
+		"count" : 98364
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPartOf",
+		"count" : 677559
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/timeZone",
+		"count" : 287151
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/utcOffset",
+		"count" : 335756
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spokenIn",
+		"count" : 15751
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/languageFamily",
+		"count" : 21440
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mediaType",
+		"count" : 19921
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/restingPlacePosition",
+		"count" : 350
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foundingYear",
+		"count" : 73706
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foundationPlace",
+		"count" : 10617
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foundedBy",
+		"count" : 9525
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/locationCity",
+		"count" : 19726
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfLocations",
+		"count" : 2017
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/revenue",
+		"count" : 7941
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/netIncome",
+		"count" : 3979
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/assets",
+		"count" : 2589
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/equity",
+		"count" : 1500
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/owner",
+		"count" : 44043
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/owningCompany",
+		"count" : 10333
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfEmployees",
+		"count" : 14980
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/internationally",
+		"count" : 3191
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/production",
+		"count" : 119
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/nick",
+		"count" : 39089
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/motto",
+		"count" : 33709
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaMetro",
+		"count" : 533
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationAsOf",
+		"count" : 17737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationUrban",
+		"count" : 2529
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/id",
+		"count" : 1101
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deathCause",
+		"count" : 2841
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/relative",
+		"count" : 7082
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/operatingIncome",
+		"count" : 2552
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subsidiary",
+		"count" : 3316
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bandMember",
+		"count" : 28759
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/background",
+		"count" : 66393
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hometown",
+		"count" : 87643
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/recordLabel",
+		"count" : 236011
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/training",
+		"count" : 4842
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/movement",
+		"count" : 5334
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerBandMember",
+		"count" : 23068
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associatedBand",
+		"count" : 100402
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associatedMusicalArtist",
+		"count" : 100402
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/manufacturer",
+		"count" : 17375
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/operatingSystem",
+		"count" : 9150
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/teamName",
+		"count" : 6063
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/location",
+		"count" : 296475
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/league",
+		"count" : 33390
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stateOfOrigin",
+		"count" : 22518
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/board",
+		"count" : 1022
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/department",
+		"count" : 36485
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/area",
+		"count" : 55182
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/inseeCode",
+		"count" : 36783
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/division",
+		"count" : 55276
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/synonym",
+		"count" : 158471
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/personFunction",
+		"count" : 3419
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/creator",
+		"count" : 23358
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/portrayer",
+		"count" : 4584
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstAppearance",
+		"count" : 3086
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastAppearance",
+		"count" : 1792
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/religion",
+		"count" : 43121
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/veneratedIn",
+		"count" : 3838
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfIslands",
+		"count" : 260
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/partner",
+		"count" : 953
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/worldChampionTitleYear",
+		"count" : 85
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sportGoverningBody",
+		"count" : 118
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/icd10",
+		"count" : 1280
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/genus",
+		"count" : 153011
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/city",
+		"count" : 101236
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalPosition",
+		"count" : 78
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leader",
+		"count" : 5217
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/daylightSavingTimeZone",
+		"count" : 5315
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaUrban",
+		"count" : 475
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationMetroDensity",
+		"count" : 216
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationUrbanDensity",
+		"count" : 124
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/profession",
+		"count" : 12543
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/institution",
+		"count" : 1559
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/similar",
+		"count" : 737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/militaryBranch",
+		"count" : 33193
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mayor",
+		"count" : 650
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/latestReleaseVersion",
+		"count" : 9605
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/placeOfBurial",
+		"count" : 519
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orderInOffice",
+		"count" : 37108
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/monarch",
+		"count" : 5539
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/battingSide",
+		"count" : 18206
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/throwingSide",
+		"count" : 18214
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/statisticLabel",
+		"count" : 16740
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/statisticValue",
+		"count" : 17227
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerTeam",
+		"count" : 106165
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/team",
+		"count" : 1490927
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/district",
+		"count" : 54233
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationTotalRanking",
+		"count" : 2103
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/givenName",
+		"count" : 26439
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/origin",
+		"count" : 20500
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/length",
+		"count" : 59191
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceCountry",
+		"count" : 12808
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/riverMouth",
+		"count" : 17164
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthElevation",
+		"count" : 5220
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/discharge",
+		"count" : 1939
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/watershed",
+		"count" : 2679
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iupacName",
+		"count" : 12016
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/keyPerson",
+		"count" : 28573
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/service",
+		"count" : 4418
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/gender",
+		"count" : 3116
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meaning",
+		"count" : 2733
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/citizenship",
+		"count" : 4485
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/yearOfConstruction",
+		"count" : 34310
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/architecturalStyle",
+		"count" : 20842
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/added",
+		"count" : 38883
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nrhpReferenceNumber",
+		"count" : 39433
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governingBody",
+		"count" : 2070
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/president",
+		"count" : 11701
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formationDate",
+		"count" : 6749
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formationYear",
+		"count" : 11849
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/internationalAffiliation",
+		"count" : 928
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/youthWing",
+		"count" : 271
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/species",
+		"count" : 2923
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/series",
+		"count" : 22334
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/federalState",
+		"count" : 4519
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/casNumber",
+		"count" : 4704
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/atcPrefix",
+		"count" : 4304
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/atcSuffix",
+		"count" : 2589
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/atcSupplemental",
+		"count" : 97
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pubchem",
+		"count" : 4465
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/drugbank",
+		"count" : 1520
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fdaUniiCode",
+		"count" : 3700
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chEBI",
+		"count" : 970
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/totalPopulation",
+		"count" : 3209
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationPlace",
+		"count" : 10663
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/related",
+		"count" : 11737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dissolutionYear",
+		"count" : 2380
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/beatifiedPlace",
+		"count" : 317
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/canonizedPlace",
+		"count" : 303
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/canonizedBy",
+		"count" : 532
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/majorShrine",
+		"count" : 1376
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/buriedPlace",
+		"count" : 670
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/seniority",
+		"count" : 154
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/gridReference",
+		"count" : 20346
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToEdinburgh",
+		"count" : 128
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToLondon",
+		"count" : 1492
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/councilArea",
+		"count" : 2072
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceMountain",
+		"count" : 5147
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourcePlace",
+		"count" : 5147
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceElevation",
+		"count" : 3102
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceRegion",
+		"count" : 946
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourcePosition",
+		"count" : 3239
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthPosition",
+		"count" : 4250
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leftTributary",
+		"count" : 4312
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rightTributary",
+		"count" : 4248
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/archipelago",
+		"count" : 2071
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/majorIsland",
+		"count" : 360
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfOrbits",
+		"count" : 206
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orbitalInclination",
+		"count" : 257
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/industry",
+		"count" : 36998
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/product",
+		"count" : 38284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parentCompany",
+		"count" : 8606
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/relation",
+		"count" : 5236
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lieutenant",
+		"count" : 1427
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endowment",
+		"count" : 1793
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/provost",
+		"count" : 77
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/facultySize",
+		"count" : 8379
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfStudents",
+		"count" : 22645
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfUndergraduateStudents",
+		"count" : 3380
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfPostgraduateStudents",
+		"count" : 2737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/state",
+		"count" : 41134
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/campus",
+		"count" : 6882
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerName",
+		"count" : 20021
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/officialSchoolColour",
+		"count" : 10673
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mascot",
+		"count" : 13793
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/athletics",
+		"count" : 936
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/affiliation",
+		"count" : 17966
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/position",
+		"count" : 479267
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bioavailability",
+		"count" : 545
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/networth",
+		"count" : 942
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ideology",
+		"count" : 7934
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfSeasons",
+		"count" : 12809
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfEpisodes",
+		"count" : 19730
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/executiveProducer",
+		"count" : 7914
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/person",
+		"count" : 2267
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/company",
+		"count" : 8703
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/channel",
+		"count" : 9304
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/format",
+		"count" : 79777
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/releaseDate",
+		"count" : 173899
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leaderFunction",
+		"count" : 10348
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/personName",
+		"count" : 5114
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfStaff",
+		"count" : 537
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVolunteers",
+		"count" : 144
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/budget",
+		"count" : 12152
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spacecraft",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cmpEvaDuration",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/domain",
+		"count" : 2563
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/significantBuilding",
+		"count" : 2088
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/significantDesign",
+		"count" : 66
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/staff",
+		"count" : 3906
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coverArtist",
+		"count" : 2922
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/branchFrom",
+		"count" : 598
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/branchTo",
+		"count" : 255
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/supplies",
+		"count" : 228
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vein",
+		"count" : 287
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/precursor",
+		"count" : 226
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/employer",
+		"count" : 4294
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/status",
+		"count" : 41664
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/programmingLanguage",
+		"count" : 4525
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/license",
+		"count" : 8719
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/instrument",
+		"count" : 56596
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/translator",
+		"count" : 790
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/publicationDate",
+		"count" : 2844
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/languageRegulator",
+		"count" : 198
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ground",
+		"count" : 32412
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capacity",
+		"count" : 11781
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chairman",
+		"count" : 5513
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/manager",
+		"count" : 12158
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/season",
+		"count" : 7562
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentMember",
+		"count" : 244945
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/squadNumber",
+		"count" : 204468
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/requirement",
+		"count" : 10062
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chancellor",
+		"count" : 1102
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/graySubject",
+		"count" : 3116
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/grayPage",
+		"count" : 3106
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/artery",
+		"count" : 457
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nerve",
+		"count" : 494
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lymph",
+		"count" : 56
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meshName",
+		"count" : 595
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meshNumber",
+		"count" : 543
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/icaoLocationIdentifier",
+		"count" : 10528
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/operator",
+		"count" : 10869
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/runwayDesignation",
+		"count" : 15069
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/runwayLength",
+		"count" : 27440
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/runwaySurface",
+		"count" : 15348
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chairmanTitle",
+		"count" : 3165
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managerTitle",
+		"count" : 4214
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isoCodeRegion",
+		"count" : 949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/part",
+		"count" : 12189
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/education",
+		"count" : 14074
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hubAirport",
+		"count" : 3369
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/targetAirport",
+		"count" : 1104
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lounge",
+		"count" : 68
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/alliance",
+		"count" : 258
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/administrativeDistrict",
+		"count" : 896
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/equipment",
+		"count" : 175
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/teamSize",
+		"count" : 75
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/regionServed",
+		"count" : 11323
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/primeMinister",
+		"count" : 10431
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/canton",
+		"count" : 9693
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/twinCity",
+		"count" : 713
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/municipalityCode",
+		"count" : 2763
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestPlace",
+		"count" : 382
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowestPlace",
+		"count" : 192
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/neighboringMunicipality",
+		"count" : 16675
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/architect",
+		"count" : 13635
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/buildingStartDate",
+		"count" : 1171
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/openingDate",
+		"count" : 12221
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/colourName",
+		"count" : 5491
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/colour",
+		"count" : 6300
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secretaryGeneral",
+		"count" : 150
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ecNumber",
+		"count" : 4512
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/productionStartYear",
+		"count" : 8529
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/productionEndYear",
+		"count" : 6889
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberBuilt",
+		"count" : 8756
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/introductionDate",
+		"count" : 37
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/automobileModel",
+		"count" : 5177
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/locationCountry",
+		"count" : 15559
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/width",
+		"count" : 10154
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/discovered",
+		"count" : 11096
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/albedo",
+		"count" : 1787
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/averageSpeed",
+		"count" : 806
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/escapeVelocity",
+		"count" : 344
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orbitalPeriod",
+		"count" : 11890
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/volume",
+		"count" : 1266
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/density",
+		"count" : 146
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mass",
+		"count" : 411
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/temperature",
+		"count" : 505
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/billed",
+		"count" : 1693
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/trainer",
+		"count" : 6054
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/frequentlyUpdated",
+		"count" : 1169
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/province",
+		"count" : 10641
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/principalArea",
+		"count" : 1160
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ceremonialCounty",
+		"count" : 3956
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lieutenancyArea",
+		"count" : 1200
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/depth",
+		"count" : 5663
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/latestPreviewVersion",
+		"count" : 638
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/editor",
+		"count" : 3553
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/impactFactor",
+		"count" : 2435
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/impactFactorAsOf",
+		"count" : 2430
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/jstor",
+		"count" : 284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lccn",
+		"count" : 1949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coden",
+		"count" : 1254
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/militaryUnitSize",
+		"count" : 5126
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/commandStructure",
+		"count" : 6969
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondCommander",
+		"count" : 313
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/thirdCommander",
+		"count" : 105
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fourthCommander",
+		"count" : 34
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notableCommander",
+		"count" : 4863
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/identificationSymbol",
+		"count" : 4590
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/electionMajority",
+		"count" : 1538
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicBy",
+		"count" : 1289
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lyrics",
+		"count" : 1359
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/basedOn",
+		"count" : 2202
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nonFictionSubject",
+		"count" : 4356
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/militaryUnit",
+		"count" : 12579
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deputy",
+		"count" : 1473
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dissolutionDate",
+		"count" : 872
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/illustrator",
+		"count" : 2683
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVolumes",
+		"count" : 3577
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/source",
+		"count" : 1877
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluenceElevation",
+		"count" : 110
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluencePosition",
+		"count" : 139
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthCountry",
+		"count" : 590
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstAirDate",
+		"count" : 11888
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/slogan",
+		"count" : 14798
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rocketFunction",
+		"count" : 222
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countryOrigin",
+		"count" : 197
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/diameter",
+		"count" : 2200
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rocketStages",
+		"count" : 169
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowerEarthOrbitPayload",
+		"count" : 60
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launchSite",
+		"count" : 574
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/totalLaunches",
+		"count" : 294
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/successfulLaunches",
+		"count" : 207
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/failedLaunches",
+		"count" : 166
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/partialFailedLaunches",
+		"count" : 61
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maidenFlight",
+		"count" : 234
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/finalFlight",
+		"count" : 154
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/characterInPlay",
+		"count" : 3860
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/muteCharacterInPlay",
+		"count" : 43
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/settingOfPlay",
+		"count" : 816
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/premiereDate",
+		"count" : 584
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/premiereYear",
+		"count" : 1001
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/premierePlace",
+		"count" : 1210
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/originalLanguage",
+		"count" : 414
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subjectOfPlay",
+		"count" : 381
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ibdbId",
+		"count" : 357
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iobdbId",
+		"count" : 115
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/usedInWar",
+		"count" : 3565
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/unitCost",
+		"count" : 1188
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stylisticOrigin",
+		"count" : 2912
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cinematography",
+		"count" : 28354
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/editing",
+		"count" : 21417
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distributor",
+		"count" : 48419
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/gross",
+		"count" : 11737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/extinctionDate",
+		"count" : 639
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/extinctionYear",
+		"count" : 4376
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mergedIntoParty",
+		"count" : 291
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nationalAffiliation",
+		"count" : 576
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/europeanAffiliation",
+		"count" : 459
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/europeanParliamentGroup",
+		"count" : 328
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestRegion",
+		"count" : 94
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestPosition",
+		"count" : 504
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowest",
+		"count" : 436
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalMountain",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalPlace",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalElevation",
+		"count" : 56
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalRegion",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentRegion",
+		"count" : 101
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentCountry",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentPosition",
+		"count" : 203
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentElevation",
+		"count" : 195
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managementPosition",
+		"count" : 16
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managementElevation",
+		"count" : 12
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/border",
+		"count" : 464
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/code",
+		"count" : 1266
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/derivative",
+		"count" : 661
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicSubgenre",
+		"count" : 401
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicFusionGenre",
+		"count" : 346
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governor",
+		"count" : 2419
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/artist",
+		"count" : 123070
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/recordedIn",
+		"count" : 48066
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/openingTheme",
+		"count" : 3007
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/network",
+		"count" : 27466
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/voice",
+		"count" : 8425
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/category",
+		"count" : 1560
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/regionalLanguage",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/politicalPartyOfLeader",
+		"count" : 611
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/electionDateLeader",
+		"count" : 426
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfMembers",
+		"count" : 1090
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/politicalPartyInLegislature",
+		"count" : 2224
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastElectionDate",
+		"count" : 651
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPartOfMilitaryConflict",
+		"count" : 10587
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coach",
+		"count" : 14662
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/destination",
+		"count" : 547
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/startDate",
+		"count" : 5514
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstLeader",
+		"count" : 2091
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondLeader",
+		"count" : 1940
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shoots",
+		"count" : 9950
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/draft",
+		"count" : 8288
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/draftYear",
+		"count" : 16067
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/draftTeam",
+		"count" : 8401
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/whaDraft",
+		"count" : 247
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/whaDraftTeam",
+		"count" : 242
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hallOfFame",
+		"count" : 275
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associate",
+		"count" : 1215
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/connotation",
+		"count" : 215
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/colourHexCode",
+		"count" : 914
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rgbCoordinateRed",
+		"count" : 913
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rgbCoordinateBlue",
+		"count" : 913
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rgbCoordinateGreen",
+		"count" : 913
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cmykCoordinateCyanic",
+		"count" : 760
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cmykCoordinateMagenta",
+		"count" : 760
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cmykCoordinateYellow",
+		"count" : 761
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cmykCoordinateBlack",
+		"count" : 763
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hsvCoordinateValue",
+		"count" : 897
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ingredient",
+		"count" : 9874
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governorGeneral",
+		"count" : 280
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVisitors",
+		"count" : 1038
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/computingInput",
+		"count" : 10294
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/arrondissement",
+		"count" : 10170
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sport",
+		"count" : 4889
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/circulation",
+		"count" : 3835
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/narrator",
+		"count" : 3939
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/careerStation",
+		"count" : 577196
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/years",
+		"count" : 587377
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfMatches",
+		"count" : 438004
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfGoals",
+		"count" : 458961
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managerClub",
+		"count" : 49619
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notes",
+		"count" : 486
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/broadcastArea",
+		"count" : 19626
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/frequency",
+		"count" : 16099
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shareOfAudience",
+		"count" : 1297
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shareDate",
+		"count" : 614
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shareSource",
+		"count" : 996
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/programmeFormat",
+		"count" : 19585
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sisterStation",
+		"count" : 29466
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fate",
+		"count" : 2965
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/programCost",
+		"count" : 53
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/magazine",
+		"count" : 3139
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/splitFromParty",
+		"count" : 325
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foundingPerson",
+		"count" : 196
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/wavelength",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hsvCoordinateHue",
+		"count" : 872
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hsvCoordinateSaturation",
+		"count" : 894
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/canonizedDate",
+		"count" : 385
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/floorCount",
+		"count" : 4621
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/floorArea",
+		"count" : 2945
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/symbol",
+		"count" : 4244
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pictureFormat",
+		"count" : 3763
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeStartDirection",
+		"count" : 14078
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeStart",
+		"count" : 19890
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeEndDirection",
+		"count" : 14064
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeEnd",
+		"count" : 19542
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeJunction",
+		"count" : 29083
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerCoach",
+		"count" : 1874
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/collection",
+		"count" : 289
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fileSize",
+		"count" : 556
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shipBeam",
+		"count" : 23845
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shipDraft",
+		"count" : 11537
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicalArtist",
+		"count" : 45569
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/musicalBand",
+		"count" : 45569
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/beatifiedDate",
+		"count" : 450
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/beatifiedBy",
+		"count" : 514
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coachedTeam",
+		"count" : 22764
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/overallRecord",
+		"count" : 5706
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/college",
+		"count" : 13977
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/prominence",
+		"count" : 5891
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/locatedInArea",
+		"count" : 32517
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nationalTopographicSystemMapNumber",
+		"count" : 4361
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstAscentYear",
+		"count" : 1604
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/completionDate",
+		"count" : 9608
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/role",
+		"count" : 6024
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/garrison",
+		"count" : 7493
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftFighter",
+		"count" : 980
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftTransport",
+		"count" : 805
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/builder",
+		"count" : 32702
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shipLaunch",
+		"count" : 15105
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/county",
+		"count" : 22919
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/largestSettlement",
+		"count" : 46
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfDoctoralStudents",
+		"count" : 368
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeStartLocation",
+		"count" : 129
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeEndLocation",
+		"count" : 119
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/openingYear",
+		"count" : 25738
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/operatedBy",
+		"count" : 11745
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/speedLimit",
+		"count" : 762
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lineLength",
+		"count" : 1673
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfTracks",
+		"count" : 7338
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/typeOfElectrification",
+		"count" : 1282
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/voltageOfElectrification",
+		"count" : 819
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/timeInSpace",
+		"count" : 532
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/selection",
+		"count" : 591
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mission",
+		"count" : 1465
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orderDate",
+		"count" : 3425
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/commissioningDate",
+		"count" : 12692
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/jurisdiction",
+		"count" : 3951
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parentOrganisation",
+		"count" : 1837
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/computingMedia",
+		"count" : 13687
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/variantOf",
+		"count" : 3904
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cost",
+		"count" : 3911
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notableStudent",
+		"count" : 812
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/depictionDescription",
+		"count" : 2048
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/memberOfParliament",
+		"count" : 361
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/outflow",
+		"count" : 2923
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaOfCatchment",
+		"count" : 972
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/timeshiftChannel",
+		"count" : 143
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthMountain",
+		"count" : 6008
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthPlace",
+		"count" : 6008
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mouthRegion",
+		"count" : 734
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/minimumDischarge",
+		"count" : 770
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maximumDischarge",
+		"count" : 811
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/gameArtist",
+		"count" : 501
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/latestReleaseDate",
+		"count" : 1127
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/latestPreviewDate",
+		"count" : 43
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/tenant",
+		"count" : 13687
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/government",
+		"count" : 671
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentMountain",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/governmentPlace",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/creatorOfDish",
+		"count" : 187
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/servingTemperature",
+		"count" : 465
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/year",
+		"count" : 20899
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/presenter",
+		"count" : 8175
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/entrezgene",
+		"count" : 12098
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hgncid",
+		"count" : 1396
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/refseq",
+		"count" : 1373
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/uniprot",
+		"count" : 1357
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chromosome",
+		"count" : 1398
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/arm",
+		"count" : 1360
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/band",
+		"count" : 1327
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/retired",
+		"count" : 139
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfStations",
+		"count" : 2148
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/passengersPerDay",
+		"count" : 2898
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/railwayRollingStock",
+		"count" : 1295
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/discoverer",
+		"count" : 13276
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meanRadius",
+		"count" : 44
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/surfaceArea",
+		"count" : 52
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/gameEngine",
+		"count" : 2329
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/imageSize",
+		"count" : 1452
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bridgeCarries",
+		"count" : 2584
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crosses",
+		"count" : 2932
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/toll",
+		"count" : 191
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vehiclesPerDay",
+		"count" : 469
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/animal",
+		"count" : 195
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/visitorsPerYear",
+		"count" : 112
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/usingCountry",
+		"count" : 438
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/thumbnail",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/inflow",
+		"count" : 2933
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shoreLength",
+		"count" : 1303
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/number",
+		"count" : 51597
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iataLocationIdentifier",
+		"count" : 7104
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/locusSupplementaryData",
+		"count" : 344
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dischargeAverage",
+		"count" : 116
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/censusYear",
+		"count" : 4046
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/founder",
+		"count" : 610
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/epoch",
+		"count" : 11543
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/periapsis",
+		"count" : 11759
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/apoapsis",
+		"count" : 11658
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/minimumTemperature",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meanTemperature",
+		"count" : 31
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maximumTemperature",
+		"count" : 22
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeTypeAbbreviation",
+		"count" : 16182
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeNumber",
+		"count" : 16063
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToBelfast",
+		"count" : 100
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/legislativePeriodName",
+		"count" : 336
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/committeeInLegislature",
+		"count" : 28
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/municipality",
+		"count" : 2345
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/twinCountry",
+		"count" : 304
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPartOfAnatomicalStructure",
+		"count" : 76
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/brainInfoType",
+		"count" : 386
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/brainInfoNumber",
+		"count" : 387
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/significantProject",
+		"count" : 1180
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stadium",
+		"count" : 642
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/principalEngineer",
+		"count" : 71
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/engineer",
+		"count" : 229
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateConstruction",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateUse",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateCompleted",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/restoreDate",
+		"count" : 11
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/riverBranchOf",
+		"count" : 21
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/appointer",
+		"count" : 1506
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluenceMountain",
+		"count" : 132
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluencePlace",
+		"count" : 132
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftInterceptor",
+		"count" : 51
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/longtype",
+		"count" : 1377
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentSeason",
+		"count" : 1229
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bSide",
+		"count" : 18083
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aSide",
+		"count" : 2083
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/album",
+		"count" : 18944
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/saint",
+		"count" : 1949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endingTheme",
+		"count" : 704
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/march",
+		"count" : 291
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/childOrganisation",
+		"count" : 825
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bodyStyle",
+		"count" : 9170
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/engine",
+		"count" : 18161
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/displacement",
+		"count" : 17045
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/transmission",
+		"count" : 8440
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/wheelbase",
+		"count" : 4608
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subtitle",
+		"count" : 208
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maintainedBy",
+		"count" : 1302
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mainspan",
+		"count" : 1296
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/buildingEndDate",
+		"count" : 367
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mainOrgan",
+		"count" : 104
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chairperson",
+		"count" : 192
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hasVariant",
+		"count" : 427
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/licensee",
+		"count" : 6454
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/generalManager",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/biome",
+		"count" : 195
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/house",
+		"count" : 358
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/populationRural",
+		"count" : 189
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fuel",
+		"count" : 1742
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/unitaryAuthority",
+		"count" : 326
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nssdcId",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iucnCategory",
+		"count" : 4771
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nearestCity",
+		"count" : 12042
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/disbanded",
+		"count" : 245
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/layingDown",
+		"count" : 10150
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/decommissioningDate",
+		"count" : 7784
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/topSpeed",
+		"count" : 14730
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/recommissioningDate",
+		"count" : 827
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/acquirementDate",
+		"count" : 4776
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/draftRound",
+		"count" : 7138
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/draftPick",
+		"count" : 7500
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countySeat",
+		"count" : 3015
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distributingLabel",
+		"count" : 1380
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distributingCompany",
+		"count" : 1380
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bedCount",
+		"count" : 1624
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/races",
+		"count" : 817
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championships",
+		"count" : 837
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/wins",
+		"count" : 1146
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/podiums",
+		"count" : 813
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/poles",
+		"count" : 807
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fastestLap",
+		"count" : 810
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstRace",
+		"count" : 845
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstWin",
+		"count" : 102
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastWin",
+		"count" : 103
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastRace",
+		"count" : 819
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/owningOrganisation",
+		"count" : 6229
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/material",
+		"count" : 320
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/patron",
+		"count" : 681
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToCharingCross",
+		"count" : 126
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/borough",
+		"count" : 284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highschool",
+		"count" : 1920
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mountainRange",
+		"count" : 8909
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstAscentPerson",
+		"count" : 666
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestState",
+		"count" : 334
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/river",
+		"count" : 527
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/eruptionYear",
+		"count" : 773
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerPartner",
+		"count" : 1305
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfLines",
+		"count" : 670
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/head",
+		"count" : 881
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/island",
+		"count" : 283
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowestMountain",
+		"count" : 161
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/faaLocationIdentifier",
+		"count" : 3861
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaOfSearch",
+		"count" : 451
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/interest",
+		"count" : 578
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentStatus",
+		"count" : 463
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/closingYear",
+		"count" : 2427
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/trackLength",
+		"count" : 480
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shipDisplacement",
+		"count" : 2494
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/icdo",
+		"count" : 223
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/grossDomesticProduct",
+		"count" : 20
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nutsCode",
+		"count" : 20
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/recordDate",
+		"count" : 12087
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parentMountainPeak",
+		"count" : 2219
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rebuildingDate",
+		"count" : 194
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateOfAbandonment",
+		"count" : 182
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluence",
+		"count" : 92
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluenceRegion",
+		"count" : 30
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/anniversary",
+		"count" : 148
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/homeport",
+		"count" : 2217
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/seatingCapacity",
+		"count" : 2939
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestMountain",
+		"count" : 106
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/geology",
+		"count" : 313
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/range",
+		"count" : 120
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/geologicPeriod",
+		"count" : 108
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/viceChancellor",
+		"count" : 264
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/apparentMagnitude",
+		"count" : 180
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/assembly",
+		"count" : 12503
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/layout",
+		"count" : 5393
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/automobilePlatform",
+		"count" : 1533
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/configuration",
+		"count" : 15687
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/powerOutput",
+		"count" : 5039
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/relatedMeanOfTransportation",
+		"count" : 8007
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sales",
+		"count" : 1685
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/usSales",
+		"count" : 479
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastPosition",
+		"count" : 44
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/debutTeam",
+		"count" : 8737
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/casSupplemental",
+		"count" : 261
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/editorTitle",
+		"count" : 1410
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ceo",
+		"count" : 102
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/access",
+		"count" : 210
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rotationPeriod",
+		"count" : 454
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iso6391Code",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iso6392Code",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/callsignMeaning",
+		"count" : 11645
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/assetUnderManagement",
+		"count" : 98
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sourceConfluenceState",
+		"count" : 31
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bustSize",
+		"count" : 540
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/waistSize",
+		"count" : 720
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hipSize",
+		"count" : 710
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/destructionDate",
+		"count" : 18
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/designCompany",
+		"count" : 1176
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/introduced",
+		"count" : 10
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/frazioni",
+		"count" : 1237
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftAttack",
+		"count" : 431
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftBomber",
+		"count" : 333
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftElectronic",
+		"count" : 94
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopter",
+		"count" : 192
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftPatrol",
+		"count" : 197
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftTrainer",
+		"count" : 602
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sisterCollege",
+		"count" : 77
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfGraduateStudents",
+		"count" : 122
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftRecon",
+		"count" : 337
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/address",
+		"count" : 33571
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/curator",
+		"count" : 55
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endPoint",
+		"count" : 169
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maximumBoatLength",
+		"count" : 72
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maximumBoatBeam",
+		"count" : 74
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/contractAward",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstFlight",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastFlight",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/missions",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orbits",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distance",
+		"count" : 2274
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/satellitesDeployed",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastFlightStartDate",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastFlightEndDate",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/namedAfter",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstFlightStartDate",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstFlightEndDate",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crews",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mirDockings",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/issDockings",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/demolitionDate",
+		"count" : 121
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/christeningDate",
+		"count" : 349
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maidenVoyage",
+		"count" : 571
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/salary",
+		"count" : 296
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/resolution",
+		"count" : 334
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managingEditor",
+		"count" : 12
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVehicles",
+		"count" : 235
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstPublicationDate",
+		"count" : 1369
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastPublicationDate",
+		"count" : 686
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rector",
+		"count" : 528
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/other",
+		"count" : 155
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/powerType",
+		"count" : 2087
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/superintendent",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/summerAppearances",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winterAppearances",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/structuralSystem",
+		"count" : 189
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dorlandsPrefix",
+		"count" : 2867
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dorlandsSuffix",
+		"count" : 2867
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/televisionSeries",
+		"count" : 4113
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/previousEvent",
+		"count" : 5844
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/followingEvent",
+		"count" : 3368
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/museum",
+		"count" : 2423
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dean",
+		"count" : 463
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfFilms",
+		"count" : 925
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/feastDay",
+		"count" : 22
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bodyDiscovered",
+		"count" : 107
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/previousEditor",
+		"count" : 213
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/reportingMark",
+		"count" : 118
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/innervates",
+		"count" : 194
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/absoluteMagnitude",
+		"count" : 11192
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/broadcastNetwork",
+		"count" : 11330
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfTeams",
+		"count" : 1128
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/intercommunality",
+		"count" : 8377
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfParticipatingNations",
+		"count" : 48
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfParticipatingAthletes",
+		"count" : 50
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hybrid",
+		"count" : 1867
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sisterNewspaper",
+		"count" : 352
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/principal",
+		"count" : 156
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/event",
+		"count" : 464
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/games",
+		"count" : 3809
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nextEvent",
+		"count" : 2757
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/goldMedalist",
+		"count" : 4225
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/silverMedalist",
+		"count" : 4156
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bronzeMedalist",
+		"count" : 4040
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/discipline",
+		"count" : 1193
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/club",
+		"count" : 3055
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/administrativeCollectivity",
+		"count" : 163
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/picture",
+		"count" : 1615
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtAsia",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtAus",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsInEurope",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtJapan",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtOtherTournaments",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtPGA",
+		"count" : 13
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVisitorsAsOf",
+		"count" : 92
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/headLabel",
+		"count" : 4000
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/specialist",
+		"count" : 2056
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/localAuthority",
+		"count" : 2621
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowerAge",
+		"count" : 4476
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/upperAge",
+		"count" : 4317
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfPiersInWater",
+		"count" : 189
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/serviceNumber",
+		"count" : 357
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowestPosition",
+		"count" : 100
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/animator",
+		"count" : 3900
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/royalAnthem",
+		"count" : 44
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/compiler",
+		"count" : 294
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/building",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/certification",
+		"count" : 2960
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/certificationDate",
+		"count" : 36
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/inchi",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chairLabel",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/logo",
+		"count" : 1004
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/showJudge",
+		"count" : 1607
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/publiclyAccessible",
+		"count" : 246
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/storyEditor",
+		"count" : 87
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cityType",
+		"count" : 112
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/frozen",
+		"count" : 163
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfSpans",
+		"count" : 571
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/congressionalDistrict",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associationOfLocalGovernment",
+		"count" : 536
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/race",
+		"count" : 26634
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sex",
+		"count" : 2978
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/honours",
+		"count" : 1501
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sire",
+		"count" : 2186
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dam",
+		"count" : 390
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/grandsire",
+		"count" : 2279
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/damsire",
+		"count" : 1741
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/breeder",
+		"count" : 1546
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highwaySystem",
+		"count" : 66
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/effectiveRadiatedPower",
+		"count" : 3226
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerCallsign",
+		"count" : 16291
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/routeDirection",
+		"count" : 441
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/digitalChannel",
+		"count" : 4114
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/digitalSubChannel",
+		"count" : 2424
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerChannel",
+		"count" : 4201
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/heightAboveAverageTerrain",
+		"count" : 4098
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/facilityId",
+		"count" : 14143
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/modelStartYear",
+		"count" : 1072
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/modelEndYear",
+		"count" : 829
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chorusCharacterInPlay",
+		"count" : 58
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentPartner",
+		"count" : 605
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerChoreographer",
+		"count" : 715
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pdb",
+		"count" : 108
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/foalDate",
+		"count" : 382
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/areaRural",
+		"count" : 12
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfVineyards",
+		"count" : 41
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/growingGrape",
+		"count" : 3250
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfWineries",
+		"count" : 96
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/battleHonours",
+		"count" : 2233
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/homeStadium",
+		"count" : 3210
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/raceHorse",
+		"count" : 3226
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/wineRegion",
+		"count" : 313
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/grades",
+		"count" : 4252
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ratio",
+		"count" : 2648
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/campusSize",
+		"count" : 740
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/campusType",
+		"count" : 1700
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rival",
+		"count" : 1204
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/school",
+		"count" : 2089
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spokesperson",
+		"count" : 55
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/broadcastStationClass",
+		"count" : 15800
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/component",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/railwayPlatforms",
+		"count" : 14848
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fareZone",
+		"count" : 2838
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/agencyStationCode",
+		"count" : 6112
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isHandicappedAccessible",
+		"count" : 3961
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/closingDate",
+		"count" : 949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/finalPublicationYear",
+		"count" : 535
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/tennisSurfaceType",
+		"count" : 1859
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championInDoubleMale",
+		"count" : 7404
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championInSingleMale",
+		"count" : 3799
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championInDoubleFemale",
+		"count" : 1506
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championInSingleFemale",
+		"count" : 792
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/championInMixedDouble",
+		"count" : 736
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/closed",
+		"count" : 21
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/clubsRecordGoalscorer",
+		"count" : 33
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/startYearOfInsertion",
+		"count" : 5053
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endYearOfInsertion",
+		"count" : 4503
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fansgroup",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentRecord",
+		"count" : 663
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/tournamentRecord",
+		"count" : 318
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rebuildingYear",
+		"count" : 1514
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentProduction",
+		"count" : 86
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/passengersPerYear",
+		"count" : 6113
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/metropolitanBorough",
+		"count" : 1296
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/heir",
+		"count" : 46
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/railwayLineUsingTunnel",
+		"count" : 64
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowestRegion",
+		"count" : 25
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hairColor",
+		"count" : 253
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/eyeColor",
+		"count" : 220
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/otherChannel",
+		"count" : 1061
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/otherServingLines",
+		"count" : 4113
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/unitedStatesNationalBridgeId",
+		"count" : 356
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/constructionMaterial",
+		"count" : 417
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/statisticYear",
+		"count" : 190
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chiefEditor",
+		"count" : 132
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/seasonNumber",
+		"count" : 6930
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/episodeNumber",
+		"count" : 7330
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/photographer",
+		"count" : 287
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/guest",
+		"count" : 29806
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/plant",
+		"count" : 173
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfRestaurants",
+		"count" : 382
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfRooms",
+		"count" : 777
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associatedAct",
+		"count" : 115
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/debut",
+		"count" : 708
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nrhpType",
+		"count" : 238
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orogeny",
+		"count" : 31
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/oversight",
+		"count" : 558
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/trackNumber",
+		"count" : 2336
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/startPoint",
+		"count" : 175
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/riverBranch",
+		"count" : 23
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/hasJunctionWith",
+		"count" : 180
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/management",
+		"count" : 261
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/torqueOutput",
+		"count" : 2258
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/originalMaximumBoatLength",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/originalMaximumBoatBeam",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateAct",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/originalStartPoint",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ranking",
+		"count" : 119
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/barPassRate",
+		"count" : 128
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/jointCommunity",
+		"count" : 143
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/schoolBoard",
+		"count" : 1545
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/buildingStartYear",
+		"count" : 41
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/buildingEndYear",
+		"count" : 38
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPartOfRoute",
+		"count" : 524
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfLanes",
+		"count" : 93
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/tuition",
+		"count" : 960
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/opponent",
+		"count" : 292
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/runningMate",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/incumbent",
+		"count" : 116
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/servingRailwayLine",
+		"count" : 12168
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/notableWine",
+		"count" : 80
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterAttack",
+		"count" : 34
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/religiousHead",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/acceleration",
+		"count" : 622
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/classes",
+		"count" : 318
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstGame",
+		"count" : 69
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/largestWin",
+		"count" : 74
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/worstDefeat",
+		"count" : 68
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/established",
+		"count" : 973
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/railGauge",
+		"count" : 169
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/undraftedYear",
+		"count" : 3098
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/virtualChannel",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerBroadcastNetwork",
+		"count" : 3918
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/canBaggageChecked",
+		"count" : 863
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastAirDate",
+		"count" : 575
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sportCountry",
+		"count" : 119
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestRank",
+		"count" : 318
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/highestBreak",
+		"count" : 211
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bestFinish",
+		"count" : 138
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterMultirole",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterTransport",
+		"count" : 23
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/university",
+		"count" : 1177
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/voiceType",
+		"count" : 67
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/homeArena",
+		"count" : 611
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/description",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/demolitionYear",
+		"count" : 35
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPartOfWineRegion",
+		"count" : 456
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associateEditor",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/committee",
+		"count" : 673
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/meetingRoad",
+		"count" : 70
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceTraveled",
+		"count" : 16
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToCardiff",
+		"count" : 35
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/captureDate",
+		"count" : 528
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/drainsFrom",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/drainsTo",
+		"count" : 261
+	},
+	{
+		"property" : "http://purl.org/dc/elements/1.1/description",
+		"count" : 297
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtChampionships",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtProTournaments",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtMajors",
+		"count" : 22
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtNWIDE",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/portfolio",
+		"count" : 288
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cylinderCount",
+		"count" : 312
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rebuildDate",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/map",
+		"count" : 81
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/note",
+		"count" : 1553
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/loadLimit",
+		"count" : 19
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/authority",
+		"count" : 284
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/offeredClasses",
+		"count" : 409
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managementMountain",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/managementPlace",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfOffices",
+		"count" : 384
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfLawyers",
+		"count" : 292
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/legalForm",
+		"count" : 328
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dateOfBurial",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/productionStartDate",
+		"count" : 51
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/productionEndDate",
+		"count" : 10
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stationStructure",
+		"count" : 3078
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bowlRecord",
+		"count" : 533
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/compressionRatio",
+		"count" : 355
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/electionDate",
+		"count" : 119
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/supplementalDraftYear",
+		"count" : 37
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/supplementalDraftRound",
+		"count" : 38
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parkingInformation",
+		"count" : 3476
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/binomial",
+		"count" : 42
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ceeb",
+		"count" : 929
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/teachingStaff",
+		"count" : 199
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rankingWins",
+		"count" : 51
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/otherWins",
+		"count" : 79
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentRank",
+		"count" : 74
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/priceMoney",
+		"count" : 106
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/centuryBreaks",
+		"count" : 54
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/isPeerReviewed",
+		"count" : 55
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/originalEndPoint",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fuelType",
+		"count" : 439
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtLPGA",
+		"count" : 4
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/page",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/day",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/creativeDirector",
+		"count" : 151
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chain",
+		"count" : 119
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfSuites",
+		"count" : 316
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfParkingSpaces",
+		"count" : 37
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToDublin",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/broadcastRepeater",
+		"count" : 622
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/iso6393Code",
+		"count" : 12
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subsequentInfrastructure",
+		"count" : 13
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/previousInfrastructure",
+		"count" : 10
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/denomination",
+		"count" : 780
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/schoolPatron",
+		"count" : 175
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ruralMunicipality",
+		"count" : 696
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crownDependency",
+		"count" : 35
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sheading",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/valvetrain",
+		"count" : 354
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/schoolNumber",
+		"count" : 1022
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pastor",
+		"count" : 49
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/engineType",
+		"count" : 229
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/comparable",
+		"count" : 36
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/model",
+		"count" : 179
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/startYearOfSales",
+		"count" : 172
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endYearOfSales",
+		"count" : 152
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/officerInCharge",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceToDouglas",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/parish",
+		"count" : 26
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/logo",
+		"count" : 48
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/availableSmartCard",
+		"count" : 949
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/bicycleInformation",
+		"count" : 1661
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/approximateCalories",
+		"count" : 6
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/currentlyUsedFor",
+		"count" : 203
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/analogChannel",
+		"count" : 1152
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/testaverage",
+		"count" : 87
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stateDelegate",
+		"count" : 56
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/name",
+		"count" : 32
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/beltwayCity",
+		"count" : 72
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstPopularVote",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondPopularVote",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/promotion",
+		"count" : 1209
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/brand",
+		"count" : 144
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lowestState",
+		"count" : 168
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/visitorStatisticsAsOf",
+		"count" : 1531
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/averageClassSize",
+		"count" : 986
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/schoolCode",
+		"count" : 336
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cuisine",
+		"count" : 447
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/yearOfElectrification",
+		"count" : 899
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/visitorsPercentageChange",
+		"count" : 948
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/passengersUsedSystem",
+		"count" : 217
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/broadcastTranslator",
+		"count" : 642
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/choreographer",
+		"count" : 940
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/alumni",
+		"count" : 146
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nominee",
+		"count" : 58
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fuelCapacity",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vicePrimeMinister",
+		"count" : 26
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfPlatformLevels",
+		"count" : 792
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rating",
+		"count" : 181
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterObservation",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterUtility",
+		"count" : 58
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/majorityLeader",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fuelSystem",
+		"count" : 114
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/winsAtChallenges",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pastMember",
+		"count" : 49
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cylinderBore",
+		"count" : 325
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/pistonStroke",
+		"count" : 325
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/course",
+		"count" : 2298
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/distanceLaps",
+		"count" : 1142
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/poleDriver",
+		"count" : 1110
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/poleDriverTeam",
+		"count" : 1044
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fastestDriver",
+		"count" : 1143
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fastestDriverTeam",
+		"count" : 1044
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstDriver",
+		"count" : 1154
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstDriverTeam",
+		"count" : 1042
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondDriver",
+		"count" : 1146
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondTeam",
+		"count" : 1055
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/thirdDriver",
+		"count" : 1144
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/thirdDriverCountry",
+		"count" : 82
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/thirdTeam",
+		"count" : 1049
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nobelLaureates",
+		"count" : 28
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstDriverCountry",
+		"count" : 79
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subregion",
+		"count" : 386
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/varietals",
+		"count" : 472
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/headChef",
+		"count" : 156
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dressCode",
+		"count" : 111
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/reservations",
+		"count" : 33
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/uciCode",
+		"count" : 207
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vehicle",
+		"count" : 145
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/headAlloy",
+		"count" : 74
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/blockAlloy",
+		"count" : 92
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/oilSystem",
+		"count" : 35
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fees",
+		"count" : 110
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coolingSystem",
+		"count" : 68
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launchVehicle",
+		"count" : 94
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/landingVehicle",
+		"count" : 51
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stationVisitDuration",
+		"count" : 19
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/stationEvaDuration",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spurOf",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfCompetitors",
+		"count" : 848
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfSports",
+		"count" : 659
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/flagBearer",
+		"count" : 615
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfGoldMedalsWon",
+		"count" : 599
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfSilverMedalsWon",
+		"count" : 601
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfBronzeMedalsWon",
+		"count" : 600
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rankInFinalMedalCount",
+		"count" : 556
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/coachingRecord",
+		"count" : 53
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/subdivisions",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstWinner",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/recentWinner",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/deliveryDate",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/poleDriverCountry",
+		"count" : 61
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fastestDriverCountry",
+		"count" : 62
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/waterwayThroughTunnel",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/speaker",
+		"count" : 34
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/secondDriverCountry",
+		"count" : 74
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nationalTeam",
+		"count" : 503
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/imdbId",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/reopeningYear",
+		"count" : 55
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/jockey",
+		"count" : 29
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/webcast",
+		"count" : 31
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dissolved",
+		"count" : 75
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spacewalkBegin",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spacewalkEnd",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/actScore",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rebuilder",
+		"count" : 62
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfPads",
+		"count" : 47
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launches",
+		"count" : 21
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/associatedRocket",
+		"count" : 83
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstLaunchRocket",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/firstLaunchDate",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastLaunchRocket",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lastLaunchDate",
+		"count" : 24
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/educationSystem",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fuelConsumption",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/co2Emission",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vicePrincipal",
+		"count" : 19
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/capitalCountry",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/review",
+		"count" : 11
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mostWins",
+		"count" : 26
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vicePrincipalLabel",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/wineProduced",
+		"count" : 40
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/religiousHeadLabel",
+		"count" : 67
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/nationalRanking",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/formerHighschool",
+		"count" : 47
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/shoeNumber",
+		"count" : 13
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/sixthFormStudents",
+		"count" : 21
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/prospectLeague",
+		"count" : 710
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/endDate",
+		"count" : 174
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chaplain",
+		"count" : 14
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/familyName",
+		"count" : 23
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/targetSpaceStation",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/crew",
+		"count" : 113
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rocket",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/launch",
+		"count" : 82
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/decay",
+		"count" : 72
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cosparId",
+		"count" : 115
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/freeFlightTime",
+		"count" : 59
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/dockedTime",
+		"count" : 60
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port1DockingDate",
+		"count" : 80
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port1UndockingDate",
+		"count" : 79
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/regime",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/inclination",
+		"count" : 84
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/satScore",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/prospectTeam",
+		"count" : 615
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/leftChild",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/rightChild",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/assistantPrincipal",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/careerPoints",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/espnId",
+		"count" : 27
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/locationIdentifier",
+		"count" : 21
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/openingFilm",
+		"count" : 30
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/closingFilm",
+		"count" : 19
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/aircraftHelicopterCargo",
+		"count" : 11
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/reopeningDate",
+		"count" : 10
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countryWithFirstSatellite",
+		"count" : 28
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countryWithFirstAstronaut",
+		"count" : 28
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/maidenFlightRocket",
+		"count" : 176
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/retiredRocket",
+		"count" : 111
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orbitalFlights",
+		"count" : 43
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/totalTravellers",
+		"count" : 43
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/trustee",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/spike",
+		"count" : 130
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/block",
+		"count" : 113
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countryWithFirstSpaceflight",
+		"count" : 9
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/suborbitalFlights",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/countryWithFirstSatelliteLaunched",
+		"count" : 11
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/organSystem",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/chef",
+		"count" : 37
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/vehicleCode",
+		"count" : 2576
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/boiler",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/film",
+		"count" : 44
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/boilerPressure",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/oldcode",
+		"count" : 1
+	},
+	{
+		"property" : "http://xmlns.com/foaf/0.1/depiction",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectKeyword",
+		"count" : 20
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/fundedBy",
+		"count" : 16
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectType",
+		"count" : 19
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectObjective",
+		"count" : 17
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectReferenceID",
+		"count" : 15
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectBudgetTotal",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectBudgetFunding",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectStartDate",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectEndDate",
+		"count" : 7
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/custodian",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/detectionMethod",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/cultivatedVariety",
+		"count" : 14
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfOfficials",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port1",
+		"count" : 75
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectCoordinator",
+		"count" : 10
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/projectParticipant",
+		"count" : 86
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/headteacher",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/numberOfClassrooms",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/argueDate",
+		"count" : 8
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/decideDate",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/finalPublicationDate",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/addressInRoad",
+		"count" : 11
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port1DockedTime",
+		"count" : 2
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port2DockingDate",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port2UndockingDate",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port2",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/lengthReference",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/port2DockedTime",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/tvComId",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/mgiid",
+		"count" : 1
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/ensembl",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/refseqmrna",
+		"count" : 4
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/refseqprotein",
+		"count" : 5
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/geneLocation",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/genomeDB",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/onChromosome",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/geneLocationStart",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/geneLocationEnd",
+		"count" : 3
+	},
+	{
+		"property" : "http://dbpedia.org/ontology/orthologousGene",
+		"count" : 1
+	}
+]
