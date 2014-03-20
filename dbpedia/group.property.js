@@ -1,8 +1,16 @@
-var result = db.dbpedia.map.property.group({
-    key: { property:1},
-    reduce: function(curr,result){
-        result.count++;  //Do count!
-    },
-    initial: { count:0 }
-});
-printjson(result);
+/* using mongodb map-reduce framework 
+ * object: { resource:"", property: "", value: ""  }
+ * */
+
+/* do count */
+var mapper = function(){
+    emit(this.property, 1);
+};
+
+var reducer = function(key,values){
+    return Array.sum(values);
+};
+
+db.dbpedia.map.property.mapReduce(mapper,reducer,{out: "result.property.targets.number"});
+
+
