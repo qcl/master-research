@@ -77,6 +77,8 @@ def main(inputFile):
     l = 0
     for line in f:
         line = line.split("\t")
+        if len(line) < 2:
+            continue
         wikiId = line[0]
         revId = line[1][:-1]
         revIds.put(revId)
