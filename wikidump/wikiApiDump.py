@@ -32,6 +32,7 @@ def main(inputFile):
     revIds = Queue.Queue(0)
 
     done = []
+    fail = []
 
     def thread():
         ident = threading.currentThread().ident
@@ -44,27 +45,31 @@ def main(inputFile):
                 break
             if revid == None:
                 continue
-        
-            rps = urllib2.urlopen("http://en.wikipedia.org/w/api.php?format=json&action=parse&prop=text&oldid=%s" % (revid))
-            result = json.load(rps)
-            if "error" in result:
-                pass
-                print "Query",revid,"error:",result["error"]["info"]
-            else:
-                title = result["parse"]["title"]
-                html = result["parse"]["text"]["*"]
+       
+            try:
+                rps = urllib2.urlopen("http://en.wikipedia.org/w/api.php?format=json&action=parse&prop=text&oldid=%s" % (revid))
+                result = json.load(rps)
+                if "error" in result:
+                    pass
+                    print "Query",revid,"error:",result["error"]["info"]
+                    fail.append(revid+"\t"+result["error"]["info"])
+                else:
+                    title = result["parse"]["title"]
+                    html = result["parse"]["text"]["*"]
     
-                #FIXME - parser
-                parser = QCLWikiParser()
-                parser.feed(html)
-                o = open("%s.txt" % revid,"w")
-                o.write(parser.getResult().encode("utf-8").replace("[edit]",""))
-                o.close()
-                o = open("%s.html" % revid,"w")
-                o.write(html.encode("utf-8"))
-                o.close()
-                print "[DONE] %s,%s" % (title,revid)
-    
+                    #FIXME - parser
+                    parser = QCLWikiParser()
+                    parser.feed(html)
+                    o = open("%s.txt" % revid,"w")
+                    o.write(parser.getResult().encode("utf-8").replace("[edit]",""))
+                    o.close()
+                    o = open("%s.html" % revid,"w")
+                    o.write(html.encode("utf-8"))
+                    o.close()
+            except:
+                fail.append(revid)
+
+
             #print revIds.empty()
             #print revid,ident
             revIds.task_done()
@@ -77,6 +82,8 @@ def main(inputFile):
     l = 0
     for line in f:
         line = line.split("\t")
+        if len(line) < 2:
+            continue
         wikiId = line[0]
         revId = line[1][:-1]
         revIds.put(revId)
@@ -85,7 +92,7 @@ def main(inputFile):
 
     #targetLen = len(revIds)
    
-    for x in xrange(45):
+    for x in xrange(50):
         t = threading.Thread(target=thread)
         t.start()
 
@@ -95,12 +102,17 @@ def main(inputFile):
 
     while threading.activeCount() > 1:
         time.sleep(1)
-        print "sleep",threading.activeCount(),revIds.qsize()
+        print "active thread=",threading.activeCount(),", rest=",revIds.qsize()
 
         if revIds.empty():
             break
 
     print l,len(done)
+
+    f = open("error.log","w")
+    for e in fail:
+        f.write(e+"\n")
+    f.close()
 
     sys.exit(0)
 
