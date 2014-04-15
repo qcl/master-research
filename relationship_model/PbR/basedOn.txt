@@ -1,0 +1,17 @@
+is based upon;
+[[num]] based;
+was based [[con]];
+based by;
+[[num]] based by;
+[[num]] based on;
+[[adj]] based by;
+is based by;
+is based [[con]];
+was based by;
+is based on;
+is based from;
+not based on;
+based was;
+[[num]] book written by;
+[[adj]] book written by;
+[[det]] book written by;

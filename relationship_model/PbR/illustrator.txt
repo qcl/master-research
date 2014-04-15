@@ -1,0 +1,10 @@
+illustrations by;
+[[adj]] book in;
+[[num]] book by;
+[[det]] book s;
+[[adj]] book by;
+[[det]] book by;
+[[det]] children s book written by;
+[[det]] children s book written [[con]] illustrated by;
+[[num]] children s book written by;
+[[det]] children s picture book written [[con]] illustrated by;

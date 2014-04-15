@@ -1,0 +1,13 @@
+lies [[con]];
+lies near;
+lies in;
+[[adj]] highest peak;
+[[det]] highest peak;
+highest peak;
+[[det]] highest peak in;
+[[det]] highest [[adj]] highest peak of;
+[[det]] highest [[con]] [[adj]] highest peak of;
+[[det]] highest peak of;
+[[adj]] summit of;
+[[adj]] summit;
+[[det]] subsidiary summit of;

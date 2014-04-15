@@ -1,0 +1,3 @@
+appointed;
+[[det]] state senator;
+state senator;

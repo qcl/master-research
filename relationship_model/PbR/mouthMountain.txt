@@ -1,0 +1,18 @@
+then flows where joins [[det]];
+flows [[con]] joins [[det]];
+where joins [[det]];
+then joins [[det]];
+joins [[det]];
+which joins [[det]];
+[[det]] joins;
+[[con]] joins [[det]];
+joins with;
+flows in [[adj]] direction;
+[[adj]] tributary of;
+[[adj]] tributary [[det]];
+tributary of;
+[[det]] tributary of;
+[[det]] tributary [[det]];
+[[adj]] tributary;
+[[det]] tributary;
+[[det]] tributary [[con]];

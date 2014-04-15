@@ -1,0 +1,13 @@
+is joined [[con]];
+is joined;
+is joined by;
+where joins [[det]];
+then joins [[det]];
+joins [[det]];
+which joins [[det]];
+[[det]] joins;
+[[con]] joins [[det]];
+joins with;
+receives [[det]];
+receives [[con]];
+is joined by [[adj]] tributary [[det]];

@@ -1,0 +1,13 @@
+was murdered [[con]];
+had murdered [[det]];
+was murdered;
+that murdered;
+been murdered by;
+murdered by;
+had murdered;
+[[con]] murdered;
+was murdered by;
+is murdered by;
+murdered [[con]];
+murdered [[det]];
+is murdered;

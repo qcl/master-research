@@ -1,0 +1,10 @@
+with music by;
+[[adj]] music by;
+[[con]] lyrics by;
+[[adj]] lyrics by;
+music by;
+with lyrics by;
+[[adj]] music [[con]] lyrics by;
+[[adj]] lyrics [[con]] music by;
+music [[con]] lyrics by;
+[[det]] lyrics music by;

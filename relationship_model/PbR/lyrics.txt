@@ -1,0 +1,4 @@
+[[con]] lyrics by;
+[[adj]] lyrics by;
+with lyrics by;
+authored by;

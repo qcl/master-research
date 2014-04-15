@@ -1,0 +1,14 @@
+[[det]] university with [[num]] campuses in;
+[[adj]] university with campuses in;
+with campuses in;
+has campuses in;
+[[adj]] campuses in;
+[[num]] campuses;
+has campuses;
+campuses in;
+[[num]] campuses in;
+has campuses [[con]];
+campuses [[con]];
+[[num]] campuses [[con]];
+[[det]] university located in;
+[[adj]] university located in;

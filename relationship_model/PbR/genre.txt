@@ -1,0 +1,9 @@
+[[det]] game;
+[[det]] game by;
+[[adj]] game [[con]];
+[[adj]] game;
+[[det]] game show;
+game of;
+[[num]] game;
+[[adj]] game of;
+[[adj]] game in;

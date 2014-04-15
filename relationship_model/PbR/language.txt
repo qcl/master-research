@@ -1,0 +1,14 @@
+had picked up [[num]] points placing [[adj]];
+had picked up [[num]] points [[num]] placing [[adj]];
+had picked up [[num]] points [[det]] highest placing [[adj]];
+had picked up [[num]] points [[det]] highest;
+received [[det]] points placing [[adj]];
+had received only [[num]] points [[num]] placing [[adj]];
+had received only [[num]] points [[num]] placing [[det]];
+had received [[det]] points placing [[adj]];
+had received [[num]] points [[num]] placing [[adj]];
+had received [[num]] points placing [[adj]];
+had received [[num]] points from;
+had received only [[num]] points [[num]];
+had received [[num]] points [[num]];
+had received [[num]] points;

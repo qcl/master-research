@@ -1,0 +1,6 @@
+is joined [[con]];
+is joined;
+is joined by;
+receives [[det]];
+receives [[con]];
+collects [[det]];

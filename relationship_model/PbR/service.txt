@@ -1,0 +1,2 @@
+[[det]] owner [[con]] operator [[con]];
+[[det]] owner [[con]] operator of;

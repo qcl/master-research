@@ -1,0 +1,13 @@
+launched from;
+was launched to;
+be launched to;
+was launched as;
+was launched at;
+is launched;
+launched [[num]];
+launched as;
+was launched from;
+launched at;
+[[det]] launched;
+was launched;
+was launched [[con]];

@@ -1,0 +1,7 @@
+to train with;
+train [[det]];
+[[mod]] train;
+to train under;
+to train;
+to train for;
+to train [[adj]];

@@ -1,0 +1,2 @@
+[[adj]] district in;
+[[det]] district in;

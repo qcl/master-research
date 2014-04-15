@@ -1,0 +1,17 @@
+[[num]] schools in;
+schools [[con]];
+[[num]] schools [[con]];
+[[adj]] schools at;
+[[adj]] schools as;
+[[num]] schools from;
+[[adj]] schools for;
+[[con]] schools;
+[[adj]] schools [[det]];
+[[adj]] schools;
+[[det]] schools;
+schools [[adj]];
+[[adj]] schools of;
+[[num]] schools;
+[[adj]] schools [[adj]];
+of schools;
+[[adj]] schools in;

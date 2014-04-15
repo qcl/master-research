@@ -1,0 +1,7 @@
+[[adj]] church [[det]];
+church in;
+[[adj]] church in;
+[[det]] church on;
+[[det]] church in;
+[[adj]] church at;
+[[adj]] church;

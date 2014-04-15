@@ -1,0 +1,5 @@
+is fed;
+fed by;
+is fed by;
+[[det]] rivers;
+water from;

@@ -1,0 +1,15 @@
+[[adj]] river of;
+[[det]] river [[det]];
+[[det]] river of;
+[[det]] river [[con]];
+[[adj]] river in;
+[[adj]] river;
+[[det]] river on;
+[[det]] river in;
+[[det]] longest river in;
+[[adj]] longest river in;
+rises in;
+forms [[det]] boundary with;
+forms [[det]] [[adj]] boundary between;
+forms [[det]] boundary;
+forms [[det]] boundary between;

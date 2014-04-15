@@ -1,0 +1,12 @@
+runs off;
+now runs on;
+[[det]] runs;
+[[det]] version of;
+[[adj]] version;
+version of;
+[[adj]] version is;
+[[adj]] version of;
+[[num]] version of;
+s version of;
+[[adj]] version [[con]];
+[[det]] version;
