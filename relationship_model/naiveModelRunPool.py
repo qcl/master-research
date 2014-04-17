@@ -36,11 +36,9 @@ def readModels(models):
         f.close()
     return model
 
-def main(models,curpus,result):
+def main(models,curpus,result,rule):
     model = readModels(models)
     files = Queue.Queue(0)
-
-    
 
     # define each thread
     class worker(threading.Thread):
@@ -123,7 +121,7 @@ def main(models,curpus,result):
     # reading list
     totalCount = 0
     for fj in os.listdir(curpus):
-        if not ".json" in fj:
+        if not rule in fj:
             continue
         totalCount+=1
         files.put(fj)
@@ -151,7 +149,7 @@ if __name__ == "__main__":
         corpus = sys.argv[2]
         result = sys.argv[3]
 
-        main(models,corpus,result)
+        main(models,corpus,result,".1g.json")
 
     else:
         print "$ python ./naiveModelRunPool.py [models-dir] [corpus-dir] [result-dir]"
