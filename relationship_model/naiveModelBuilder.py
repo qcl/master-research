@@ -36,8 +36,14 @@ for line in f:
 
     h.write("{\n")
 
+    l = len(sorted_words)
+    k = 0
     for w in sorted_words:
-        h.write("\"%s\":\"%s\"\n" % (w[0],str(w[1])))
+        k += 1
+        if k == l:
+            h.write("\"%s\":\"%s\"\n" % (w[0],str(w[1])))
+        else:
+            h.write("\"%s\":\"%s\",\n" % (w[0],str(w[1])))
 
     h.write("}")
     h.close()
