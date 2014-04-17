@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # qcl
+
 # Generate 1-gram (that is, word feq) from dir
 
 import os
