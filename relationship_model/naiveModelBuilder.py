@@ -41,9 +41,9 @@ for line in f:
     for w in sorted_words:
         k += 1
         if k == l:
-            h.write("\"%s\":\"%s\"\n" % (w[0],str(w[1])))
+            h.write("\"%s\":%s\n" % (w[0],str(w[1])))
         else:
-            h.write("\"%s\":\"%s\",\n" % (w[0],str(w[1])))
+            h.write("\"%s\":%s,\n" % (w[0],str(w[1])))
 
     h.write("}")
     h.close()

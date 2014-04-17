@@ -39,9 +39,9 @@ def main(source,target):
             for w in gram:
                 k += 1
                 if k == l:
-                    g.write("\"%s\":\"%s\"\n}" % (w[0],str(w[1])))
+                    g.write("\"%s\":%s\n}" % (w[0],str(w[1])))
                 else:
-                    g.write("\"%s\":\"%s\",\n" % (w[0],str(w[1])))
+                    g.write("\"%s\":%s,\n" % (w[0],str(w[1])))
 
             g.close()
      
