@@ -62,19 +62,21 @@ def main(models,curpus,result,rule):
 
                 # do something here
                 tmp_f = open(os.path.join(curpus,filename),"r")
-                tmp_g = open(os.path.join(target,filename),"w")
-                print os.path.join(curpus,filename)
+                tmp_g = open(os.path.join(result,filename),"w")
+                print os.path.join(curpus,filename),files.qsize(),totalCount
 
                 article = json.load(tmp_f)
-                result = {}
+                r = {}
 
-                for model in models:
+                for ms in model:
+                    m = model[ms]
                     art = {}
                     count = 0
-                    for word in model:
+                    for word in m:
                         if word in article:
                             count += article[word]
                             art[word] = article[word]
+
                         else:
                             art[word] = 0
                     l1d = .0    # L1 
@@ -89,19 +91,23 @@ def main(models,curpus,result,rule):
                             pass
                         else:
                             bow += 1
-                            vsm += (model[word]*art[word])
-                            lm += (model[word]*model[word])
+                            vsm += (m[word]*art[word])
+                            lm += (m[word]*m[word])
                             la += (art[word]*art[word])
-                        diff = abs(model[word] - art[word])
+                        diff = abs(m[word] - art[word])
                         l1d += diff
                         l2d += (diff*diff)
                     
                     bow = bow/loa
-                    vsm = vsm/(la*lm)
+                    
+                    if la != .0 and lm != .0 and la*lm != .0:
+                        vsm = vsm/(la*lm)
+                    else:
+                        vsm = 0
 
-                    result[model] = {"l1d":l1d,"l2d":l2d,"bow":bow,"vsm":vsm}
+                    r[ms] = {"l1d":l1d,"l2d":l2d,"bow":bow,"vsm":vsm}
                 
-                json.dump(result,tmp_g)
+                json.dump(r,tmp_g)
                 
                 tmp_f.close()
                 tmp_g.close()
