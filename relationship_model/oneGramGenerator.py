@@ -7,8 +7,9 @@ import gc
 import sys
 import nltk
 import operator
+import json
 
-def oneGramByFile(inputFileName,lst=False):
+def oneGramByFile(inputFileName):
     print "File:%s" % (inputFileName)
     f = open(inputFileName,"r")
     words = {}
@@ -19,30 +20,15 @@ def oneGramByFile(inputFileName,lst=False):
                 words[token] = 0
             words[token] += 1
     f.close()
-    sorted_tokens = sorted(words.iteritems(), key= lambda x:x[1])
-    sorted_tokens.reverse()
-
-    if lst:
-        return sorted_tokens
-    else:
-        return map(lambda x:x[0],sorted_tokens)
+    return words
 
 
 def main(source,target):
     for f in os.listdir(source):
         if ".txt" in f:
-            gram = oneGramByFile(os.path.join(source,f),lst=True)
+            gram = oneGramByFile(os.path.join(source,f))
             g = open("%s.1g.json" % (os.path.join(target,f.split(".txt")[0])) , "w")
-            l = len(gram)
-            g.write("{\n")
-            k = 0
-            for w in gram:
-                k += 1
-                if k == l:
-                    g.write("\"%s\":%s\n}" % (w[0],str(w[1])))
-                else:
-                    g.write("\"%s\":%s,\n" % (w[0],str(w[1])))
-
+            json.dump(gram,g)
             g.close()
      
 

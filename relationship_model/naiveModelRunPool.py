@@ -56,16 +56,59 @@ def main(models,curpus,result):
                 #     break
                 try:
                     filename = files.get()
-                    msg(filename)
+                    #msg(filename)
                     files.task_done()
                 except:
                     #msg("error! "+str(ident))
                     break
 
                 # do something here
+                tmp_f = open(os.path.join(curpus,filename),"r")
+                tmp_g = open(os.path.join(target,filename),"w")
+                print os.path.join(curpus,filename)
 
-                #msg(filename)
-            #msg("End! "+str(ident))
+                article = json.load(tmp_f)
+                result = {}
+
+                for model in models:
+                    art = {}
+                    count = 0
+                    for word in model:
+                        if word in article:
+                            count += article[word]
+                            art[word] = article[word]
+                        else:
+                            art[word] = 0
+                    l1d = .0    # L1 
+                    l2d = .0    # L2
+                    loa = float(len(art))  # length of art
+                    bow = 0     # bag of words
+                    vsm = .0    # VSM
+                    lm  = .0    # length of model
+                    la  = .0    # length of art
+                    for word in art:
+                        if art[word] == 0 or art[word] <= 0.0:
+                            pass
+                        else:
+                            bow += 1
+                            vsm += (model[word]*art[word])
+                            lm += (model[word]*model[word])
+                            la += (art[word]*art[word])
+                        diff = abs(model[word] - art[word])
+                        l1d += diff
+                        l2d += (diff*diff)
+                    
+                    bow = bow/loa
+                    vsm = vsm/(la*lm)
+
+                    result[model] = {"l1d":l1d,"l2d":l2d,"bow":bow,"vsm":vsm}
+                
+                json.dump(result,tmp_g)
+                
+                tmp_f.close()
+                tmp_g.close()
+                # end of thread/run
+
 
     # starting threading
     
