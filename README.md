@@ -108,5 +108,17 @@ Note that
 * [Wikipedia dump](http://en.wikipedia.org/wiki/Wikipedia:Database_download)
     * [20130304](http://dumps.wikimedia.org/enwiki/20130304/)
         * enwiki-20130304-pages-articles
+* [Wiki API](),1961414 
+    * 01-05,58115
+    * 06-10,126706
+    * 11-15,195114
+    * 15-18,262784
+    * 19-20,192237
+    * 21-22,206117
+    * 23,129647
+    * 24,142679
+    * 25,132130
+    * 26,125104
+    * 27,390781
 * [PATTY](http://www.mpi-inf.mpg.de/yago-naga/patty/)
     * [PATTY Online](https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/)

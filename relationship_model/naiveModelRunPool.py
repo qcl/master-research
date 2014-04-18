@@ -147,7 +147,9 @@ def main(models,curpus,result,rule):
   
     print totalCount, msgQ.qsize()
 
-    pass
+    time.sleep(1)
+
+    print "Done"
 
 if __name__ == "__main__":
     if len(sys.argv) >= 4:

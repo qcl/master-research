@@ -79,7 +79,7 @@ def main(source,target):
 
     files.join()
   
-    print totalCount, msgQ.qsize()
+    print totalCount
 
     pass
 
