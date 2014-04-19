@@ -18,16 +18,20 @@ def main(inputFiles,outputPath,combineN):
 
     # define each thread
     class worker(threading.Thread):
-        def __init__(self):
+        def __init__(self,threadID):
             threading.Thread.__init__(self)
             self.daemon = True
+            self.tid = threadID
         def run(self):
             ident = threading.currentThread().ident
+            print "worker#%02d start to work!" % (self.tid)
             while True:
                 try:
                     fileCollection = files.get()
+                    print "worker#%02d get file collection part %d" % (self.tid,fileCollection["part"])
                     files.task_done()
                 except:
+                    print "worker#%02d err!" % (self.tid)
                     break
 
                 # do something here
@@ -48,14 +52,11 @@ def main(inputFiles,outputPath,combineN):
                 fp = open(ofn,"w")
                 json.dump(f,fp)
                 fp.close()
-                print "Write to %s." % (ofn)
+                print "worker#%02d write to %s." % (self.tid,ofn)
                 # end of thread/run
+            print "worker#%02d end!" % (self.tid)
 
 
-    # starting threading
-    for x in xrange(threadLimit):
-        th = worker()
-        th.start()
 
     # reading list
     totalCount = 0
@@ -78,10 +79,18 @@ def main(inputFiles,outputPath,combineN):
         files.put({"files":collection,"part":part})
         part += 1
         print "#job:%d" % (part)
+    
+    print files.qsize()
+
+    # starting threading
+    for x in xrange(threadLimit):
+        th = worker(x)
+        th.start()
+
 
     print "Number of files =",totalCount
 
-    #files.join()
+    files.join()
   
     print totalCount
     time.sleep(1)
