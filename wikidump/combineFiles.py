@@ -29,7 +29,6 @@ def main(inputFiles,outputPath,combineN):
                 try:
                     fileCollection = files.get()
                     print "worker#%02d get file collection part %d" % (self.tid,fileCollection["part"])
-                    files.task_done()
                 except:
                     print "worker#%02d err!" % (self.tid)
                     break
@@ -53,6 +52,7 @@ def main(inputFiles,outputPath,combineN):
                 json.dump(f,fp)
                 fp.close()
                 print "worker#%02d write to %s." % (self.tid,ofn)
+                files.task_done()
                 # end of thread/run
             print "worker#%02d end!" % (self.tid)
 
