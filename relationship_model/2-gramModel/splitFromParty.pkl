@@ -1,0 +1,8 @@
+(dp0
+(S'broke'
+p1
+S'away'
+p2
+tp3
+F1.0
+s.

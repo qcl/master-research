@@ -1,0 +1,16 @@
+(dp0
+(S'family'
+p1
+S'specifically'
+p2
+S'of'
+p3
+tp4
+F0.5
+s(S'[[det]]'
+p5
+g1
+g2
+tp6
+F0.5
+s.

@@ -1,0 +1,10 @@
+(dp0
+(S'is'
+p1
+S'fed'
+p2
+S'by'
+p3
+tp4
+F1.0
+s.

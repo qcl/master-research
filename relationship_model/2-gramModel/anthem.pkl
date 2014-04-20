@@ -1,0 +1,8 @@
+(dp0
+(S'[[adj]]'
+p1
+S'anthem'
+p2
+tp3
+F1.0
+s.

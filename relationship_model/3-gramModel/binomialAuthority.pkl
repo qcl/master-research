@@ -1,0 +1,10 @@
+(dp0
+(S'was'
+p1
+S'originally'
+p2
+S'described'
+p3
+tp4
+F1.0
+s.

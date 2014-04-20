@@ -1,0 +1,10 @@
+(dp0
+(S'was'
+p1
+S'commanded'
+p2
+S'by'
+p3
+tp4
+F1.0
+s.

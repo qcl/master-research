@@ -1,0 +1,10 @@
+(dp0
+(S'[[det]]'
+p1
+S'state'
+p2
+S'senator'
+p3
+tp4
+F1.0
+s.
