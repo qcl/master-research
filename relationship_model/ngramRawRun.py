@@ -6,6 +6,7 @@ import os
 import sys
 import Queue
 import simplejson as json
+from datetime import datetime
 from projizzWorker import Manager
 from projizzReadNGramModel import readModel
 
@@ -18,8 +19,13 @@ def main(modelPath,inputPath,outputPath):
         os.mkdir(outputPath)
 
     def workerFunction(jobObj,tid,args):
-        content = json.load(open(os.path.join(inputPath,jobObj),"r"))
-        print "worker #%02d read file %s" % (tid,jobObj)
+        a = datetime.now()
+        print "worker #%02d start read file %s" % (tid,jobObj)
+        f = open(os.path.join(inputPath,jobObj),"r")
+        content = json.load(f)
+        f.close()
+        diff = datetime.now() - a
+        print "worker #%02 read file %s, use [%d.%d s]" % (tid,jobObj,diff.seconds,diff.microseconds)
         results = {}
         count = 0
         for subFilename in content:
@@ -28,9 +34,11 @@ def main(modelPath,inputPath,outputPath):
             result = {}
             for model in models:
                 mn = models[model]
-                result[model] = 0
+                #result[model] = 0
                 for ng in ngs:
                     if ng in mn:
+                        if not model in result:
+                            result[model] = 0
                         result[model]+=1
 
             if count % 100 == 0:
@@ -38,8 +46,13 @@ def main(modelPath,inputPath,outputPath):
 
             results[subFilename] = result
         
-        json.dump(results,open(os.path.join(outputPath,jobObj),"w"))
-        print "worker #%02d write file %s" % (tid,jobObj)
+        a = datetime.now()
+        print "worker #%02d start write file %s" % (tid,jobObj)
+        f = open(os.path.join(outputPath,jobObj),"w")
+        json.dump(results,f)
+        f.close()
+        diff = datetime.now() - a
+        print "worker #%02d  write file %s, use [%d.%d s]" % (tid,jobObj,diff.seconds,diff.microseconds)
 
 
     for filename in os.listdir(inputPath):
