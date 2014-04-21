@@ -38,7 +38,7 @@ def main(modelPath,inputPath,outputPath):
 
             results[subFilename] = result
         
-        json.dump(results,open(os.path.join(outputPath,jobObj),"r"))
+        json.dump(results,open(os.path.join(outputPath,jobObj),"w"))
         print "worker #%02d write file %s" % (tid,jobObj)
 
 
@@ -46,7 +46,7 @@ def main(modelPath,inputPath,outputPath):
         if ".json" in filename:
             files.put(filename)
 
-    manager = Manager(15)
+    manager = Manager(25)
     manager.setJobQueue(files)
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
