@@ -46,7 +46,7 @@ def main(modelPath,inputPath,outputPath):
         if ".json" in filename:
             files.put(filename)
 
-    manager = Manager(30)
+    manager = Manager(15)
     manager.setJobQueue(files)
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
