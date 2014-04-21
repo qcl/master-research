@@ -25,7 +25,7 @@ def main(modelPath,inputPath,outputPath):
         content = json.load(f)
         f.close()
         diff = datetime.now() - a
-        print "worker #%02 read file %s, use [%d.%d s]" % (tid,jobObj,diff.seconds,diff.microseconds)
+        print "worker #%02d read file %s, use [%d.%d s]" % (tid,jobObj,diff.seconds,diff.microseconds)
         results = {}
         count = 0
         for subFilename in content:
