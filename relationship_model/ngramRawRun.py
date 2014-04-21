@@ -24,17 +24,17 @@ def main(modelPath,inputPath,outputPath):
         count = 0
         for subFilename in content:
             ngs = content[subFilename]
+            count += 1
             result = {}
             for model in models:
                 mn = models[model]
                 result[model] = 0
                 for ng in ngs:
-                    count += 1
                     if ng in mn:
                         result[model]+=1
 
-                    if count % 10000 == 0:
-                        print "worker #%02d scan %d n-grams" % (tid,count)
+            if count % 100 == 0:
+                print "worker #%02d scan %d files" % (tid,count)
 
             results[subFilename] = result
         
