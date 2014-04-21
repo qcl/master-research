@@ -21,22 +21,27 @@ def main(inputFiles,outputPath,combineN):
         def __init__(self):
             threading.Thread.__init__(self)
             self.daemon = True
+            self.tid = tid
         def run(self):
             ident = threading.currentThread().ident
+            print "worker#%02d start working!" % (self.tid)
             while True:
                 try:
                     fileCollection = files.get()
-                    files.task_done()
+                    print "worker#%02d get data" % (self.tid)
+                    
                 except:
                     break
 
                 # do something here
                 # end of thread/run
+                files.task_done()
+            print "worker#%02d end." % (self.tid)
 
 
     # starting threading
     for x in xrange(threadLimit):
-        th = worker()
+        th = worker(x)
         #th.start()
 
     # reading list
@@ -63,7 +68,7 @@ def main(inputFiles,outputPath,combineN):
 
     print "Number of files =",totalCount
 
-    #files.join()
+    files.join()
   
     print totalCount
     time.sleep(1)
