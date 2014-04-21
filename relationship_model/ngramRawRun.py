@@ -33,7 +33,7 @@ def main(modelPath,inputPath,outputPath):
                     if ng in mn:
                         result[model]+=1
 
-                    if count % 10000:
+                    if count % 10000 == 0:
                         print "worker #%02d scan %d n-grams" % (tid,count)
 
             results[subFilename] = result
