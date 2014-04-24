@@ -16,10 +16,10 @@ def main(modelPath,inputPath,outputFileName):
     resultQueue = Queue.Queue(0)
     for model in models:
         models[model] = {
-                "tp":0, # true - postive
-                "tn":0, # true - negative
-                "fp":0, # false - postive
-                "fn":0  # false - negative
+                "tp":0, # true - postive            Real Ans: True    False
+                "tn":0, # true - negative    Model told:
+                "fp":0, # false - postive                 Yes  tp      fp     
+                "fn":0  # false - negative                 No  fn      tn
                 }
     connect = pymongo.Connection()
     db = connect.projizz
@@ -50,17 +50,17 @@ def main(modelPath,inputPath,outputFileName):
 
                 if relationship in features:
                     true = True
-
+                
                 if true:
                     if postive:
                         partAns[relationship]["tp"] += 1
                     else:
-                        partAns[relationship]["tn"] += 1
+                        partAns[relationship]["fn"] += 1
                 else:
                     if postive:
                         partAns[relationship]["fp"] += 1
                     else:
-                        partAns[relationship]["fn"] += 1
+                        partAns[relationship]["tn"] += 1
 
             if count % 100 == 0:
                 print "worker #%02d done %d." % (tid,count)
