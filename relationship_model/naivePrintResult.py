@@ -75,7 +75,7 @@ def main(inputResultFile,outputformat):
             if outputformat[x] == "n":
                 string += "\t%s" % (res[outputformat[x]])
             elif outputformat[x] == "t":
-                string += "\t%d\t%d\t%d\t%d" % (res["tp"],res["fn"],res["fp"],res["fn"] )
+                string += "\t%d\t%d\t%d\t%d" % (res["tp"],res["fn"],res["fp"],res["tn"] )
             else:
                 string += "\t%.08f" % (res[outputformat[x]])
 
