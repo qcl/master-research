@@ -6,29 +6,41 @@ import os
 import simplejson as json
 
 def main(inputResultFile,outputformat):
-    result = json.load(open(inputResultFile,"r"))
-    r = {}
-    for model in result:
-        m = result[model]
-        if float(m["tp"]+m["fp"]) == .0:
-            pre = .0
-        else:
-            pre = float(m["tp"])/float(m["tp"]+m["fp"])
 
-        if float(m["tp"]+m["fn"]) == .0:
-            rec = .0
-        else:
-            rec = float(m["tp"])/float(m["tp"]+m["fn"])
+    filenames = []
+
+    if not os.path.isdir(inputResultFile):
+        filenames.append(inputResultFile)
+    else:
+        for f in os.listdir(inputResultFile):
+            if ".out" in f:
+                filenames.append(f)
+    
+    r = {}
+    
+    for filename in filenames:
+        result = json.load(open(os.path.join(inputResultFile,filename),"r"))
+        for model in result:
+            m = result[model]
+            if float(m["tp"]+m["fp"]) == .0:
+                pre = .0
+            else:
+                pre = float(m["tp"])/float(m["tp"]+m["fp"])
+
+            if float(m["tp"]+m["fn"]) == .0:
+                rec = .0
+            else:
+                rec = float(m["tp"])/float(m["tp"]+m["fn"])
         
-        if float(m["tp"]+m["tn"]+m["fp"]+m["fn"]) == .0:
-            acc = .0
-        else:
-            acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
-        if pre+rec == .0:
-            fsc = .0
-        else:
-            fsc = (2*pre*rec)/(pre+rec)
-        r[model] = {"p":pre,"r":rec,"a":acc,"n":model,"f":fsc}
+            if float(m["tp"]+m["tn"]+m["fp"]+m["fn"]) == .0:
+                acc = .0
+            else:
+                acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
+            if pre+rec == .0:
+                fsc = .0
+            else:
+                fsc = (2*pre*rec)/(pre+rec)
+            r[model] = {"p":pre,"r":rec,"a":acc,"n":model,"f":fsc}
     
     for model in r:
         res = r[model]
