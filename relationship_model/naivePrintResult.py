@@ -10,10 +10,24 @@ def main(inputResultFile,outputformat):
     r = {}
     for model in result:
         m = result[model]
-        pre = float(m["tp"])/float(m["tp"]+m["fp"])
-        rec = float(m["tp"])/float(m["tp"]+m["fn"])
-        acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
-        fsc = (2*pre*rec)/(pre+rec)
+        if float(m["tp"]+m["fp"]) == .0:
+            pre = .0
+        else:
+            pre = float(m["tp"])/float(m["tp"]+m["fp"])
+
+        if float(m["tp"]+m["fn"]) == .0:
+            rec = .0
+        else:
+            rec = float(m["tp"])/float(m["tp"]+m["fn"])
+        
+        if float(m["tp"]+m["tn"]+m["fp"]+m["fn"]) == .0:
+            acc = .0
+        else:
+            acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
+        if pre+rec == .0:
+            fsc = .0
+        else:
+            fsc = (2*pre*rec)/(pre+rec)
         r[model] = {"p":pre,"r":rec,"a":acc,"n":model,"f":fsc}
     
     for model in r:

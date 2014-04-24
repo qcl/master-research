@@ -56,7 +56,7 @@ def main(modelPath,inputPath,outputFileName):
                         if postive:
                             partAns[relationship]["tp"] += 1
                         else:
-                            partAns[relationship]["tf"] += 1
+                            partAns[relationship]["tn"] += 1
                     else:
                         if postive:
                             partAns[relationship]["fp"] += 1
@@ -64,7 +64,7 @@ def main(modelPath,inputPath,outputFileName):
                             partAns[relationship]["fn"] += 1
 
             if count % 100 == 0:
-                print "worker #%02d done %d" % (tid,count)
+                print "worker #%02d done %d." % (tid,count)
 
         resultQueue.put(partAns)
 
@@ -73,7 +73,7 @@ def main(modelPath,inputPath,outputFileName):
         if ".json" in filename:
             files.put(filename)
 
-    manager = Manager(5)
+    manager = Manager(4)
     manager.setJobQueue(files)
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
@@ -81,6 +81,8 @@ def main(modelPath,inputPath,outputFileName):
     print "Result Queue size", resultQueue.qsize()
 
     while True:
+        if resultQueue.empty():
+            break
         try:
             r = resultQueue.get()
             for m in r:
