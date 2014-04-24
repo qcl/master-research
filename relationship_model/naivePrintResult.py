@@ -35,6 +35,19 @@ def main(inputResultFile,outputformat):
         string = ""
         if outputformat[0] == "n":
             string = "%s" % (res["n"])
+            if len(res["n"]) < 4:
+                string += "\t"
+            if len(res["n"]) < 8:
+                string += "\t"
+            if len(res["n"]) < 12:
+                string += "\t"
+            if len(res["n"]) < 16:
+                string += "\t"
+            if len(res["n"]) < 20:
+                string += "\t"
+            if len(res["n"]) < 24:
+                string += "\t"
+
         else:
             string = "%.08f" % (res[outputformat[0]])
 

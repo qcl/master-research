@@ -18,7 +18,7 @@ def main(modelPath,inputPath,outputFileName):
         models[model] = {
                 "tp":0, # true - postive
                 "tn":0, # true - negative
-                "fp":0, # false - postivie
+                "fp":0, # false - postive
                 "fn":0  # false - negative
                 }
     connect = pymongo.Connection()
@@ -40,28 +40,27 @@ def main(modelPath,inputPath,outputFileName):
             count += 1
             features = ans["features"]
             resultInstance = resultJson["%s.txt" % (ans["revid"])]
-            for feature in resultInstance:
-                # let threshold be 1
-                for relationship in partAns:
-                    true = False
-                    postive = False
 
-                    if relationship in features:
-                        true = True
+            for relationship in partAns:
+                postive = False
+                true = False
 
-                    if resultInstance[feature] > 0:
-                        postive = True
+                if relationship in resultInstance and resultInstance[relationship] > 1:
+                    postive = True
 
-                    if true:
-                        if postive:
-                            partAns[relationship]["tp"] += 1
-                        else:
-                            partAns[relationship]["tn"] += 1
+                if relationship in features:
+                    true = True
+
+                if true:
+                    if postive:
+                        partAns[relationship]["tp"] += 1
                     else:
-                        if postive:
-                            partAns[relationship]["fp"] += 1
-                        else:
-                            partAns[relationship]["fn"] += 1
+                        partAns[relationship]["tn"] += 1
+                else:
+                    if postive:
+                        partAns[relationship]["fp"] += 1
+                    else:
+                        partAns[relationship]["fn"] += 1
 
             if count % 100 == 0:
                 print "worker #%02d done %d." % (tid,count)
@@ -73,7 +72,7 @@ def main(modelPath,inputPath,outputFileName):
         if ".json" in filename:
             files.put(filename)
 
-    manager = Manager(4)
+    manager = Manager(8)
     manager.setJobQueue(files)
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
