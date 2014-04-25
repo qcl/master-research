@@ -3,8 +3,6 @@
 # Generate raw n-gram from wiki reource.
 #
 
-ddthreadLimit = 5
-
 import simplejson as json
 import os
 import sys
