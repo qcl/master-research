@@ -3,8 +3,6 @@
 # Generate n-gram from wiki files (in .json)
 #
 
-threadLimit = 5
-
 import os
 import sys
 import time
