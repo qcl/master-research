@@ -1,111 +1,92 @@
 # -*- coding: utf-8 -*-
 # qcl
-# Generate n-gram from wiki files (in .json)
+# Generate raw n-gram from wiki reource.
 #
 
+import simplejson as json
 import os
 import sys
-import time
 import Queue
-import threading
-import pickle
-import gc
-import simplejson as json
 from nltk.util import ngrams
 from nltk import word_tokenize
+from datetime import datetime
+from projizzWorker import Manager
+from projizzReadNGramModel import toStringForm,readModel
 
-def main(inputFiles,outputPath,n):
+def main(modelPath,inputFiles,outputPath):
+    ngram,models = readModel(modelPath)
     rule = ".json"
     files = Queue.Queue(0)
+
+    start_time = datetime.now() 
 
     # if target dir not exist, create it.
     if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
 
-    # define each thread
-    class worker(threading.Thread):
-        def __init__(self,tid):
-            threading.Thread.__init__(self)
-            self.daemon = True
-            self.tid = tid
-        def run(self):
-            ident = threading.currentThread().ident
-            print "worker#%02d start working!" % (self.tid)
-            while True:
-                try:
-                    filename = files.get()
-                    print "worker#%02d get data" % (self.tid)
-                except:
-                    break
-
-                # do something here
-                print "worker#%02d reading %s" % (self.tid, filename)
+    def workerFunction(jobObj,tid,args):
+        content = json.load(open(os.path.join(inputFiles,jobObj),"r"))
+        print "worker #%02d read file %s" % (tid,jobObj)
+        dealL = 0
+        count = 0
+        results = {}
+        for subFilename in content:
+            count += 1
+            ngl = []
+            for line in content[subFilename]:
+                dealL += 1
+                # FIXME - only implement bigram
+                ngs = line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").split()
+                for i in xrange(1,len(ngs)):
+                    ngl.append("%s\t%s" % (ngs[i-1],ngs[i]))
                 
-                # reading file
-                f = open(os.path.join(inputFiles,filename),"r")
-                fileContent = json.load(f)
-                f.close()
+                # try to find hit.
+                result = {}
+                if len(ngl) < 1:
+                    continue
+                for model in models:
+                    mn = models[model]
+                    for ng in ngs:
+                        if ng in mn:
+                            if not model in result:
+                                result[model] = 0
+                            result[model] += 1
 
-                # deal with
-                bigGrames = {}
-                for subFileName in fileContent:
-                    fc = fileContent[subFileName]
-                    grams = {}
-                    for line in fc:
-                        ngs = ngrams(word_tokenize(line.lower()),n)
-                        if len(ngs) < 1:
-                            continue
-                        
-                        for ng in ngs:
-                            if not ng in grams:
-                                grams[ng] = 0
-                            grams[ng] += 1
-                    bigGrames[subFileName] = grams
+                if dealL%10000 == 0:
+                    print "worker #%02d deal with %d lines" % (tid,dealL)
+            
+            if count % 100 == 0:
+                print "worker #%02d scan %d files" % (tid,count)
+            results[subFilename] = result
 
-                # write out to .pkl
-                f = open(os.path.join(outputPath,filename.replace(".json",".pkl")),"w")
-                pickle.dump(bigGrames,f)
-                print "worker#%02d write to %s" % (self.tid, filename.replace(".json",".pkl"))
-                f.close()
+        json.dump(results,open(os.path.join(outputPath,jobObj),"w"))
 
-                # end of thread/run
-                gc.collect()
-                files.task_done()
-                
-            print "worker#%02d end." % (self.tid)
+    fileNameList = []
+    for filename in os.listdir(inputFiles):
+        if rule in filename:
+            #fileNameList.append(filename)
+            files.put(filename)
+            
+    #fileNameList.sort()
+    #for filename in fileNameList:
+    #    files.put(filename)
 
+    manager = Manager(workerNumber=25)
+    manager.setJobQueue(files)
+    manager.setWorkerFunction(workerFunction)
+    manager.startWorking()
 
-
-    # starting threading
-    for x in xrange(threadLimit):
-        th = worker(x)
-        th.start()
-
-    # reading list
-    totalCount = 0
-    for fj in os.listdir(inputFiles):
-        if not rule in fj:
-            continue
-        totalCount+=1
-        
-        files.put(fj)
-
-    print "Number of files =",totalCount
-
-    files.join()
-  
-    print totalCount
-    time.sleep(1)
-    print "Done"
+    diff = datatime.now() - start_time
+    print "All job done, use %d.%d secs" % (diff.seconds,diff.microseconds)
 
 if __name__ == "__main__":
-    if len(sys.argv) >= 4:
-        n      = int(sys.argv[1])
+    if len(sys.argv) > 3:
+        modelPath  = sys.argv[1]
         inputFiles = sys.argv[2]
         outputPath = sys.argv[3]
 
-        main(inputFiles,outputPath,n)
+        main(modelPath,inputFiles,outputPath)
 
     else:
-        print "$ python ./ngramGenerator.py [n] [input-files-dir] [output-files-dir]"
+        print "$ python ./ngramNaiveRun.py [ModelFilePath] [input-files-dir] [output-files-dir]"
 
