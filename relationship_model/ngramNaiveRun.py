@@ -76,7 +76,7 @@ def main(modelPath,inputFiles,outputPath):
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
 
-    diff = datatime.now() - start_time
+    diff = datetime.now() - start_time
     print "All job done, use %d.%d secs" % (diff.seconds,diff.microseconds)
 
 if __name__ == "__main__":
