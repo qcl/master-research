@@ -25,7 +25,15 @@ def main(treeModelPath,dataInputPath,resultOutPath):
         os.mkdir(resultOutPath)
 
     def workerFunction(jobObj,tid,args):
-        pass
+        print "worker #%02d get content" % (tid)
+        content = jobObj
+        count = 0
+        for subFilename in content:
+            count += 1
+
+            if count % 100 == 0:
+                print "worker #%02d scan %d files" % (tid,count)
+
 
     start_time = datetime.now()
     
@@ -40,6 +48,13 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
+    manager = Manager(workerNumber=20)
+    manager.setJobQueue(TheDATA)
+    manager.setWorkerFunction(workerFunction)
+    manager.startWorking()
+    
+    diff = datetime.now() - start_time
+    print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
 if __name__ == "__main__":
     # args
