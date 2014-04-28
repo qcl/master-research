@@ -58,7 +58,7 @@ h = open("./patternTree.json","w")
 json.dump(tree,h)
 h.close()
 
-
+# some testing code here.
 print pos
 print count,dup
 print tree["has"]["released"]["on"]["_rls_"]
