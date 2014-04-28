@@ -39,7 +39,8 @@ def main(treeModelPath,dataInputPath,resultOutPath):
             for line in content[subFilename]:
 
                 tokenizedLine = selfDoingTokenize(line)
-                pos = nltk.pos_tag(tokenizedLine)
+                if len(tokenizedLine) > 3:
+                    pos = nltk.pos_tag(tokenizedLine)
 
                 dealL+=1
                 if dealL%1000 == 0:
@@ -61,7 +62,7 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
-    manager = Manager(workerNumber=20)
+    manager = Manager(workerNumber=16)
     manager.setJobQueue(TheDATA)
     manager.setWorkerFunction(workerFunction)
     manager.startWorking()
