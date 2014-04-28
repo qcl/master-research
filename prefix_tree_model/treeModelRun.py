@@ -36,7 +36,7 @@ def main(treeModelPath,dataInputPath,resultOutPath):
    
     print len(TheDATA)
 
-    diff = datetime.now()
+    diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
 
