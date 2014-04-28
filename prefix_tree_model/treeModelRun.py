@@ -15,6 +15,10 @@ from datetime import datetime
 from projizzWorker import Manager
 from projizzTreeModel import readModel 
 
+def selfDoingTokenize(line):
+    # remove []!?,()"'
+    return line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").replace("\""," ").replace("'"," ").split()
+
 def main(treeModelPath,dataInputPath,resultOutPath):
 
     # read model
@@ -28,9 +32,18 @@ def main(treeModelPath,dataInputPath,resultOutPath):
         print "worker #%02d get content" % (tid)
         content = jobObj
         count = 0
+        dealL = 0
         for subFilename in content:
             count += 1
 
+            for line in content[subFilename]:
+
+                tokenizedLine = selfDoingTokenize(line)
+                pos = nltk.pos_tag(tokenizedLine)
+
+                dealL+=1
+                if dealL%1000 == 0:
+                    print "worker #%02d deal with %d lines" % (tid,dealL)
             if count % 100 == 0:
                 print "worker #%02d scan %d files" % (tid,count)
 
