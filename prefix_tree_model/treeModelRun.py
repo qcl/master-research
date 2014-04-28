@@ -8,6 +8,7 @@ import sys
 # for import the worker model
 sys.path.append("../naive_model/")
 import nltk
+import time
 import Queue
 import simplejson as json
 from datetime import datetime
@@ -28,13 +29,13 @@ def main(treeModelPath,dataInputPath,resultOutPath):
 
     start_time = datetime.now()
     
-    TheDATA = []
+    TheDATA = Queue.Queue(0)
     for filename in os.listdir(dataInputPath):
         if ".json" in filename:
-            TheDATA.append(json.load(open(os.path.join(dataInputPath,filename),"r")))
+            TheDATA.put(json.load(open(os.path.join(dataInputPath,filename),"r")))
             print "Read %s into memory..." % (filename)
    
-    print len(TheDATA)
+    print TheDATA.qsize()
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
