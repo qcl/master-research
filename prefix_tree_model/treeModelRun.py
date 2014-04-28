@@ -39,8 +39,8 @@ def main(treeModelPath,dataInputPath,resultOutPath):
             for line in content[subFilename]:
 
                 tokenizedLine = selfDoingTokenize(line)
-                if len(tokenizedLine) > 3:
-                    pos = nltk.pos_tag(tokenizedLine)
+                #if len(tokenizedLine) > 3:
+                #    pos = nltk.pos_tag(tokenizedLine)
 
                 dealL+=1
                 if dealL%1000 == 0:
