@@ -13,29 +13,60 @@ import multiprocessing
 import simplejson as json
 from datetime import datetime
 from projizzTreeModel import readModel 
+from textblob import TextBlob
+from textblob_aptagger import PerceptronTagger
 
 def selfDoingTokenize(line):
     # remove []!?,()"'
     return line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").replace("\""," ").replace("'"," ").split()
 
-def filterFiles(jobid,filename):
+def filterFiles(jobid,filename,treeModel,postagger):
     content = json.load(open(os.path.join(dataInputPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
+    postagger = PerceptronTagger()
     count = 0
     dealL = 0
+    exception = False
     for subFilename in content:
+
+        #article = u""
+        #
+        #for line in content[subFilename]:
+        #    article += (u"\n"+line)
+        #
+        #article = TextBlob(article,pos_tagger=postagger)
+        #try:
+        #    pos = article.tags
+        #except:
+        #    exception = True
+
         for line in content[subFilename]:
-            line = selfDoingTokenize(line)
-            if len(line) > 3:
-                pos = nltk.pos_tag(line)
-                #print len(pos)
+            line = TextBlob(line,pos_tagger=postagger)
+            if len(line.tokens) < 5:
+                continue
+            try:
+                pos = line.tags
+            except:
+                exception = True
+                break
+
+            #pos = ling.tags
+            #line = selfDoingTokenize(line)
+            #if len(line) > 3:
+            #    pos = nltk.pos_tag(line)
+            #    #print len(pos)
             dealL += 1
             
-            if dealL % 1000 == 0:
+            if dealL % 10000 == 0:
                 print "Worker %d deal with %d lines." % (jobid,dealL)
         count += 1
         if count % 100 == 0:
             print "Worker %d deal with %d files" % (jobid,count)
+
+        if exception:
+            print "Worker %d exception @ %d / %d " % (jobid,dealL,count)
+            break
+
 
 def main(treeModelPath,dataInputPath,resultOutPath):
 
@@ -48,12 +79,13 @@ def main(treeModelPath,dataInputPath,resultOutPath):
 
     pool = multiprocessing.Pool(processes=4)
 
+    postagger = "yo"
     start_time = datetime.now()
 
     jobN = 0 
     for filename in os.listdir(dataInputPath):
         if ".json" in filename:
-            pool.apply_async(filterFiles, (jobN,filename, ))
+            pool.apply_async(filterFiles, (jobN,filename, treeModel,postagger))
             jobN+=1
 
     pool.close()
