@@ -1,23 +1,41 @@
 # -*- coding: utf-8 -*-
 # qcl
 # prefix tree model naive runner.
-# 2014.04.28
+# create: 2014.04.28
+# modify: 2014.04.29
 
 import os
 import sys
-# for import the worker model
-sys.path.append("../naive_model/")
 import nltk
 import time
 import Queue
+import multiprocessing
 import simplejson as json
 from datetime import datetime
-from projizzWorker import Manager
 from projizzTreeModel import readModel 
 
 def selfDoingTokenize(line):
     # remove []!?,()"'
     return line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").replace("\""," ").replace("'"," ").split()
+
+def filterFiles(jobid,filename):
+    content = json.load(open(os.path.join(dataInputPath,filename),"r"))
+    print "Worker %d : Read %s into filter" % (jobid,filename)
+    count = 0
+    dealL = 0
+    for subFilename in content:
+        for line in content[subFilename]:
+            line = selfDoingTokenize(line)
+            if len(line) > 3:
+                pos = nltk.pos_tag(line)
+                #print len(pos)
+            dealL += 1
+            
+            if dealL % 1000 == 0:
+                print "Worker %d deal with %d lines." % (jobid,dealL)
+        count += 1
+        if count % 100 == 0:
+            print "Worker %d deal with %d files" % (jobid,count)
 
 def main(treeModelPath,dataInputPath,resultOutPath):
 
@@ -28,45 +46,19 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     if not os.path.isdir(resultOutPath):
         os.mkdir(resultOutPath)
 
-    def workerFunction(jobObj,tid,args):
-        print "worker #%02d get content" % (tid)
-        content = jobObj
-        count = 0
-        dealL = 0
-        for subFilename in content:
-            count += 1
-
-            for line in content[subFilename]:
-
-                tokenizedLine = selfDoingTokenize(line)
-                #if len(tokenizedLine) > 3:
-                #    pos = nltk.pos_tag(tokenizedLine)
-
-                dealL+=1
-                if dealL%1000 == 0:
-                    print "worker #%02d deal with %d lines" % (tid,dealL)
-            if count % 100 == 0:
-                print "worker #%02d scan %d files" % (tid,count)
-
+    pool = multiprocessing.Pool(processes=4)
 
     start_time = datetime.now()
-    
-    TheDATA = Queue.Queue(0)
+
+    jobN = 0 
     for filename in os.listdir(dataInputPath):
         if ".json" in filename:
-            TheDATA.put(json.load(open(os.path.join(dataInputPath,filename),"r")))
-            print "Read %s into memory..." % (filename)
-   
-    print TheDATA.qsize()
+            pool.apply_async(filterFiles, (jobN,filename, ))
+            jobN+=1
 
-    diff = datetime.now() - start_time
-    print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
+    pool.close()
+    pool.join()
 
-    manager = Manager(workerNumber=16)
-    manager.setJobQueue(TheDATA)
-    manager.setWorkerFunction(workerFunction)
-    manager.startWorking()
-    
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
