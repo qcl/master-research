@@ -101,6 +101,8 @@ def main(treeModelPath,dataInputPath,resultOutPath):
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
 
+    print "Number of core: %d" % (multiprocessing.cpu_count())
+
     start_time = datetime.now()
 
     jobN = 0 
