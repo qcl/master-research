@@ -38,7 +38,7 @@ class SelfDoingTokenizer(nltk.tokenize.api.TokenizerI):
             yield span
 
 
-def filterFiles(jobid,filename,treeModel):
+def filterFiles(jobid,filename,treeModel,debug):
     content = json.load(open(os.path.join(dataInputPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
     postagger = PerceptronTagger()
@@ -49,34 +49,75 @@ def filterFiles(jobid,filename,treeModel):
     exception = False
     for subFilename in content:
 
-        #article = u""
-        #
-        #for line in content[subFilename]:
-        #    article += (u"\n"+line)
-        #
-        #article = TextBlob(article,pos_tagger=postagger)
-        #try:
-        #    pos = article.tags
-        #except:
-        #    exception = True
+        # start to read a article.
+        pt = treeModel
 
         for line in content[subFilename]:
             lineObj = TextBlob(removeRefwords.sub("",line),pos_tagger=postagger,tokenizer=tokenizer)
+            
+            # give up too short string
             if len(lineObj.tokens) < 5:
                 continue
             try:
-                pos = lineObj.tags
+                posSet = lineObj.tags
             except:
                 exception = True
                 break
+    
+            # Here start the core algorithm
 
-            
+            inPattern = False
 
-            #pos = ling.tags
-            #line = selfDoingTokenize(line)
-            #if len(line) > 3:
-            #    pos = nltk.pos_tag(line)
-            #    #print len(pos)
+            for word,pos in posSet:
+                print word,pos,"  ",
+                
+                inTree = False
+                tagName = ""
+                # test word
+                if word in pt:
+                    inTree = True
+                # test pos
+                else:
+                    if pos[-2:] == "DT":
+                        # [[det]]
+                        tagName = "[[det]]"
+                    elif pos[:2] == "JJ":
+                        # [[adj]]
+                        tagName = "[[adj]]"
+                    elif pos[:3] == "PRP":
+                        # [[pro]]
+                        tagName = "[[pro]]"
+                    elif pos == "CD":
+                        # [[num]]
+                        tagName = "[[num]]"
+                    elif pos == "CC":
+                        # [[con]]
+                        tagName = "[[pos]]"
+                    elif pos == "MD":
+                        # [[mod]]
+                        tagName = "[[mod]]"
+                    elif pos == "IN":
+                        # [[prp]]
+                        tagName = "[[prp]]"
+                    if len(tagName) > 0:
+                        if tagName in pt:
+                            inTree = True
+
+
+                if inTree:
+                    if inPattern:
+                        pass
+                    else:
+                        pass
+                else:
+                    if inPattern:
+                        pass
+                    else:
+                        pass
+                    # not in target set.
+
+            # end of core algorithm
+
             dealL += 1
             
             if dealL % 10000 == 0:
@@ -84,13 +125,15 @@ def filterFiles(jobid,filename,treeModel):
         count += 1
         if count % 100 == 0:
             print "Worker %d deal with %d files" % (jobid,count)
+            if debug:
+                break
 
         if exception:
             print "Worker %d exception @ %d / %d " % (jobid,dealL,count)
             break
 
 
-def main(treeModelPath,dataInputPath,resultOutPath):
+def main(treeModelPath,dataInputPath,resultOutPath,debug):
 
     # read model
     treeModel = readModel(treeModelPath)
@@ -98,8 +141,11 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     # create output dir
     if not os.path.isdir(resultOutPath):
         os.mkdir(resultOutPath)
-
-    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+    
+    if debug:
+        pool = multiprocessing.Pool(processes=1)
+    else:
+        pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
 
     print "Number of core: %d" % (multiprocessing.cpu_count())
 
@@ -108,7 +154,10 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     jobN = 0 
     for filename in os.listdir(dataInputPath):
         if ".json" in filename:
-            pool.apply_async(filterFiles, (jobN,filename, treeModel))
+            pool.apply_async(filterFiles, (jobN,filename, treeModel,debug))
+            # debug model just test 1 file in 1 process
+            if debug:
+                break
             jobN+=1
 
     pool.close()
@@ -124,8 +173,13 @@ if __name__ == "__main__":
         dataInputPath = sys.argv[2]
         resultOutPath = sys.argv[3]
 
-        main(treeModelPath,dataInputPath,resultOutPath)
+        if len(sys.argv) > 4:
+            debug = True
+        else:
+            debug = False
+
+        main(treeModelPath,dataInputPath,resultOutPath,debug)
 
     else:
-        print "$ python ./treeModelRun.py [treeModelPath] [dataInputPath] [resultOutPath]"
+        print "$ python ./treeModelRun.py [treeModelPath] [dataInputPath] [resultOutPath] (debug)"
 
