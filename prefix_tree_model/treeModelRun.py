@@ -5,6 +5,7 @@
 # modify: 2014.04.29
 
 import os
+import re
 import sys
 import nltk
 import time
@@ -20,10 +21,29 @@ def selfDoingTokenize(line):
     # remove []!?,()"'
     return line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").replace("\""," ").replace("'"," ").split()
 
+def SelfDoingTokenizer(nltk.tokenize.api.TokenizerI):
+    """
+    Self-doing tokenizer by Qing-Cheng Li for his master degree.
+    Just hope to speed up, go! go! go!
+    """
+    def tokenize(self,s):
+        """
+        Just return the splited string.
+        Consider that [\d+] removed by sent into this function
+        """
+        return s.split()
+    
+    def span_tokenize(self,s):
+        for span in s.split():
+            yield span
+
+
 def filterFiles(jobid,filename,treeModel,postagger):
     content = json.load(open(os.path.join(dataInputPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
     postagger = PerceptronTagger()
+    tokenizer = SelfDoingTokenizer()
+    removeRefwords = re.compile(r"\[\d+\]")
     count = 0
     dealL = 0
     exception = False
@@ -41,14 +61,16 @@ def filterFiles(jobid,filename,treeModel,postagger):
         #    exception = True
 
         for line in content[subFilename]:
-            line = TextBlob(line,pos_tagger=postagger)
-            if len(line.tokens) < 5:
+            lineObj = TextBlob(removeRefwords.sub("",line),pos_tagger=postagger,tokenizer=tokenizer)
+            if len(lineObj.tokens) < 5:
                 continue
             try:
-                pos = line.tags
+                pos = lineObj.tags
             except:
                 exception = True
                 break
+
+            
 
             #pos = ling.tags
             #line = selfDoingTokenize(line)
