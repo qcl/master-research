@@ -38,7 +38,7 @@ class SelfDoingTokenizer(nltk.tokenize.api.TokenizerI):
             yield span
 
 
-def filterFiles(jobid,filename,treeModel,postagger):
+def filterFiles(jobid,filename,treeModel):
     content = json.load(open(os.path.join(dataInputPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
     postagger = PerceptronTagger()
