@@ -77,15 +77,14 @@ def main(treeModelPath,dataInputPath,resultOutPath):
     if not os.path.isdir(resultOutPath):
         os.mkdir(resultOutPath)
 
-    pool = multiprocessing.Pool(processes=4)
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
 
-    postagger = "yo"
     start_time = datetime.now()
 
     jobN = 0 
     for filename in os.listdir(dataInputPath):
         if ".json" in filename:
-            pool.apply_async(filterFiles, (jobN,filename, treeModel,postagger))
+            pool.apply_async(filterFiles, (jobN,filename, treeModel))
             jobN+=1
 
     pool.close()
