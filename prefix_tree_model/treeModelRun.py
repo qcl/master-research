@@ -21,7 +21,7 @@ def selfDoingTokenize(line):
     # remove []!?,()"'
     return line.lower().replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace(","," ").replace(")"," ").replace("("," ").replace("\""," ").replace("'"," ").split()
 
-def SelfDoingTokenizer(nltk.tokenize.api.TokenizerI):
+class SelfDoingTokenizer(nltk.tokenize.api.TokenizerI):
     """
     Self-doing tokenizer by Qing-Cheng Li for his master degree.
     Just hope to speed up, go! go! go!
