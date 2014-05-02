@@ -45,7 +45,7 @@ def main(modelPath,inputPath,outputFileName):
                 postive = False
                 true = False
 
-                if relationship in resultInstance and resultInstance[relationship] > 1:
+                if relationship in resultInstance and resultInstance[relationship] > 0:
                     postive = True
 
                 if relationship in features:
