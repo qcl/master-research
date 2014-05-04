@@ -123,6 +123,9 @@ def filterFiles(jobid,filename,dataInputPath,resultOutPath,treeModel,debug):
                                 result[relation] = 0
                             result[relation] += 1
 
+                        if debug:
+                            print filename,tree["_ptn_"]
+
                     if treeId == treeByWord:
                         travarsingTrees[treeId] = tree[word]
                     elif treeId == treeByPOS:

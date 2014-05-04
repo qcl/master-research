@@ -50,6 +50,7 @@ for line in f:
                 max_ptn = ws
         else:
             t["_rls_"] = [relationship]
+        t["_ptn_"] = l[:-1]
 
     g.close()
 f.close()
