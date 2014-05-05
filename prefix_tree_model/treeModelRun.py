@@ -124,7 +124,7 @@ def filterFiles(jobid,filename,dataInputPath,resultOutPath,treeModel,debug):
                             result[relation] += 1
 
                         if debug:
-                            print filename,tree["_ptn_"]
+                            print filename,subFilename,tree["_ptn_"]
 
                     if treeId == treeByWord:
                         travarsingTrees[treeId] = tree[word]
@@ -165,9 +165,14 @@ def filterFiles(jobid,filename,dataInputPath,resultOutPath,treeModel,debug):
         
         # end of article
         results[subFilename] = result
-        # print subFilename,result
+        if debug:
+            print filename,subFilename,result
 
         count += 1
+        if debug and count % 10 == 0:
+            print "Worker %d deal with %d files" % (jobid,count)
+            break
+
         if count % 100 == 0:
             print "Worker %d deal with %d files" % (jobid,count)
             gc.collect()
