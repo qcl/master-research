@@ -32,7 +32,8 @@ def overlapDetect():
             
             if not t["_ptn_"] in patterns:
                 patterns[t["_ptn_"]] = []
-            patterns[t["_ptn_"]].append(relation)
+            if relation not in patterns[t["_ptn_"]]:
+                patterns[t["_ptn_"]].append(relation)
 
         #print relation,len(overlap[relation]),overlap[relation]
 
@@ -53,7 +54,9 @@ def overlapDetect():
                 else:
                     break
     else:
-        pass
+        sortedPattern = sorted(patterns.items(), key=lambda x:len(x[1]), reverse=True)
+        for ptn,rls in sortedPattern:
+            print ptn,len(rls)
     
 
 
