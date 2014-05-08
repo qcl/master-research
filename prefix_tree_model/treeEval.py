@@ -6,12 +6,27 @@ import os
 import sys
 import copy
 import Queue
+import multiprocessing
 import simplejson as json
 import pymongo
 from projizzTreeModel import readModel
+from datetime import datetime
 
-def findAnsert():
+def findAnser():
     pass
+
+def buildProperties(path):
+    properties = {}
+    for filename in os.listdir(path):
+        if ".txt" in filename:
+            properties[filename[:-4]] = {
+                "tp":0, # true - postive            Real Ans: True    False
+                "tn":0, # true - negative    Model told:
+                "fp":0, # false - postive                 Yes  tp      fp     
+                "fn":0  # false - negative                 No  fn      tn
+            
+                }
+    return properties
 
 def main(modelPath,inputPath,outputFileName):
     ngram, models = readModel(modelPath)
@@ -94,9 +109,22 @@ def main(modelPath,inputPath,outputFileName):
         except:
             break
 
+    start_time = datetime.now()
+
+    result = []
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
+    #result.append(pool.apply_async(findAnser, (, )))
+    pool.close()
+    pool.join()
+
+    #for res in result:
+    #    res.get()
+
     print "start write out to %s" % (outputFileName)
     json.dump(models,open(outputFileName,"w"))
-    print "done"
+
+    diff = datetime.now() - start_time
+    print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
     if len(sys.argv) > 3:
@@ -106,4 +134,6 @@ if __name__ == "__main__":
         main(modelPath,inputPath,outputFileName)
     else:
         print "$ python ./naiveEval.py [model-dir] [input-dir] [output-json]"
+        p = buildProperties("../naive_model/PbR/")
+        print len(p)
 
