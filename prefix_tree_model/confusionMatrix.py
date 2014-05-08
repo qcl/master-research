@@ -10,5 +10,8 @@ def confusionMatrixBuilder():
     pass
 
 if __name__ == "__main__":
-    confusionMatrixBuilder()
+    if len(sys.argv) > 1:
+        confusionMatrixBuilder()
+    else:
+        print "$ python ./confusionMatrix.py [R2P dir] "
 
