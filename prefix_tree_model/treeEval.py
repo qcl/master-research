@@ -12,128 +12,101 @@ import pymongo
 from projizzTreeModel import readModel
 from datetime import datetime
 
-def findAnser():
-    pass
-
 def buildProperties(path):
     properties = {}
     for filename in os.listdir(path):
         if ".txt" in filename:
             properties[filename[:-4]] = {
-                "tp":0, # true - postive            Real Ans: True    False
-                "tn":0, # true - negative    Model told:
-                "fp":0, # false - postive                 Yes  tp      fp     
-                "fn":0  # false - negative                 No  fn      tn
-            
+                "tp":[], # true - postive            Real Ans: True    False
+                "tn":[], # true - negative    Model told:
+                "fp":[], # false - postive                 Yes  tp      fp     
+                "fn":[]  # false - negative                 No  fn      tn
                 }
     return properties
 
-def main(modelPath,inputPath,outputFileName):
-    ngram, models = readModel(modelPath)
-    resultQueue = Queue.Queue(0)
-    for model in models:
-        models[model] = {
-                "tp":0, # true - postive            Real Ans: True    False
-                "tn":0, # true - negative    Model told:
-                "fp":0, # false - postive                 Yes  tp      fp     
-                "fn":0  # false - negative                 No  fn      tn
-                }
+def findAnwser(jobid,filename,inputPath,partAns,collection):
+    resultJson = json.load(open(os.path.join(inputPath,filename),"r"))
+    print "Worker %d : Read %s into filter" % (jobid,filename)
+
+    queries = map(lambda x: x[:-4], resultJson)
+    itr = collection.find({"revid":{"$in":queries}})
+    print "worker %d query=%d, result=%d" % (tid,len(queries),itr.count())
+
+
+    count = 0
+
+    for ans in itr:
+        count += 1
+        features = ans["features"]
+        resultInstance = resultJson["%s.txt" % (ans["revid"])]
+
+        for attribute in partAns:
+            postive = False
+            true = False
+
+            if attribute in resultInstance and resultInstance[attribute] > 1:
+                postive = True
+
+            if attribute in features:
+                true = True
+
+            if true:
+                if postive:
+                    partAns[attribute]["tp"].append(ans["revid"])
+                else:
+                    partAns[attribute]["fn"].append(ans["revid"])
+            else:
+                if postive:
+                    partAns[attribute]["fp"].append(ans["revid"])
+                else:
+                    partAns[attribute]["tn"].append(ans["revid"])
+
+        if count % 100 == 0:
+            print "worker #%d done %d." % (jobid,count)
+
+    return partAns
+
+
+def main(inputPath,outputFileName):
+    
+    properties = buildProperties("../naive_model/PbR/")
+    
     connect = pymongo.Connection()
     db = connect.projizz
     ansCol = db.result.data.instance
-
-    def workerFunction(jobObj,tid,args):
-        resultJson = json.load(open(os.path.join(inputPath,jobObj),"r"))
-        print "worker #%02d read file %s" % (tid,jobObj) 
-
-        queries = map(lambda x: x[:-4], resultJson)
-        itr = ansCol.find({"revid":{"$in":queries}})
-        print "worker #%02d query=%d, result=%d" % (tid,len(queries),itr.count())
-
-        partAns = copy.deepcopy(models) 
-
-        count = 0
-        for ans in itr:
-            count += 1
-            features = ans["features"]
-            resultInstance = resultJson["%s.txt" % (ans["revid"])]
-
-            for relationship in partAns:
-                postive = False
-                true = False
-
-                if relationship in resultInstance and resultInstance[relationship] > 1:
-                    postive = True
-
-                if relationship in features:
-                    true = True
-                
-                if true:
-                    if postive:
-                        partAns[relationship]["tp"] += 1
-                    else:
-                        partAns[relationship]["fn"] += 1
-                else:
-                    if postive:
-                        partAns[relationship]["fp"] += 1
-                    else:
-                        partAns[relationship]["tn"] += 1
-
-            if count % 100 == 0:
-                print "worker #%02d done %d." % (tid,count)
-
-        resultQueue.put(partAns)
-
-    files = Queue.Queue(0)
-    for filename in os.listdir(inputPath):
-        if ".json" in filename:
-            files.put(filename)
-
-    manager = Manager(8)
-    manager.setJobQueue(files)
-    manager.setWorkerFunction(workerFunction)
-    manager.startWorking()
-
-    print "Result Queue size", resultQueue.qsize()
-
-    while True:
-        if resultQueue.empty():
-            break
-        try:
-            r = resultQueue.get()
-            for m in r:
-                models[m]["tp"] += r[m]["tp"]
-                models[m]["tn"] += r[m]["tn"]
-                models[m]["fp"] += r[m]["fp"]
-                models[m]["fn"] += r[m]["fn"]
-        except:
-            break
 
     start_time = datetime.now()
 
     result = []
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
-    #result.append(pool.apply_async(findAnser, (, )))
+    t = 0
+    for filename in os.listdir(inputPath):
+        if ".json" in filename:
+            partAns = copy.deepcopy(properties)
+            result.append(pool.apply_async(findAnwser, (t,filename,inputPath,partAns,ansCol, )))
+            t += 1
     pool.close()
     pool.join()
 
-    #for res in result:
-    #    res.get()
+    for res in result:
+        r = res.get()
+        for m in r:
+            properties[m]["tp"] += r[m]["tp"]
+            properties[m]["tn"] += r[m]["tn"]
+            properties[m]["fp"] += r[m]["fp"]
+            properties[m]["fn"] += r[m]["fn"]
 
     print "start write out to %s" % (outputFileName)
-    json.dump(models,open(outputFileName,"w"))
+    json.dump(properties,open(outputFileName,"w"))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 3:
-        modelPath = sys.argv[1] # model path
-        inputPath = sys.argv[2] # result.json 's path
-        outputFileName = sys.argv[3] 
-        main(modelPath,inputPath,outputFileName)
+    if len(sys.argv) > 2:
+        inputPath = sys.argv[1] # result.json 's path
+        outputFileName = sys.argv[2] 
+        main(inputPath,outputFileName)
     else:
-        print "$ python ./naiveEval.py [model-dir] [input-dir] [output-json]"
-        p = buildProperties("../naive_model/PbR/")
-        print len(p)
+        print "$ python ./treeEval.py [input-dir] [output-json]"
 
