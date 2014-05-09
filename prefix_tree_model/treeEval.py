@@ -24,13 +24,16 @@ def buildProperties(path):
                 }
     return properties
 
-def findAnwser(jobid,filename,inputPath,partAns,collection):
+def findAnwser(jobid,filename,inputPath,partAns):
     resultJson = json.load(open(os.path.join(inputPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
+    connect = pymongo.Connection()
+    db = connect.projizz
+    collection = db.result.data.instance
     queries = map(lambda x: x[:-4], resultJson)
     itr = collection.find({"revid":{"$in":queries}})
-    print "worker %d query=%d, result=%d" % (tid,len(queries),itr.count())
+    print "worker %d query=%d, result=%d" % (jobid,len(queries),itr.count())
 
 
     count = 0
@@ -71,9 +74,6 @@ def main(inputPath,outputFileName):
     
     properties = buildProperties("../naive_model/PbR/")
     
-    connect = pymongo.Connection()
-    db = connect.projizz
-    ansCol = db.result.data.instance
 
     start_time = datetime.now()
 
@@ -83,7 +83,7 @@ def main(inputPath,outputFileName):
     for filename in os.listdir(inputPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(findAnwser, (t,filename,inputPath,partAns,ansCol, )))
+            result.append(pool.apply_async(findAnwser, (t,filename,inputPath,partAns, )))
             t += 1
     pool.close()
     pool.join()
