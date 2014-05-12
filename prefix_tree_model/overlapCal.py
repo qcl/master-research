@@ -49,14 +49,15 @@ def overlapDetect():
             rela, total = over[0]
             for rela,count in over:
                 p = 100*float(count)/float(total)
-                if p > 50.0:
-                    print "\t",rela,count,"(%.2f%%)" % (p)
+                p2 = 100*float(overlap[rela][relation])/float(overlap[rela][rela])
+                if p > .0:
+                    print "\t",rela,count,"(%.2f%% / %.2f%% (%d))" % (p,p2,overlap[rela][rela])
                 else:
                     break
     else:
         sortedPattern = sorted(patterns.items(), key=lambda x:len(x[1]), reverse=True)
         for ptn,rls in sortedPattern:
-            print ptn,len(rls)
+            print ptn,len(rls),rls
     
 
 
