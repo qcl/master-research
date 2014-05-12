@@ -3,6 +3,9 @@
  * */
 var it = db.old.result.data.instance.find();
 
+//pattyR
+load("../patty/patty.dbpedia.Relations.json");
+
 while(it.hasNext()){
     var instance = it.next();
     var features = [];
@@ -11,7 +14,7 @@ while(it.hasNext()){
     while(mprIt.hasNext()){
         var property = mprIt.next();
         var feature = property.property.slice(28);
-        if(features.indexOf(feature)<0){
+        if(pattyR.indexOf(feature)>=0 && features.indexOf(feature)<0){
             features.push(feature)
         }
     }
