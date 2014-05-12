@@ -2,7 +2,7 @@
 # qcl
 # prefix tree model naive runner.
 # create: 2014.04.28
-# modify: 2014.05.02
+# modify: 2014.05.12
 
 import os
 import re
@@ -58,6 +58,8 @@ def filterFiles(jobid,filename,dataInputPath,resultOutPath,treeModel,debug):
             tagName = "[[mod]]"
         elif pos == "IN":       # [[prp]]
             tagName = "[[prp]]"
+        elif pos[:2] == "NN":   # [[_n_]]   for suffix N
+            tagName = "[[_n_]]"
         return tagName
 
     content = json.load(open(os.path.join(dataInputPath,filename),"r"))
