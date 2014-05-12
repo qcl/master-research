@@ -47,7 +47,7 @@ def findAnwser(jobid,filename,inputPath,partAns):
             postive = False
             true = False
 
-            if attribute in resultInstance and resultInstance[attribute] > 1:
+            if attribute in resultInstance and resultInstance[attribute] > 0:
                 postive = True
 
             if attribute in features:
