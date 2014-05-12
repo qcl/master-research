@@ -31,7 +31,7 @@ def main(inputResultFile,outputformat):
             j["tn"] += len(m["tn"])
             j["fp"] += len(m["fp"])
             j["fn"] += len(m["fn"])
-            print model,"tp",len(m["tp"]),m
+            #print model,"tp",len(m["tp"]),m
 
     for model in r:
         m = r[model]
