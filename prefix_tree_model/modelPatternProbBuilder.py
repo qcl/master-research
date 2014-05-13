@@ -68,11 +68,25 @@ def main(inputModel,inputPath,outputFileName):
         for m in r:
             properties[m] += r[m]
     
+    def trace(root):
+        for terms in root:
+            if terms == "_rls_":
+                if len(root[terms]) > 1:
+                    m_c = 0
+                    m_r = ""
+                    for rela in root[terms]:
+                        if properties[rela] > m_c:
+                            m_c = properties[rela]
+                            m_r = rela
+                    root[terms] = [rela]
+                    print root["_ptn_"],"->",root[terms]
+            else:
+                trace(root[terms])
     # TODO - modify the tree model
-
+    trace(treeModel)
 
     print "start write out to %s" % (outputFileName)
-    json.dump(properties,open(outputFileName,"w"))
+    json.dump(treeModel,open(outputFileName,"w"))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
