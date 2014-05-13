@@ -78,7 +78,7 @@ def main(inputModel,inputPath,outputFileName):
                         if properties[rela] > m_c:
                             m_c = properties[rela]
                             m_r = rela
-                    root[terms] = [rela]
+                    root[terms] = [m_r]
                     print root["_ptn_"],"->",root[terms]
             else:
                 trace(root[terms])
