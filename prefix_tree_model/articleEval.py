@@ -78,7 +78,6 @@ def main(inputPath,outputFileName):
     t = 0
     for filename in os.listdir(inputPath):
         if ".json" in filename:
-            partAns = copy.deepcopy(properties)
             result.append(pool.apply_async(findAnwser, (t,filename,inputPath, )))
             t += 1
     pool.close()
