@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #26480# #person#[[det]] state senator;%[[det]] state senator;%state senator;#person#1.0#2"," #133158# #person#appointed;%appointed;#person#0.485#3"],0,7]

@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #15878# #lake#[[det]] source of;%[[det]] source of;%[[adj]] source of;#river#0.903#10"," #11184# #lake#is fed;%is fed;%fed by;%is fed by;#river#0.713#2"],0,7]

@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #4754# #artifact#launched from;%launched from;%was launched to;%be launched to;%was launched as;%is launched;%was launched at;%launched [[num]];%launched as;%was launched from;%launched at;%[[det]] launched;%was launched;%was launched [[con]];#artifact#0.799#7"],0,7]

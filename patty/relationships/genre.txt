@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #7587# #event#[[det]] game;%[[det]] game;%[[det]] game by;%[[adj]] game [[con]];%[[adj]] game;%[[det]] game show;%game of;%[[num]] game;%[[adj]] game of;%[[adj]] game in;#event#0.857#2"],0,7]

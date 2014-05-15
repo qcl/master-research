@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #69632# #city#[[adj]] zones;%[[adj]] zones;#town#0.333#3"," #125401# #city#also took in [[adj]] bars situated just;%also took in [[adj]] bars situated just;#person#0.267#2"],0,7]

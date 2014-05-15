@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #24111# #river#rises at;%rises at;%rises near;%rises [[det]];%rises on;%rises in;#mountain#0.889#3"],0,7]

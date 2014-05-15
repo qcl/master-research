@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #4945# #event#was created by;%was created by;%[[adj]] created by;%is created by;%created by;%were created by;%was created with;#person#0.636#8"," #99036# #event#[[det]] television series developed by;%[[det]] television series developed by;#person#0.667#2"],0,7]

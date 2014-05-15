@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #340391# #artifact#was originally described;%was originally described;#scientist#0.8#3"],0,7]

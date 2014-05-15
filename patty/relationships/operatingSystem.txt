@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #19471# #event#runs off;%runs off;%now runs on;%[[det]] runs;#artifact#0.733#3"," #14913# #person#[[det]] version of;%[[det]] version of;%[[adj]] version;%version of;%[[adj]] version is;%[[adj]] version of;%[[num]] version of;%s version of;%[[adj]] version [[con]];%[[det]] version;#artifact#0.806#2"],0,7]

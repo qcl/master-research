@@ -1,0 +1,1 @@
+//OK[4,3,2,3,1,["[Ljava.lang.String;/2600011424"," #305123# #song#was succeeded with;%was succeeded with;#song#0.984#19"," #305021# #song#was succeeded by singing;%was succeeded by singing;#song#1.0#3"," #342029# #artifact#was preceded [[con]] followed by;%was preceded [[con]] followed by;#event#0.8#2"],0,7]

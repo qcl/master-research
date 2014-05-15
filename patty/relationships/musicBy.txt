@@ -1,0 +1,1 @@
+//OK[4,3,2,3,1,["[Ljava.lang.String;/2600011424"," #9111# #movie#[[con]] lyrics by;%[[con]] lyrics by;%[[adj]] lyrics by;#person#0.755#5"," #10834# #event#with music by;%with music by;%[[adj]] music by;%music by;#person#0.636#5"," #9108# #event#[[adj]] music [[con]] lyrics by;%[[adj]] music [[con]] lyrics by;%[[adj]] lyrics [[con]] music by;#composer#0.888#3"],0,7]

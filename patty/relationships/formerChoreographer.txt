@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #28797# #person#to train with;%to train with;%train [[det]];%[[mod]] train;%to train under;%to train;%to train for;%to train [[adj]];#person#0.788#5"],0,7]

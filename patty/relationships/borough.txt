@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #3855# #artifact#[[adj]] church [[det]];%[[adj]] church [[det]];%church in;%[[adj]] church in;%[[det]] church on;%[[det]] church in;%[[adj]] church at;%[[adj]] church;#city#0.756#2"],0,7]

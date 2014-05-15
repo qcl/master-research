@@ -1,0 +1,1 @@
+//OK[4,3,2,3,1,["[Ljava.lang.String;/2600011424"," #12824# #river#is joined [[con]];%is joined [[con]];%is joined;%is joined by;#river#0.83#8"," #26545# #river#receives [[det]];%receives [[det]];%receives [[con]];#river#0.781#3"," #173184# #river#collects [[det]];%collects [[det]];#river#0.9#2"],0,7]

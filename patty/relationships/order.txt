@@ -1,0 +1,1 @@
+//OK[3,2,2,1,["[Ljava.lang.String;/2600011424"," #83501# #organization#[[det]] family of [[det]] order;%[[det]] family of [[det]] order;#event#0.824#9"," #83512# #organization#[[det]] family specifically of;%[[det]] family specifically of;#event#1.0#3"],0,7]

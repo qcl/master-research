@@ -1,0 +1,1 @@
+//OK[2,1,1,["[Ljava.lang.String;/2600011424"," #5753# #artifact#was designed by;%was designed by;%[[adj]] designed by;%were designed by;%been designed by;%designed by;%was designed with;%[[num]] designed by;%was designed;%was designed to;%was designed for;%was designed [[con]];%[[num]] designed;%[[det]] designed by;%is designed by;#person#0.84#5"],0,7]
