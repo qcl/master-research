@@ -50,8 +50,11 @@ def findAnwser(jobid,filename,inputPath):
             if resultInstance[attribute] > 0:
                 if attribute in features:
                     correctCount += 1
-        
-        precision = float(correctCount)/float(attrsFoundCount)
+        if attrsFoundCount == 0:
+            precision = .0
+        else:
+            precision = float(correctCount)/float(attrsFoundCount)
+
         recall    = float(correctCount)/float(len(features))
 
         partAns["precision"].append(precision)
