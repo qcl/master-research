@@ -9,3 +9,5 @@ patty/dataset
 
 yago/dataset/*
 yago/dataset
+
+wikidump/*.json
