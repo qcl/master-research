@@ -17,6 +17,9 @@ headers = {
 def getData(rela):
     return "7|0|8|https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/pattyweb/|D752A98D9EFAE77BA5E912E43E7AB231|mpi.pattyweb.client.PatternService|getyagoRelationsSearchResults|java.lang.String/2004016611|dbpedia|"+rela+"|wkpDeepPaths_setsofngrams_pos_limitedyago|1|2|3|4|3|5|5|5|6|7|8|"
 
+def getYAGOData(rela):
+    return "7|0|8|https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/pattyweb/|D752A98D9EFAE77BA5E912E43E7AB231|mpi.pattyweb.client.PatternService|getyagoRelationsSearchResults|java.lang.String/2004016611|yago|"+rela+"|wkpDeepPaths_setsofngrams_pos_limitedyago|1|2|3|4|3|5|5|5|6|7|8|"
+
 urlopener = urllib2.build_opener( urllib2.HTTPSHandler() )
 #request = urllib2.Request(url,data,headers)
 
