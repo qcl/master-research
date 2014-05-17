@@ -4,11 +4,12 @@
 
 import os
 import sys
+import projizz
 import simplejson as json
 
 def combinedFileViewer(filename):
     
-    content = json.load(open(filename,"r"))
+    content = projizz.combinedFileReader(filename)
   
     for articleName in content:
         article = content[articleName]
