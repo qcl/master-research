@@ -23,7 +23,7 @@ tagger = PerceptronTagger()
 tree = {}
 
 word_freq = {}
-
+ptns = []
 
 count = 0
 dup = 0
@@ -31,20 +31,15 @@ for line in f:
     relationship = line.split("\t")[0]
     g = open("../naive_model/PbR/%s.txt" % (relationship),"r")
 
-    #print relationship
+    print relationship
 
     for l in g:
         ws = l[:-1].lower().replace(";","").split()
         count += 1
 
-        tagged = tagger.tag(l[:-1])
-        isV = False
-        for w,t in tagged:
-            if t[:2] == "VB":
-                isV = True
-                break
-        if not isV:
-            print tagged
+        #p = l[:-1].lower().replace(";","")
+        #if not p in ptns:
+        #    ptns.append(p)
 
         #print ws
         for w in ws:
@@ -89,6 +84,25 @@ f.close()
 #print len(tree.keys())
 
 
-wf = sorted(word_freq.items(),key=lambda x:x[1],reverse=True)
+#wf = sorted(word_freq.items(),key=lambda x:x[1],reverse=True)
+#gg = 0
+#zz = []
 #for w,c in wf:
+#    gg += 1
 #    print w,c
+#    if gg > 30:
+#        break
+#    else:
+#        zz.append(w)
+
+#for p in ptns:
+#    t = False
+#    for z in zz:
+#        if z in p:
+#            t = True
+#            break
+#    if not t:
+#        print p
+
+#print zz
+
