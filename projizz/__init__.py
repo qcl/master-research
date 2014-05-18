@@ -55,7 +55,12 @@ def articleSimpleLineFileter(article,tokenThreshold=5):
     """
     fileteredLines = []
     for line in article:
-        print line.encode("utf-8")
+        if len(line.split()) > tokenThreshold:
+            sents = getNaiveSentences(line)
+            for sent in sents:
+                string = removeRefWords(sent)
+                if len(string.split()) > tokenThreshold:
+                    fileteredLines.append(string)
 
     return fileteredLines
 
