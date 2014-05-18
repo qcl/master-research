@@ -56,6 +56,17 @@ def articleSimpleLineFileter(article,tokenThreshold=5):
     fileteredLines = []
     for line in article:
         if len(line.split()) > tokenThreshold:
+            fileteredLines.append( removeRefWords(line) )
+    return 
+
+def articleSimpleSentenceFileter(article,tokenThreshold=5):
+    """articleSimpleSentenceFileter
+    input: article (list of lines)
+    return filtered article (list of lines)
+    """
+    fileteredLines = []
+    for line in article:
+        if len(line.split()) > tokenThreshold:
             sents = getNaiveSentences(line)
             for sent in sents:
                 string = removeRefWords(sent)
