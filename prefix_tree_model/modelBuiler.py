@@ -17,7 +17,7 @@ max_ptn = []
 max_rls = ""
 
 tree = {}
-
+rid = 1
 count = 0
 dup = 0
 for line in f:
@@ -50,6 +50,8 @@ for line in f:
                 max_ptn = ws
         else:
             t["_rls_"] = [relationship]
+            t["_rid_"] = rid
+            rid += 1
         t["_ptn_"] = l[:-1]
 
     g.close()
@@ -66,3 +68,4 @@ print tree["has"]["released"]["on"]["_rls_"]
 print max_len,max_ptn,max_rls
 print tree.keys()
 print len(tree.keys())
+print rid

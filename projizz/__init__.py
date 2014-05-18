@@ -111,6 +111,24 @@ def getNaiveToken(string):
     """
     return removeRefWords(string).split()
 
+def readPrefixTreeModel(modelJsonPath):
+    """readPrefixTreeModel
+    return the prefix tree model from pattern tree .json file
+    """
+    f = open(modelJsonPath,"r")
+    model = json.load(f)
+    f.close()
+    return model
+
+def naiveExtractPatterns(tokens,model,usePos=True):
+    """naiveExtractPatterns
+    tokens: list of (word, pos-tag)
+    model: tree modle, that contain relation, pattern and pattern id
+    return extracted pattern's id 
+    """
+
+    pass
+
 
 
 
