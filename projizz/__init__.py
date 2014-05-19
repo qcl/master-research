@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.18
+modify: 2014.05.19
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -118,7 +118,13 @@ def readPrefixTreeModel(modelJsonPath):
     f = open(modelJsonPath,"r")
     model = json.load(f)
     f.close()
+    
+    # TODO - add pattern ID into pattern tree and build a id-to-pattern table
+    
     return model
+
+def naiveExtractPatternsFromListOfWords(words,model):
+    return naiveExtractPatterns(zip(words,["_na_"]*len(words)),model,usePos=False)
 
 def naiveExtractPatterns(tokens,model,usePos=True):
     """naiveExtractPatterns
@@ -126,6 +132,12 @@ def naiveExtractPatterns(tokens,model,usePos=True):
     model: tree modle, that contain relation, pattern and pattern id
     return extracted pattern's id 
     """
+
+    # TODO - if no verb in this sentence, return null
+
+    # TODO - visit all words/pos , match pattern
+    for word, pos in tokens:
+        # TODO
 
     pass
 
