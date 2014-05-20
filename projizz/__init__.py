@@ -222,12 +222,10 @@ def naiveExtractPatterns(tokens,model,usePos=True):
                         possiblePath[pathId] = pathRest[tagName]
 
                 if not inWord and not inTag:
-                    pass
-                    # needRemove.append(pathId)
-
-        #
-        #for pathId in needRemove:
-        #    possiblePath.pop(pathId)
+                    needRemove.append(pathId)
+        
+        for pathId in needRemove:
+            possiblePath.pop(pathId)
         for pathId,path in needAppend:
             possiblePath[pathId] = path
 
