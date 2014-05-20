@@ -233,7 +233,7 @@ def naiveExtractPatterns(tokens,model,usePos=True):
         index += 1
 
     # deal with the index
-    patternFound = sorted(patternFound,lambda x:x["start"])
+    patternFound = sorted(patternFound,key=lambda x:x["start"])
     for i in range(0,len(patternFound)):
         prevPtn = patternFound[i]
         if prevPtn["used"] == False:
