@@ -24,7 +24,7 @@ def testing(filename):
             tokens = projizz._posTagger.tag(line)
             patternExtracted = projizz.naiveExtractPatterns(tokens,model)
             print line.encode("utf-8")
-            for ptnId in patternExtracted:
+            for ptnId,start,to in patternExtracted:
                 print "\t[%d] %s" % (ptnId,table[ptnId]["pattern"])
 
 

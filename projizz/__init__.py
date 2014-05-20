@@ -170,6 +170,7 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
 
     # visit all words/pos , match pattern
+    index = 0
     for word, pos in tokens:
         tagName = getNaivePOSTagName(pos)
 
@@ -178,31 +179,31 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
         if word in model:
             addBecauseWord = pathCount
-            possiblePath[pathCount] = model
+            possiblePath[pathCount] = {"path":model,"start":index}
             pathCount += 1
         if tagName in model:
             addBecausePOS = pathCount
-            possiblePath[pathCount] = model
+            possiblePath[pathCount] = {"path":model,"start":index}
             pathCount += 1
 
         needAppend = []
         needRemove = []
         for pathId in possiblePath:
-            pathRest = possiblePath[pathId]
+            pathRest = possiblePath[pathId]["path"]
+            startFrom = possiblePath[pathId]["start"]
 
             # find the anwser
             if "_id_" in pathRest:
                 ptnId = pathRest["_id_"]
-                if not ptnId in patternFound:
-                    patternFound.append(ptnId)
+                patternFound.append({"ptnId":ptnId,"start":startFrom,"to":index,"used":True})
 
             # travarse path
             if pathId == addBecauseWord:
                 # move from root to node (word)
-                possiblePath[pathId] = pathRest[word]
+                possiblePath[pathId]["path"] = pathRest[word]
             elif pathId == addBecausePOS:
                 # move from root to node (pos)
-                possiblePath[pathId] = pathRest[tagName]
+                possiblePath[pathId]["path"] = pathRest[tagName]
             else:
                 # here to decide wheather move to next leaf
                 inWord = False
@@ -210,26 +211,53 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
                 if word in pathRest:
                     inWord = True
-                    possiblePath[pathId] = pathRest[word]
+                    possiblePath[pathId]["path"] = pathRest[word]
 
                 if tagName in pathRest:
                     inTag = True
                     if inWord:
                         # here need to create a new path
-                        needAppend.append((pathCount,pathRest[tagName]))
+                        needAppend.append((pathCount,pathRest[tagName],startFrom))
                         pathCount += 1
                     else:
-                        possiblePath[pathId] = pathRest[tagName]
+                        possiblePath[pathId]["path"] = pathRest[tagName]
 
                 if not inWord and not inTag:
                     needRemove.append(pathId)
         
         for pathId in needRemove:
             possiblePath.pop(pathId)
-        for pathId,path in needAppend:
-            possiblePath[pathId] = path
+        for pathId,path,start in needAppend:
+            possiblePath[pathId] = {"path":path,"start":start}
 
-    return patternFound
+        index += 1
+
+    # TODO - deal with the index
+    patternFound = sorted(patternFound,lambda x:x["start"])
+    for i in range(0,len(patternFound)):
+        prevPtn = patternFound[i]
+        if prevPtn["used"] = False:
+            continue
+
+        for j in range(i,len(patternFound)):
+            afterPtn = patternFound[j]
+
+            if afterPtn["start"] > prevPtn["to"]:
+                break
+            else:
+                # give up the shorter pattern
+                if ( afterPtn["to"] - afterPtn["start"] ) > ( prevPtn["to"] - prevPtn["start"] ):
+                    prevPtn["used"] = False
+                    break
+                else:
+                    afterPtn["used"] = False
+
+    result = []
+    for ptn in patternFound:
+        if ptn["used"]:
+            result.append((ptn["ptnId"],ptn["start"],ptn["to"]))
+
+    return result
 
 #
 #   Classes
