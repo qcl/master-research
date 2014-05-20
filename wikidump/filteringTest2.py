@@ -23,10 +23,10 @@ def testing(filename):
         for line in article:
             tokens = projizz._posTagger.tag(line)
             patternExtracted = projizz.naiveExtractPatterns(tokens,model)
-            print line.encode("utf-8")
-            for ptnId,start,to in patternExtracted:
-                print "\t[%d] %s" % (ptnId,table[ptnId]["pattern"])
-
+            if len(patternExtracted)>0:
+                print line.encode("utf-8")
+                for ptnId,start,to in patternExtracted:
+                    print "\t[%d] %s" % (ptnId,table[ptnId]["pattern"])
 
         print "\n----"
     diff = datetime.now() - start_time
