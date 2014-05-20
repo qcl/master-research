@@ -160,7 +160,7 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
     # if no verb in this sentence, return null list
     if usePos:
-        if sum(map(lambda x:1 if x[1][:2] == "VB" else 0,token)) == 0:
+        if sum(map(lambda x:1 if x[1][:2] == "VB" else 0,tokens)) == 0:
             return []
 
     patternFound = []
