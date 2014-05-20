@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.19
+modify: 2014.05.20
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -118,10 +118,35 @@ def readPrefixTreeModel(modelJsonPath):
     f = open(modelJsonPath,"r")
     model = json.load(f)
     f.close()
-    
-    # TODO - add pattern ID into pattern tree and build a id-to-pattern table
-    
-    return model
+   
+    idTable = {}
+
+    # add pattern ID into pattern tree and build a id-to-pattern table
+    def _trackTree(node):
+        for leaf in node:
+            if leaf == "_ptn_":
+                ptnId = len(idTable)
+                idTable[ptnId] = {
+                        "pattern": node["_ptn_"],
+                        "relations" : node["_rls_"]
+                        }
+            elif leaf == "_rls_":
+                pass
+            elif leaf == "_rid_":
+                pass
+            else:
+                _trackTree(node[leaf])
+  
+    _trackTree(model)
+
+    for ptnId in idTable:
+        pattern = idTable[ptnId]["pattern"].replace(";","").lower().split()
+        t = model
+        for word in pattern:
+            t = t[word]
+        t["_id_"] = ptnId
+
+    return model, idTable
 
 def naiveExtractPatternsFromListOfWords(words,model):
     return naiveExtractPatterns(zip(words,["_na_"]*len(words)),model,usePos=False)
@@ -133,16 +158,80 @@ def naiveExtractPatterns(tokens,model,usePos=True):
     return extracted pattern's id 
     """
 
-    # TODO - if no verb in this sentence, return null
+    # if no verb in this sentence, return null list
+    if usePos:
+        if sum(map(lambda x:1 if x[1][:2] == "VB" else 0)) == 0:
+            return []
 
-    # TODO - visit all words/pos , match pattern
+    patternFound = []
+
+    possiblePath = {}
+    pathCount = 0
+
+
+    # visit all words/pos , match pattern
     for word, pos in tokens:
-        # TODO
+        tagName = getNaivePOSTagName(pos)
 
-    pass
+        addBecauseWord = -1
+        addBecausePOS  = -1
 
+        if word in model:
+            addBecauseWord = pathCount
+            possiblePath[pathCount] = model
+            pathCount += 1
+        if tagName in model:
+            addBecausePOS = pathCount
+            possiblePath[pathCount] = model
+            pathCount += 1
 
+        needAppend = []
+        needRemove = []
+        for pathId in possiblePath:
+            pathRest = possiblePath[pathId]
 
+            # find the anwser
+            if "_id_" in pathRest:
+                ptnId = pathRest["_id_"]
+                if not ptnId in patternFound:
+                    patternFound.append(ptnId)
+
+            # travarse path
+            if pathId == addBecauseWord:
+                # move from root to node (word)
+                possiblePath[pathId] = pathRest[word]
+            elif pathId == addBecausePOS:
+                # move from root to node (pos)
+                possiblePath[pathId] = pathRest[tagName]
+            else:
+                # here to decide wheather move to next leaf
+                inWord = False
+                inTag  = False
+
+                if word in pathRest:
+                    inWord = True
+                    possiblePath[pathId] = pathRest[word]
+
+                if tagName in pathRest:
+                    inTag = True
+                    if inWord:
+                        # here need to create a new path
+                        needAppend.append((pathCount,pathRest[tagName]))
+                        pathCount += 1
+                    else:
+                        possiblePath[pathId] = pathRest[tagName]
+
+                if not inWord and not inTag:
+                    pass
+                    # needRemove.append(pathId)
+
+        #
+        #for pathId in needRemove:
+        #    possiblePath.pop(pathId)
+        for pathId,path in needAppend:
+            possiblePath[pathId] = path
+
+    return patternFound
 
 #
 #   Classes

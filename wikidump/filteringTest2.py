@@ -12,17 +12,23 @@ from datetime import datetime
 def testing(filename):
     
     content = projizz.combinedFileReader(filename)
+
+    model, table = projizz.readPrefixTreeModel("./../prefix_tree_model/patternTree.json")
   
     start_time = datetime.now()
     for articleName in content:
-        #print articleName
+        print articleName
         article = projizz.articleSimpleSentenceFileter(content[articleName])
         
         for line in article:
-            projizz._posTagger.tag(line)
+            tokens = projizz._posTagger.tag(line)
+            patternExtracted = projizz.naiveExtractPatterns(tokens,model)
+            print line
+            for ptnId in patternExtracted:
+                print "\t[%d] %s" % (ptnId,table[ptnId]["pattern"])
 
 
-        #print "\n----"
+        print "\n----"
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds,diff.microseconds)
 
