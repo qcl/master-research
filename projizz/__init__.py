@@ -234,12 +234,13 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
     # deal with the index
     patternFound = sorted(patternFound,key=lambda x:x["start"])
+    print patternFound
     for i in range(0,len(patternFound)):
         prevPtn = patternFound[i]
         if prevPtn["used"] == False:
             continue
 
-        for j in range(i,len(patternFound)):
+        for j in range(i+1,len(patternFound)):
             afterPtn = patternFound[j]
 
             if afterPtn["start"] > prevPtn["to"]:
@@ -256,6 +257,8 @@ def naiveExtractPatterns(tokens,model,usePos=True):
     for ptn in patternFound:
         if ptn["used"]:
             result.append((ptn["ptnId"],ptn["start"],ptn["to"]))
+    
+    print result
 
     return result
 
