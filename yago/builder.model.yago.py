@@ -28,12 +28,12 @@ def buildYagoModel():
 
                 if "_id_" in t:
                     ptnData = table[t["_id_"]]
-                    if not relationName in ptnData["relation"]:
-                        ptnData["relation"].append(relationName)
+                    if not relationName in ptnData["relations"]:
+                        ptnData["relations"].append(relationName)
                 else:
                     ptnId += 1
                     t["_id_"] = ptnId
-                    table[ptnId] = {"pattern":patternText[:-2],"relation":[relationName]}
+                    table[ptnId] = {"pattern":patternText[:-2],"relations":[relationName]}
 
             f.close()
     
@@ -47,13 +47,13 @@ def buildYagoModel():
     
     f = open(os.path.join("%s.table.txt" % (modelName)),"w")
     for i in xrange(1,ptnId+1):
-        f.write("%d\t%s %d %s\n" % (i,table[i]["pattern"],len(table[i]["relation"]),table[i]["relation"]))
+        f.write("%d\t%s %d %s\n" % (i,table[i]["pattern"],len(table[i]["relations"]),table[i]["relations"]))
     f.close()
     
     f = open(os.path.join("%s.pattern.overlap" % (modelName)),"w")
-    overlapPattern = sorted(table.iteritems(),key=lambda x:len(x[1]["relation"]),reverse=True)
+    overlapPattern = sorted(table.iteritems(),key=lambda x:len(x[1]["relations"]),reverse=True)
     for i,t in overlapPattern:
-        f.write("%d\t%s %d %s\n" % (i,t["pattern"],len(t["relation"]),t["relation"]))
+        f.write("%d\t%s %d %s\n" % (i,t["pattern"],len(t["relations"]),t["relations"]))
     f.close()
 
 
