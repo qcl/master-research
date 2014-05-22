@@ -43,7 +43,7 @@ def buildYagoModel():
     print len(table)
 
     json.dump(model,open(os.path.join("%s.model" % (modelName)),"w"))
-    json.dump(model,open(os.path.join("%s.table" % (modelName)),"w"))
+    json.dump(table,open(os.path.join("%s.table" % (modelName)),"w"))
     
     f = open(os.path.join("%s.table.txt" % (modelName)),"w")
     for i in xrange(1,ptnId+1):
