@@ -29,7 +29,7 @@ def tryToFindRela(jobid, filename, dataInputPath, resultOutPath, ptnOutputPath, 
                 dealL += 1
                 rels = tree[ptnId]["relations"]
 
-                if len(rels) < 4:
+                if len(rels) < 2:
                     for r in rels:
                         if not r in result:
                             result[r] = 0
