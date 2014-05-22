@@ -39,6 +39,9 @@ def buildOverlapMatrix():
 
         f.close()
 
+    over = {}
+
+
     for ontology in overlapMatrix:
         thisCount = overlapMatrix[ontology][ontology]
         for otherOntology in overlapMatrix[ontology]:
@@ -46,7 +49,16 @@ def buildOverlapMatrix():
                 continue
             otherCount = overlapMatrix[ontology][otherOntology]
             if thisCount == otherCount:
-                print ontology,otherOntology
+                if not ontology in over:
+                    over[ontology] = []
+                if not otherOntology in over[ontology]:
+                    over[ontology].append(otherOntology)
+
+
+    for ontology in over:
+        for otherOntology in over[ontology]:
+            if otherOntology in over and ontology in over[otherOntology]:
+                print ontology, "<->", otherOntology
 
 if __name__ == "__main__":
     buildOverlapMatrix()
