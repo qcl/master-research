@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.20
+modify: 2014.05.22
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -119,6 +119,20 @@ def getNaiveToken(string):
     return list of words
     """
     return removeRefWords(string).split()
+
+def readPrefixTreeModelWithTable(modelJsonPath,tableJsonPath):
+    """readPrefixTreeModelWithTable
+    read modle and table
+    """
+    f = open(modelJsonPath,"r")
+    model = json.load(f)
+    f.close()
+
+    f = open(tableJsonPath,"r")
+    table = json.load(f)
+    f.close()
+
+    return model,table
 
 def readPrefixTreeModel(modelJsonPath):
     """readPrefixTreeModel
