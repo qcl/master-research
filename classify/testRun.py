@@ -8,6 +8,8 @@ import sys
 import projizz
 import multiprocessing
 
+from datetime import datetime
+
 def tryToFindRela(jobid, filename, dataInputPath, resultOutPath, model, tree):
     content = projizz.combinedFileReader(os.path.join(dataInputPath,filename))
     print "Worker %d : Read %s into filter" % (jobid,filename)
