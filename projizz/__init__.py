@@ -42,6 +42,15 @@ def combinedFileReader(filename):
     f.close()
     return articles
 
+def combinedFileWriter(obj,filename):
+    """combinedFileWriter
+    write out
+    """
+    f = open(filename,"w")
+    json.dump(obj,f)
+    f.close()
+
+
 def getNaiveSentences(text):
     """getNaiveSentences
     return a list of sentences

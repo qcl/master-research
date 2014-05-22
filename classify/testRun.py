@@ -3,20 +3,47 @@
 # test run, only possible property number < 4 will be propose.
 #
 import os
+import gc
 import sys
 import projizz
 import multiprocessing
 
 def tryToFindRela(jobid, filename, dataInputPath, resultOutPath, model, tree):
     content = projizz.combinedFileReader(os.path.join(dataInputPath,filename))
+    print "Worker %d : Read %s into filter" % (jobid,filename)
     count = 0
+    dealL = 0
+    results = {}
     for articleName in content:
+        result = {}
         article = projizz.articleSimpleSentenceFileter(content[articleName])
         for line in article:
             tokens = projizz._posTagger.tag(line)
             patternExtracted = projizz.naiveExtractPatterns(tokens,model)
 
         # TODO
+            for ptnId,start,to in patternExtracted:
+                dealL += 1
+                rels = tree[ptnId]["relations"]
+                if len(rels) < 4:
+                    for r in rels:
+                        if not r in result:
+                            result[r] = 0
+                        result[r] += 1
+                
+                if dealL % 10000 == 0:
+                    print "Worker %d deal with %d lines." % (jobid,dealL)
+                    
+        
+        results[articleName] = result
+        count += 1
+        if count % 100 == 0:
+            print "Worker %d deal with %d files" % (jobid,count)
+            gc.collect()
+
+    projizz.combinedFileWriter(results,os.path.join(resultOutPath,filename) 
+    print "Worker %d : Write results out to %s." % (jobid,filename)
+
 
 def main(dataInputPath,resultOutPath):
 
