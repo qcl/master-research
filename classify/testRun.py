@@ -61,6 +61,9 @@ def main(dataInputPath,resultOutPath,ptnOutputPath):
     if not os.path.isdir(resultOutPath):
         os.mkdir(resultOutPath)
 
+    if not os.path.isdir(ptnOutputPath):
+        os.mkdir(ptnOutputPath)
+
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
     print "Number of core: %d" % (multiprocessing.cpu_count())
     start_time = datetime.now()
