@@ -21,7 +21,6 @@ def tryToFindRela(jobid, filename, dataInputPath, resultOutPath, model, tree):
             tokens = projizz._posTagger.tag(line)
             patternExtracted = projizz.naiveExtractPatterns(tokens,model)
 
-        # TODO
             for ptnId,start,to in patternExtracted:
                 dealL += 1
                 rels = tree[ptnId]["relations"]
@@ -41,7 +40,7 @@ def tryToFindRela(jobid, filename, dataInputPath, resultOutPath, model, tree):
             print "Worker %d deal with %d files" % (jobid,count)
             gc.collect()
 
-    projizz.combinedFileWriter(results,os.path.join(resultOutPath,filename) 
+    projizz.combinedFileWriter(results,os.path.join(resultOutPath,filename))
     print "Worker %d : Write results out to %s." % (jobid,filename)
 
 
