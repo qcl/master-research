@@ -1,5 +1,5 @@
 /*
- *  2014.05.24, build the yago anwser set.
+ *  2014.05.24, build the yago answer set.
  * */
 
 var yagoRelations = db.patty.yago.relation.distinct("relation");
@@ -45,7 +45,7 @@ while(it.hasNext()){
         var id = dbpediaInstance.id;
         var revid = dbpediaInstance.revid;
 
-        db.result.yago.anwser.insert({
+        db.result.yago.answer.insert({
             "_id": yagoInstance,
             "id": id,
             "revid": revid,
