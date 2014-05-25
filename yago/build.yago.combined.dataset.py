@@ -42,6 +42,11 @@ def filterFunction(jobid,filename,inputPath,inputPtnPath,outputPath,outputPtnPat
 
 def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
+    if not os.path.isdir(outputPath):
+        os.mkdir(outputPath)
+    if not os.path.isdir(outputPtnPath):
+        os.mkdir(outputPtnPath)
+    
     start_time = datetime.now()
 
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
