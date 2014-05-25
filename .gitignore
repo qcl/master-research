@@ -11,3 +11,5 @@ yago/dataset/*
 yago/dataset
 
 wikidump/*.json
+
+prefix_tree_model/test.out
