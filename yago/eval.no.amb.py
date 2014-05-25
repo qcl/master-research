@@ -87,7 +87,7 @@ def main(inputPtnPath,outputPath):
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
     t = 0
     result = []
-    for filename in os.listdir(inputPath):
+    for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
             result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns )))
