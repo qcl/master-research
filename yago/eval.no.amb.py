@@ -47,8 +47,6 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns):
         for line in ptnEx:
             for ptn in line[1]:
                 ptnId = "%d" % (ptn[0])
-                if not ptnId in ptns:
-                    ptns.append(ptnId)
                 rfp = table[ptnId]["relations"]
                 if len(rfp) < 2:
                     if not rfp[0] in relaEx:
