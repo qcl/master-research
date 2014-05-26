@@ -89,7 +89,7 @@ def main(inputPtnPath,outputPath):
     json.dump(properties,open(outputPath,"w"))
 
     diff = datetime.now() - start_time
-    print "Spend %d.%d seconds, there are %d articles" % (diff.seconds, diff.microseconds,count)
+    print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
     if len(sys.argv) > 2:
