@@ -4,13 +4,14 @@
 
 import os
 import sys
+import copy
 import projizz
 import multiprocessing
 import simplejson as json
 import pymongo
 from datetime import datetime
 
-def filterFunction(jobid,filename,inputPtnPath,model,table):
+def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
@@ -33,15 +34,29 @@ def filterFunction(jobid,filename,inputPtnPath,model,table):
         relation = ans["properties"]
         
         ptnEx = contentPtnJson[key]
+
+        uniPtnIds = []
         for line in ptnEx:
-            for ptn in line[1]:
-                ptnId = "%d" % (ptn[0])
-                if not ptnId in patterns:
-                    # TODO
-                    patterns[ptnId] = {}
+            for ptn in line[1]: # line[0] is line number, line[1] is the content of line.
+                ptnId = "%d" % (ptn[0]) # [patternId, start, to]
+                if not ptnId in uniPtnIds:
+                    uniPtnIds.append(ptnId)
 
+        for ptnId in uniPtnIds:
+            
+            ptnR = table[ptnId]["relations"]
+                
+            for rela in ptnR:
 
+                if not ptnId in properties[rela]:
+                    properties[rela][ptnId] = {"total":0,"support":0}
 
+                properties[rela][ptnId]["total"] += 1
+                
+                if rela in relation:
+                    properties[rela][ptnId]["support"] += 1
+
+    return properties
 
 def main(inputPtnPath,outputPath):
     
@@ -49,20 +64,29 @@ def main(inputPtnPath,outputPath):
 
     model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
 
+    properties = projizz.buildYagoProperties({})
+
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
     t = 0
     result = []
     for filename in os.listdir(inputPath):
         if ".json" in filename:
-            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table, )))
+            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,copy.deepcopy(properties) )))
             t += 1
     pool.close()
     pool.join()
 
-    count = 0
     for res in result:
         r = res.get()
-        count += r
+
+        for rela in r:
+            for ptnId in r[rela]:
+                if not ptnId in properties[rela]:
+                    properties[rela][ptnId] = {"total":0,"support":0}
+                properties[rela][ptnId]["total"] += r[rela][ptnId]["total"]
+                properties[rela][ptnId]["support"] += r[rela][ptnId]["support"]
+   
+    json.dump(properties,open(outputPath,"w"))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds, there are %d articles" % (diff.seconds, diff.microseconds,count)
