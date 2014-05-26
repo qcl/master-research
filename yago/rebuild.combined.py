@@ -9,15 +9,15 @@ import sys
 
 def combined():
     files = []
-    for filename in os.listdir("~/nas-3/yago/yago-json-part-a"):
+    for filename in os.listdir("/home/ccli/nas-3/yago/yago-json-part-a/"):
         if ".json" in filename:
-            files.append("~/nas-3/yago/yago-json-part-a/%s" % (filename))
-    for filename in os.listdir("~/nas-3/yago/yago-json-part-b"):
+            files.append("/home/ccli/nas-3/yago/yago-json-part-a/%s" % (filename))
+    for filename in os.listdir("/home/ccli/nas-3/yago/yago-json-part-b"):
         if ".json" in filename:
-            files.append("~/nas-3/yago/yago-json-part-b/%s" % (filename))
+            files.append("/home/ccli/nas-3/yago/yago-json-part-b/%s" % (filename))
 
     files.sort()
-    print files
+
 
 if __name__ == "__main__":
     combined()
