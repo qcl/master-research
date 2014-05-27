@@ -32,7 +32,7 @@ def main(inputResultFile):
             if not model in precision:
                 precision[model] = []
             if not model in recall:
-                recall[model]
+                recall[model] = []
 
 
             j = r[model]
