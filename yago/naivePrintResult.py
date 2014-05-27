@@ -74,7 +74,7 @@ def main(inputResultFile):
     for model in precision:
         string = ""
         for i in range(0,len(precision[model])):
-            string += "\t%.08f\t0.08f" % (precision[model][i],recall[model][i])
+            string += "\t%.08f\t%0.08f" % (precision[model][i],recall[model][i])
 
         string = "%s\t\%.08f\t%.08f" % (model,sum(precision[model])/float(len(precision[model])),sum(recall[model])/float(len(recall[model]))) + string
 
