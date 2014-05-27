@@ -79,16 +79,12 @@ def main(inputPtnPath,outputPath,pspath):
     sp = projizz.getSortedStatistic(projizz.jsonRead(pspath))
     validate = []
    
-    # Get Top 200 Relation
+    # Get Top P75 Relation
     for relation in sp:
-        count = 0
         for ptnId,ptnS in sp[relation]:
             ptnData = table[ptnId]
-            if len(ptnData["relations"]) == 1:
-                count += 1
+            if float(ptnS["support"])/float(ptnS["total"]) >= 0.75:
                 validate.append(ptnId)
-            if count >= 200:
-                break
 
     start_time = datetime.now()
 
