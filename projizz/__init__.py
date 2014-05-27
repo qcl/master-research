@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.26
+modify: 2014.05.27
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -54,6 +54,11 @@ def combinedFileWriter(obj,filename):
     json.dump(obj,f)
     f.close()
 
+def jsonRead(filename):
+    return combinedFileReader(filename)
+
+def jsonWrite(filename):
+    return combinedFileWriter(filename)
 
 def getNaiveSentences(text):
     """getNaiveSentences
@@ -303,6 +308,17 @@ def buildDBPediaProperties(schema):
     for relation in getDBPediaRelation():
         properties[relation] = copy.deepcopy(schema)
     return properties
+
+def getSortedStatistic(propertyStatistic):
+    properties = {}
+    for relation in propertyStatistic:
+        # [ (ptnid, {}), (ptnid, {}) ... ]
+        properties[relation] = sorted(propertyStatistic[relation].items(),key=lambda x:float(x[1]["support"])/float(x[1]["total"]),reverse=True)
+    return properties
+        
+
+
+
 
 #
 #   Classes
