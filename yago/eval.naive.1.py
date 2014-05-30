@@ -42,6 +42,10 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st):
                 ptnId = "%d" % (ptn[0])
                 rfp = table[ptnId]["relations"]
                 
+                # never seen pattern
+                if not ptnId in st:
+                    continue
+                
                 # if only one relation
                 if len(rfp) < 2:
 
