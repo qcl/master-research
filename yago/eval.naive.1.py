@@ -16,7 +16,7 @@ from datetime import datetime
 # false - postive                 Yes  tp      fp     
 # false - negative                 No  fn      tn
 
-def filterFunction(jobid,filename,inputPtnPath,model,table,partAns):
+def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st):
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
@@ -41,10 +41,22 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns):
             for ptn in line[1]:
                 ptnId = "%d" % (ptn[0])
                 rfp = table[ptnId]["relations"]
+                
+                # if only one relation
                 if len(rfp) < 2:
-                    if not rfp[0] in relaEx:
+
+                    if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
                         relaEx.append(rfp[0])
 
+                # more than one relation
+                else:
+                    # using the first as the answer
+                    if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
+                        relaEx.append(rfp[0])
+
+
+
+        # Evaluation
         for attribute in partAns:
             postive = False
             true = False
@@ -68,10 +80,11 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns):
             print "worker #%d done %d." % (jobid,count)
     return partAns
             
-def main(inputPtnPath,outputPath):
+def main(inputPtnPath,outputPath,pspath):
     
     model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     properties = projizz.buildYagoProperties({"tp":[],"tn":[],"fp":[],"fn":[]})
+    st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
 
     start_time = datetime.now()
 
@@ -81,7 +94,7 @@ def main(inputPtnPath,outputPath):
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns )))
+            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st )))
             t += 1
     pool.close()
     pool.join()
@@ -101,10 +114,11 @@ def main(inputPtnPath,outputPath):
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
+    if len(sys.argv) > 3:
         inputPtnPath = sys.argv[1]
-        outputPath = sys.argv[2]
-        main(inputPtnPath,outputPath)
+        pspath = sys.argv[2]
+        outputPath = sys.argv[3]
+        main(inputPtnPath,outputPath,pspath)
     else:
-        print "$ python ./yago.pattern.statistics.py [input-ptn-dir] [output-filename.out]"
+        print "$ python ./eval.naive.1.py [input-ptn-dir] [pattern statistic json path] [output-filename.out]"
 
