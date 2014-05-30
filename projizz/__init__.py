@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.27
+modify: 2014.05.30
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -316,8 +316,25 @@ def getSortedStatistic(propertyStatistic):
         properties[relation] = sorted(propertyStatistic[relation].items(),key=lambda x:float(x[1]["support"])/float(x[1]["total"]),reverse=True)
     return properties
         
+def getSortedPatternStatistic(propertyStatistic):
+    ptnTable = {}
+
+    # build ptnTable[ptnId] = [ (relation, {}), (relation, {}) ... ]
+    for relation in propertyStatistic:
+        for ptnId in propertyStatistic[relation]:
+            ptnS = propertyStatistic[relation][ptnId]
+            if not ptnId in ptnTable:
+                ptnTable[ptnId] = []
+            ptnTable[ptnId].append((relation,ptnS))
+
+    # sort the result
+    for ptnId in ptnTable:
+        relaList = ptnTable[ptnId]
+        if len(relaList) > 1:
+            relaList.sort(key=lambda x: x[1]["support"],reverse=True)
 
 
+    return ptnTable
 
 
 #
