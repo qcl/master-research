@@ -20,16 +20,18 @@ def main(inputFile,dbName,collectionName):
         #if line[0:29] != "<http://dbpedia.org/resource/":
         #    continue
 
+        prefix = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+
         g = rdflib.Graph()
-        r = g.parse(data=line,format="n3")
+        r = g.parse(data=prefix+line,format="n3")
         for instance in r:
             j += 1
 
-            yagoSubject     = "%s" % (instance[0][42:])
-            yagoProperty    = "%s" % (instance[1][42:])
-            yagoObject      = "%s" % (instance[2][42:])
+            yagoInstance    = "%s" % (instance[0][42:])
+            yagoSimpleType  = "%s" % (instance[2][42:])
 
-            inst = {"subject":yagoSubject,"property":yagoProperty,"object":yagoObject}
+            inst = {"subject":yagoInstance,"type":yagoSimpleType}
+            #print inst
             c.append(inst)
             
             if j%1000 == 0:
@@ -43,4 +45,4 @@ def main(inputFile,dbName,collectionName):
     print "Read",j,"lines. Finished."
 
 if __name__ == '__main__':
-    main("../../../YAGO/yagoFacts.ttl","projizz","yago.facts")
+    main("../../../YAGO/yagoSimpleTypes.ttl","projizz","yago.simple.types")
