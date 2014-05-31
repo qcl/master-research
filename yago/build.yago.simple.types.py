@@ -20,7 +20,7 @@ def main(inputFile,dbName,collectionName):
         #if line[0:29] != "<http://dbpedia.org/resource/":
         #    continue
 
-        prefix = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n"
+        prefix = "@prefix dbp: <http://dbpedia.org/ontology/> .\n@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix skos: <http://www.w3.org/2004/02/skos/core#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> ."
 
         g = rdflib.Graph()
         r = g.parse(data=prefix+line,format="n3")
