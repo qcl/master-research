@@ -7,6 +7,8 @@ from pymongo import Connection
 
 def main():
 
+    count = 0
+
     taxonomy = {}
     
     # connect to database
@@ -48,6 +50,7 @@ def main():
     ita = answerCollection.find()
 
     for yagoAns in ita:
+        count += 1
         name = yagoAns["_id"]
         it = collectionType.find({"subject":name})
         types = []
@@ -58,6 +61,10 @@ def main():
 
         yagoAns["type"] = types
         answerCollection.update({"_id":name},yagoAns,upsert=False)
+
+        if count % 1000 == 0:
+            print "update",count,"instances."
+
 
 if __name__ == "__main__":
     main()
