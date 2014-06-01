@@ -66,7 +66,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             if domainRange[attribute] == "":
                 continue
 
-            if not domainRange[attribute] in types:
+            if not domainRange[attribute]["domain"] in types:
                 if not attribute in toBeRemove:
                     toBeRemove.append(attribute)
 
