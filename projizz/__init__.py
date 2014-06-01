@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.05.30
+modify: 2014.06.01
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -17,6 +17,7 @@ import simplejson as json
 
 from .yago import relations as yagoRelations
 from .dbpedia import relations as dbpediaRelations
+from .yagoRelation import yagoDomainRange
 
 from textblob import TextBlob
 from textblob_aptagger import PerceptronTagger
@@ -293,6 +294,9 @@ def naiveExtractPatterns(tokens,model,usePos=True):
 
 def getYagoRelation():
     return yagoRelations
+
+def getYagoRelationDomainRange():
+    return yagoDomainRange
 
 def getDBPediaRelation():
     return dbpediaRelations
