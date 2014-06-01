@@ -138,5 +138,5 @@ if __name__ == "__main__":
         outputPath = sys.argv[3]
         main(inputPtnPath,outputPath,pspath)
     else:
-        print "$ python ./eval.naive.1.py [input-ptn-dir] [pattern statistic json path] [output-filename.out]"
+        print "$ python ./eval.naive.typed.py [input-ptn-dir] [pattern statistic json path] [output-filename.out]"
 
