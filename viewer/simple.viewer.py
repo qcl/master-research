@@ -41,6 +41,8 @@ def main(part,revid):
         answers = ans["properties"]
 
         print "Target=%s\nTarget token=%s" % (ans["_id"],targetName)
+        print "Type=%s" % (types)
+        print "Answer=%s" % (answers)
        
         for line in pattern:
             lineText = article[line[0]]
