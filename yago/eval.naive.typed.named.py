@@ -43,7 +43,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
         # Now only consider properties, no references.
         relation = ans["properties"]
         ptnEx = contentPtnJson[key]
-        article = contentJson[key]
+        article = projizz.articleSimpleSentenceFileter(contentJson[key])
         relaEx = []
         for line in ptnEx:                      # line[0]: line number
 
