@@ -40,7 +40,7 @@ def main(part,revid):
         types = ans["type"]
         answers = ans["properties"]
 
-        print "Target=%s\nTarget token=%s" % (ans["_id"],targetName)
+        print "Target=%s\nTarget token=%s" % (ans["_id"].encode("utf-8"),targetName)
         print "Type=%s" % (types)
         print "Answer=%s" % (answers)
        
@@ -64,7 +64,7 @@ def main(part,revid):
                 for ps in st[ptnId]:
                     if float(ps[1]["support"])/float(ps[1]["total"]) > 0:
                         if domainRange[ps[0]]["domain"] in types:
-                            print "#%d %s" % (line[0],lineText)
+                            print "#%d" % (line[0]),lineText.encode("utf-8")
                             isIn = "(X)"
                             if ps[0] in answers:
                                 isIn = "(O)"
