@@ -13,3 +13,4 @@ yago/dataset
 wikidump/*.json
 
 prefix_tree_model/test.out
+exp-result/*/.~lock.*.ods#
