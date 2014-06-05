@@ -84,7 +84,7 @@ def updateAnswer(jobid,inputPath,filename):
 
 def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
-    debug = True
+    debug = False
 
     if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
@@ -95,7 +95,7 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
     count = 0
 
     # Update answer
-    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
     t = 0
     for filename in os.listdir(inputPath):
         if ".json" in filename:
@@ -105,9 +105,8 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
             else:
                 result.append(pool.apply_async(updateAnswer, (t,inputPath,filename)))
     
-    if not debug:
-        pool.close()
-        pool.join()
+    pool.close()
+    pool.join()
 
     # Rebuild articles and patterns
 
@@ -146,11 +145,11 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
         tmpPtn = {}
         count += 1
 
-    print "write %d files. (%d)" % (count,dataSize)
-
     # Split to 5 
     splitTo5part("/tmp2/r01922024","y-all","/tmp2/r01922024","y")
     splitTo5part("/tmp2/r01922024","y-ptn-all","/tmp2/r01922024","y-ptn")
+    
+    print "write %d files. (%d)" % (count,dataSize)
 
 
 if __name__ == "__main__":
