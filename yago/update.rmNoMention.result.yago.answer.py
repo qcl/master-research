@@ -80,9 +80,9 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
     debug = True
 
-    if !os.path.isdir(outputPath):
+    if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
-    if !os.path.isdir(outputPtnPath):
+    if not os.path.isdir(outputPtnPath):
         os.mkdir(outputPtnPath)
 
     result = []
