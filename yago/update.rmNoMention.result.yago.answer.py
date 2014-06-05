@@ -67,7 +67,7 @@ def updateAnswer(jobid,inputPath,filename):
                 if found:
                     break
             if found:
-                observed.append()
+                observed.append(pro)
             
         if len(observed) > 0:
             articles.append(articleID)
