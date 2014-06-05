@@ -58,8 +58,8 @@ def combinedFileWriter(obj,filename):
 def jsonRead(filename):
     return combinedFileReader(filename)
 
-def jsonWrite(filename):
-    return combinedFileWriter(filename)
+def jsonWrite(obj,filename):
+    return combinedFileWriter(obj,filename)
 
 def getNaiveSentences(text):
     """getNaiveSentences

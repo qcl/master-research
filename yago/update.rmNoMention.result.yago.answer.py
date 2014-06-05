@@ -10,6 +10,7 @@ import multiprocessing
 import simplejson as json
 from datetime import datetime
 from pymongo import Connection
+from splitInto5part import splitTo5part
 
 def updateAnswer(jobid,inputPath,filename):
     contenJson = projizz.jsonRead(os.path.join(inputPath,filename))
@@ -91,6 +92,7 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
         os.mkdir(outputPtnPath)
 
     result = []
+    count = 0
 
     # Update answer
     pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
@@ -109,6 +111,7 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
     tmpArticle = {}
     tmpPtn = {}
 
+    dataSize = 0
     for res in result:
         if debug:
             filename,articles = res
@@ -116,6 +119,35 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
             filename,articles = res.get()
 
         print filename,len(articles)
+        a = projizz.jsonRead(os.path.join(inputPath,filename))
+        p = projizz.jsonRead(os.path.join(inputPtnPath,filename))
+
+        for key in articles:
+            dataSize += 1
+            tmpArticle[key] = a[key]
+            tmpPtn[key] = p[key]
+
+            if len(tmpPtn) == 1000:
+                print "write to %05d.json" % (count)
+                projizz.jsonWrite(tmpArticle,os.path.join(outputPath,"%05d.json" % (count)))
+                projizz.jsonWrite(tmpPtn,os.path.join(outputPtnPath,"%05d.json" % (count)))
+                tmpArticle = {}
+                tmpPtn = {}
+                count += 1
+
+    if len(tmpPtn) > 0:
+        print "write to %05d.json" % (count)
+        projizz.jsonWrite(tmpArticle,os.path.join(outputPath,"%05d.json" % (count)))
+        projizz.jsonWrite(tmpPtn,os.path.join(outputPtnPath,"%05d.json" % (count)))
+        tmpArticle = {}
+        tmpPtn = {}
+        count += 1
+
+    print "write %d files. (%d)" % (count,dataSize)
+
+    # Split to 5 
+    splitTo5part("/tmp2/r01922024","y-all","/tmp2/r01922024","y")
+    splitTo5part("/tmp2/r01922024","y-ptn-all","/tmp2/r01922024","y-ptn")
 
 
 if __name__ == "__main__":
