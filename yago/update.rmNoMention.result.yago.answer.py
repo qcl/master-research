@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # qcl
-# 2014.06.04
+# 2014.06.05
 # Remove non mentioned properties form answer set.
 
 import os
@@ -11,66 +11,51 @@ import simplejson as json
 from datetime import datetime
 from pymongo import Connection
 
-def main():
+def updateAnswer(jobid,inputPath,filename):
+    contenJson = projizz.jsonRead(os.path.join(inputPath,filename))
+    print "#%d - %s" % (jobid,filename)
+    connect = Connection()
+    answerCollection = connect.projizz.result.yago.answer
+    factCollection = connect.projizz.yago.facts
 
-    count = 0
+    queries = map(lambda x: x[:-4], contenJson)
 
-    taxonomy = {}
-    
-    # connect to database
-    con = Connection()
-    db = con["projizz"]
+    itr = answerCollection.find({"revid":{"$in":queries}})
+    print "#%d - query=%d,result=%d" % (jobid,len(queries),itr.count())
 
-    simpleType = db["yago.taxonomy"]
-    collectionType = db["yago.simple.types"]
-    answerCollection = db["result.yago.answer"]
 
-    def getTypes(ty):
-        if ty in taxonomy:
-            pass
-            #print "hit",ty
-        else:
-            #print "query",ty
-            it = simpleType.find({"type":ty})
-            taxonomy[ty] = []
-            for t in it:
-                taxonomy[ty].append(t["subClassOf"])
-        
-        result = [ty]
-        types = taxonomy[ty]
-        for t in types:
-            if not t in result:
-                result.append(t)
-            r = getTypes(t)
-            for st in r:
-                if not st in result:
-                    result.append(st)
 
-        return result
 
-    # testing
-    #print getTypes(u"wordnet_site_108651247")
-    #print getTypes(u"yagoGeoEntity")
+def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
-    #ita = answerCollection.find({"_id":"Aruba"})
-    ita = answerCollection.find()
+    debug = True
 
-    for yagoAns in ita:
-        count += 1
-        name = yagoAns["_id"]
-        it = collectionType.find({"subject":name})
-        types = []
-        for t in it:
-            for st in getTypes(t["type"]):
-                if not st in types:
-                    types.append(st)
+    if !os.path.isdir(outputPath):
+        os.mkdir(outputPath)
+    if !os.path.isdir(outputPtnPath):
+        os.mkdir(outputPtnPath)
 
-        yagoAns["type"] = types
-        answerCollection.update({"_id":name},yagoAns,upsert=False)
+    result = []
 
-        if count % 1000 == 0:
-            print "update",count,"instances."
+    # Update answer
+    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+    t = 0
+    for filename in os.listdir(inputPath):
+        if ".json" in filename:
+            if debug:
+                result.append(updateAnswer(t,inputPath,filename))
+            else:
+                result.append(pool.apply_async(updateAnswer, (t,inputPath,filename)))
+
+    # Rebuild articles and patterns
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) > 4:
+        inputPath = sys.argv[1]
+        inputPtnPath = sys.argv[2]
+        outputPath = sys.argv[3]
+        outputPtnPath = sys.argv[4]
+        main(inputPath,inputPtnPath,outputPath,outputPtnPath)
+    else:
+        print "$ python ./update.rmNoMention.result.yago.answer.py inputPath inputPtnPath outputPath outputPtnPath"
