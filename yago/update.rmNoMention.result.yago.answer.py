@@ -84,7 +84,7 @@ def updateAnswer(jobid,inputPath,filename):
 
 def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
-    debug = False
+    debug = True
 
     if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
@@ -102,9 +102,12 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
             t += 1
             if debug:
                 result.append(updateAnswer(t,inputPath,filename))
-                break
             else:
                 result.append(pool.apply_async(updateAnswer, (t,inputPath,filename)))
+    
+    if not debug:
+        pool.close()
+        pool.join()
 
     # Rebuild articles and patterns
 
