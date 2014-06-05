@@ -72,7 +72,7 @@ def updateAnswer(jobid,inputPath,filename):
         if len(observed) > 0:
             articles.append(articleID)
             ans["observed"] = observed
-            answerCollection.update({"revid":articleID},ans,upsert=False)
+            answerCollection.update({"revid":ans["revid"]},ans,upsert=False)
         else:
             ty2g += 1
             #print "#%d - give up %s (2)" % (jobid,articleID)
