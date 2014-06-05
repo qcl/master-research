@@ -84,7 +84,7 @@ def updateAnswer(jobid,inputPath,filename):
 
 def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
-    debug = True
+    debug = False
 
     if not os.path.isdir(outputPath):
         os.mkdir(outputPath)
