@@ -24,6 +24,9 @@ def updateAnswer(jobid,inputPath,filename):
     print "#%d - query=%d,result=%d" % (jobid,len(queries),itr.count())
     
     count = 0
+    ty1g = 0
+    ty2g = 0
+    updateC = 0
     articles = []
     for ans in itr:
         count += 1
@@ -35,8 +38,11 @@ def updateAnswer(jobid,inputPath,filename):
 
         if len(properties) == 0:
             # give up those no properties' article
-            print "#%d - give up %s (1)" % (jobid,articleID)
+            # print "#%d - give up %s (1)" % (jobid,articleID)
+            ty1g += 1
             continue
+        
+        needUpdate = len(properties)
 
         lines = projizz.articleSimpleSentenceFileter(contenJson[articleID])
         text = ""
@@ -69,10 +75,15 @@ def updateAnswer(jobid,inputPath,filename):
             
         if len(properties) > 0:
             articles.append(articleID)
+            if not len(properties) == needUpdate:
+                updateC += 1
+                ans["properties"] = properties
+                answerCollection.update({"revid":articleID},ans,upsert=False)
         else:
-            print "#%d - give up %s (2)" % (jobid,articleID)
+            ty2g += 1
+            #print "#%d - give up %s (2)" % (jobid,articleID)
 
-    print "#%d - get %d" % (jobid,len(articles))
+    print "#%d -> %d (update %d) (give up %d + %d)" % (jobid,len(articles),updateC,ty1g,ty2g)
 
     return (filename,articles)
 
