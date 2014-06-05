@@ -49,7 +49,7 @@ def updateAnswer(jobid,inputPath,filename):
         for line in lines:
             text += (line + " ")
 
-        notNeed = []
+        observed = []
         for pro in properties:
             
             pitr = factCollection.find({"property":pro,"subject":articleName})
@@ -66,24 +66,18 @@ def updateAnswer(jobid,inputPath,filename):
                         break
                 if found:
                     break
-            if not found:
-                print "#%d - %s" % (jobid,pro)
-                notNeed.append(pro)
-
-        for noneed in notNeed:
-            properties.remove(noneed)
+            if found:
+                observed.append()
             
-        if len(properties) > 0:
+        if len(observed) > 0:
             articles.append(articleID)
-            if not len(properties) == needUpdate:
-                updateC += 1
-                ans["properties"] = properties
-                answerCollection.update({"revid":articleID},ans,upsert=False)
+            ans["observed"] = observed
+            answerCollection.update({"revid":articleID},ans,upsert=False)
         else:
             ty2g += 1
             #print "#%d - give up %s (2)" % (jobid,articleID)
 
-    print "#%d -> %d (update %d) (give up %d + %d)" % (jobid,len(articles),updateC,ty1g,ty2g)
+    print "#%d -> update %d (give up %d + %d)" % (jobid,len(articles),ty1g,ty2g)
 
     return (filename,articles)
 
