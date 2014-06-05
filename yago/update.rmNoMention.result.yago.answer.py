@@ -22,9 +22,59 @@ def updateAnswer(jobid,inputPath,filename):
 
     itr = answerCollection.find({"revid":{"$in":queries}})
     print "#%d - query=%d,result=%d" % (jobid,len(queries),itr.count())
+    
+    count = 0
+    articles = []
+    for ans in itr:
+        count += 1
+        articleID = "%s.txt" % (ans["revid"])
+        articleName = ans["_id"]
+        properties = ans["properties"]
+        #not consider references.
+        #references = ans["references"]
 
+        if len(properties) == 0:
+            # give up those no properties' article
+            print "#%d - give up %s (1)" % (jobid,articleID)
+            continue
 
+        lines = projizz.articleSimpleSentenceFileter(contenJson[articleID])
+        text = ""
+        for line in lines:
+            text += (line + " ")
 
+        notNeed = []
+        for pro in properties:
+            
+            pitr = factCollection.find({"property":pro,"subject":articleName})
+            if pitr.count() < 1:
+                notNeed.append(pro)
+                continue
+
+            found = False
+            for fact in pitr:
+                tokens = projizz.getNamedEntityTokens(fact["object"])
+                for token in tokens:
+                    if token in text:
+                        found = True
+                        break
+                if found:
+                    break
+            if not found:
+                print "#%d - %s" % (jobid,pro)
+                notNeed.append(pro)
+
+        for noneed in notNeed:
+            properties.remove(noneed)
+            
+        if len(properties) > 0:
+            articles.append(articleID)
+        else:
+            print "#%d - give up %s (2)" % (jobid,articleID)
+
+    print "#%d - get %d" % (jobid,len(articles))
+
+    return (filename,articles)
 
 def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
@@ -42,8 +92,10 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
     t = 0
     for filename in os.listdir(inputPath):
         if ".json" in filename:
+            t += 1
             if debug:
                 result.append(updateAnswer(t,inputPath,filename))
+                break
             else:
                 result.append(pool.apply_async(updateAnswer, (t,inputPath,filename)))
 
