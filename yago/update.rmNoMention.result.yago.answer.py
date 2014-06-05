@@ -106,6 +106,17 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
 
     # Rebuild articles and patterns
 
+    tmpArticle = {}
+    tmpPtn = {}
+
+    for res in result:
+        if debug:
+            filename,articles = res
+        else:
+            filename,articles = res.get()
+
+        print filename,len(articles)
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 4:
