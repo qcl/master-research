@@ -97,7 +97,7 @@ def main(inputPath,inputPtnPath,outputPath,outputPtnPath):
     # Update answer
     cpuN = multiprocessing.cpu_count()
     print "CoreNumber = %d" % (cpuN)
-    pool = multiprocessing.Pool(processes=cpuN) 
+    pool = multiprocessing.Pool(processes=12) 
     t = 0
     for filename in os.listdir(inputPath):
         if ".json" in filename:
