@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 # qcl
-#
+# using table information to calculate overlay of each relation
 
 def calculateOverlay():
     
-    # using table information to calculate overlay of each relation
     
     pass
 
