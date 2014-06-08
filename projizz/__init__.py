@@ -181,6 +181,23 @@ def readPrefixTreeModel(modelJsonPath):
 
     return model, idTable
 
+def naiveMatchPattern(ptnPlainText,model):
+    m = model
+    t = ptnPlainText.split(" ")
+    ptnId = -1
+    found = True
+    for token in t:
+        if token in m:
+            m = m[token]
+        else:
+            found = False
+            break
+
+    if "_id_" in m and found:
+        ptnId = m["_id_"]
+
+    return ptnId
+
 def naiveExtractPatternsFromListOfWords(words,model):
     return naiveExtractPatterns(zip(words,["_na_"]*len(words)),model,usePos=False)
 
