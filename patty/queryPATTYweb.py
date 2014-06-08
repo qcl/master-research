@@ -5,6 +5,7 @@ import os
 import sys
 import urllib
 import urllib2
+import projizz
 
 url = "https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/pattyweb/index"
 headers = {
@@ -28,16 +29,26 @@ urlopener = urllib2.build_opener( urllib2.HTTPSHandler() )
 
 #print result
 
-f = open("./patty.dbpedia.Relations.json")
-for line in f:
-    if "," in line:
-        relaName = line[2:-3]
-        print relaName
-        request = urllib2.Request(url,getData(relaName),headers)
-        g = open("./relationships/%s.txt" % (relaName), "w")
-        response = urlopener.open(request)
-        result = response.read()
-        g.write(result)
-        g.close()
-f.close()
+#f = open("./patty.dbpedia.Relations.json")
+#for line in f:
+#    if "," in line:
+#        relaName = line[2:-3]
+#        print relaName
+#        request = urllib2.Request(url,getData(relaName),headers)
+#        g = open("./relationships/%s.txt" % (relaName), "w")
+#        response = urlopener.open(request)
+#        result = response.read()
+#        g.write(result)
+#        g.close()
+#f.close()
+
+for relaName in projizz.getYagoRelation():
+    print relaName
+    request = urllib2.Request(url,getYAGOData(relaName),headers)
+    g = open("./yagoRela/%s.txt" % (relaName), "w")
+    response = urlopener.open(request)
+    result = response.read()
+    g.write(result)
+    g.close()
+
 
