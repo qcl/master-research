@@ -114,8 +114,14 @@ def parseYagoData():
 
     else:
         c = 0
+        used = 0
         for pid in table:
             if table[pid]["used"]:
+                # 如果有true或false在，就只留True的Pattern
+                if "eval" in table[pid]:
+                    if not table[pid]["eval"]:
+                        continue
+                used += 1
                 for relation in table[pid]["relations"]:
                     if not relation in ptnByRelation:
                         ptnByRelation[relation] = []
@@ -125,18 +131,39 @@ def parseYagoData():
                 c += 1
 
     # 一些小計算
-    for relation in ptnByRelation:
-        print relation,len(ptnByRelation[relation])
+    #for relation in ptnByRelation:
+    #    print relation,len(ptnByRelation[relation])
     
     # 找最高（意思就是不能再更高了）信心值
     # 每組Relation的最高之中最小的那一個
 
+    minC = 1.0
+    minCR = ""
     for relation in ptnByRelation:
+        c75 = 0
+        c50 = 0
         ptns = []
         for pid in ptnByRelation[relation]:
             ptns.append(table[pid])
+            ptns[-1]["pid"] = pid
         ptns.sort(key=lambda x:x["confidence"],reverse=True)
-        print relation,ptns[0]
+        if ptns[0]["confidence"] < minC:
+            minC = ptns[0]["confidence"]
+            minCR = relation
+        
+        #print relation,ptns[0]
+        f = open("./yagoSortedRela/%s.txt" % (relation),"w")
+        for ptn in ptns:
+            if ptn["confidence"] > .75:
+                c75 += 1
+            if ptn["confidence"] > .5:
+                c50 += 1
+            f.write("%s\t%s\t%.3f\t%d\t%s\n" % (ptn["pid"],ptn["pattern"],ptn["confidence"],ptn["support"],ptn["relations"]))
+        f.close()
+
+        print relation,len(ptns),c75,c50
+
+    print minCR,minC,"pattern used:",used
 
 if __name__ == "__main__":
     parseYagoData()
