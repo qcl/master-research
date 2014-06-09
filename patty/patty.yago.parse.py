@@ -131,6 +131,12 @@ def parseYagoData():
     # 找最高（意思就是不能再更高了）信心值
     # 每組Relation的最高之中最小的那一個
 
+    for relation in ptnByRelation:
+        ptns = []
+        for pid in ptnByRelation[relation]:
+            ptns.append(table[pid])
+        ptns.sort(key=lambda x:x["confidence"],reverse=True)
+        print relation,ptns[0]
 
 if __name__ == "__main__":
     parseYagoData()
