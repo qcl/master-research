@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.03
+modify: 2014.06.10
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -358,7 +358,7 @@ def getSortedPatternStatistic(propertyStatistic):
     return ptnTable
 
 def getNamedEntityTokens(namedEntity):
-    return namedEntity.replace("(","").replace(")","").replace(",","").replace("[","").replace("]","").replace("!","").replace("?","").replace("&","").replace("-","").replace("The","").replace("And","").replace("and","").replace("the","").replace(";","").replace("'s","").replace("\"","").split("_")
+    return namedEntity.replace("(","").replace(")","").replace(",","").replace("[","").replace("]","").replace("!","").replace("?","").replace("&","").replace("-","").replace("The","").replace("And","").replace("and","").replace("the","").replace(";","").replace("'s","").replace("\"","").replace("of","").split("_")
 
 
 #
