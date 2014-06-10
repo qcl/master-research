@@ -75,6 +75,16 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                 # if only one relation
                 if len(rfp) < 2:
 
+                    if "holdsPoliticalPosition" in rfp:
+                        foundPosition = False
+                        for position in politicalPosition:
+                            if position in lineText and not "holdsPoliticalPosition" in relaEx:
+                                relaEx.append("holdsPoliticalPosition")
+                                break
+                        if foundPosition:
+                            continue
+
+
                     if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
                         relaEx.append(rfp[0])
 
