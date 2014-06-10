@@ -135,7 +135,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             
 def main(inputPtnPath,outputPath,pspath,inputPath):
     
-    model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
+    model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"tn":[],"fp":[],"fn":[]})
     st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
     domainRange = projizz.getYagoRelationDomainRange()
