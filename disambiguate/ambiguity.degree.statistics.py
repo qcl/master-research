@@ -35,20 +35,37 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
         key = "%s.txt" % (ans["revid"])
 
         # Now only consider properties, no references.
-        relation = ans["properties"]
+        relation = ans["observed"]
         
         ptnEx = contentPtnJson[key]
 
-        uniPtnIds = []
+        uniPtnIds = {}
         for line in ptnEx:
             for ptn in line[1]: # line[0] is line number, line[1] is the content of line.
                 ptnId = "%d" % (ptn[0]) # [patternId, start, to]
+
+                # ptn id not in table, ignroe
+                if not ptnId in table:
+                    continue
+
+                # for table using confidence
+                if not table[ptnId]["used"]:    # ignore non-used pattern
+                    continue
+                if "eval" in table[ptnId] and not table[ptnId]["eval"]:
+                    continue                    # ignore eval=false 's pattern
+
+                # here, is validated pattern.
                 if not ptnId in uniPtnIds:
-                    uniPtnIds.append(ptnId)
+                    uniPtnIds[ptnId] = 0
+                uniPtnIds[ptnId] += 1           # count sentence level freq.
 
         for ptnId in uniPtnIds:
             
             ptnR = table[ptnId]["relations"]
+            degree = len(ptnR)
+
+            if not degree in properties:
+                properties[degree] = {}
                 
             for rela in ptnR:
 
