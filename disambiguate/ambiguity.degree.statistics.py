@@ -22,10 +22,6 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
     itr = collection.find({"revid":{"$in":queries}})
     print "worker %d query=%d, result=%d" % (jobid,len(queries),itr.count())
 
-    # TODO
-    # use observed
-    # deg ptnId occ:[] / sup:{rela:}
-
     patterns = {}
 
     count = 0
@@ -33,7 +29,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
     for ans in itr:
         count += 1
         key = "%s.txt" % (ans["revid"])
-
+        articleId = ans["revid"]
         # Now only consider properties, no references.
         relation = ans["observed"]
         
@@ -61,12 +57,26 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
 
         for ptnId in uniPtnIds:
             
-            ptnR = table[ptnId]["relations"]
-            degree = len(ptnR)
+            ptnR = table[ptnId]["relations"]    # the pattern may used in those relations
+            degree = len(ptnR)                  # the degree of ambiguity
 
             if not degree in properties:
                 properties[degree] = {}
-                
+            
+            # TODO
+            # use observed
+            # deg ptnId occ:[] / sup:{rela:}
+
+            if not ptnId in properties[degree]:
+                properties[degree][ptnId] = {"occ":[],"sup":{}}
+
+            if not articleId in properties[degree][ptnId]["occ"]:
+                properties[degree][ptnId]["occ"].append(articleId)
+
+            for rela in ptnR:
+                if 
+
+            # FIXME
             for rela in ptnR:
 
                 if not ptnId in properties[rela]:
