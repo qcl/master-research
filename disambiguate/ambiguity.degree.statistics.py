@@ -62,10 +62,6 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
 
             if not degree in properties:
                 properties[degree] = {}
-            
-            # TODO
-            # use observed
-            # deg ptnId occ:[] / sup:{rela:}
 
             if not ptnId in properties[degree]:
                 properties[degree][ptnId] = {"occ":[],"sup":{}}
@@ -74,18 +70,11 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
                 properties[degree][ptnId]["occ"].append(articleId)
 
             for rela in ptnR:
-                if 
-
-            # FIXME
-            for rela in ptnR:
-
-                if not ptnId in properties[rela]:
-                    properties[rela][ptnId] = {"total":0,"support":0}
-
-                properties[rela][ptnId]["total"] += 1
-                
-                if rela in relation:
-                    properties[rela][ptnId]["support"] += 1
+                if rela in relation:    # hit!
+                    if not rela in properties[degree][ptnId]["sup"]:
+                        properties[degree][ptnId]["sup"][rela] = []
+                    if not articleId in properties[degree][ptnId]["sup"][rela]:
+                        properties[degree][ptnId]["sup"][rela].append(articleId) 
 
     return properties
 
@@ -111,15 +100,25 @@ def main(inputPtnPath,outputPath):
     for res in result:
         r = res.get()
 
-        # TODO
+        for degree in r:
+            if not degree in properties:
+                properties[degree] = {}
 
-        for rela in r:
-            for ptnId in r[rela]:
-                if not ptnId in properties[rela]:
-                    properties[rela][ptnId] = {"total":0,"support":0}
-                properties[rela][ptnId]["total"] += r[rela][ptnId]["total"]
-                properties[rela][ptnId]["support"] += r[rela][ptnId]["support"]
-   
+            for ptnId in r[degree]:
+                if not ptnId in properties[degree]:
+                    properties[degree][ptnId] = {"occ":[],"sup":{}}
+
+                for occId in r[degree][ptnId]["occ"]:
+                    if not occId in properties[degree][ptnId]["occ"]:
+                        properties[degree][ptnId]["occ"].append(occId)
+
+                for rela in r[degree][ptnId]["sup"]:
+                    if not rela in properties[degree][ptnId]["sup"]:
+                        properties[degree][ptnId]["sup"][rela] = []
+                    for supId in r[degree][ptnId]["sup"][rela]:
+                        if not supId in properties[degree][ptnId]["sup"][rlea]:
+                            properties[degree][ptnId]["sup"][rela].append(supId)
+
     json.dump(properties,open(outputPath,"w"))
 
     diff = datetime.now() - start_time
