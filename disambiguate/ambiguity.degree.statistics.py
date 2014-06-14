@@ -123,6 +123,23 @@ def main(inputPtnPath,outputPath):
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
+    
+    ptnNum = 0
+    occDocs = []
+    for degree in range(1,18):
+        if not degree in properties:
+            print "%d\t%d\t%d\t%d" % (degree,0,ptnNum,len(occDocs))
+        else:
+            num = len(properties[degree])
+            ptnNum += num
+            for ptnId in properties[degree]:
+                for aid in properties[degree][ptnId]["occ"]:
+                    if not aid in occDocs:
+                        occDocs.append(aid)
+
+            print "%d\t%d\t%d\t%d" % (degree,num,ptnNum,len(occDocs))
+
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 2:
