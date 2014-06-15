@@ -127,7 +127,9 @@ def main(inputPtnPath,outputPath):
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
-    
+   
+    # FIXME 儲存為JSON之後下面這段好像會跑非常非常久 
+
     ptnNum = 0
     occDocs = []
     for degree in range(1,18):
@@ -149,7 +151,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 2:
         inputPtnPath = sys.argv[1]
         outputPath = sys.argv[2]
+        # TODO 需要注意路徑不存在的問題？
         main(inputPtnPath,outputPath)
     else:
         print "$ python ./ambiguity.degree.statistics.py [input-ptn-dir] [output-filename.json]"
-
