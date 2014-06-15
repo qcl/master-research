@@ -15,7 +15,7 @@ def outputStatistics(jsonPath):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        jsonPath = sys.argv
+        jsonPath = sys.argv[1]
         outputStatistics(jsonPath)
     else:
         print "$ python ./ambiguity.degree.output.py [jsonPath]"
