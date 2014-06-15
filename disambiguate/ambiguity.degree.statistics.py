@@ -76,6 +76,10 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
                     if not articleId in properties[degree][ptnId]["sup"][rela]:
                         properties[degree][ptnId]["sup"][rela].append(articleId) 
 
+        if count % 100 == 0:
+            print "worker %d , deal with %d cases" % (jobid,count)
+            
+
     return properties
 
 def main(inputPtnPath,outputPath):
@@ -116,7 +120,7 @@ def main(inputPtnPath,outputPath):
                     if not rela in properties[degree][ptnId]["sup"]:
                         properties[degree][ptnId]["sup"][rela] = []
                     for supId in r[degree][ptnId]["sup"][rela]:
-                        if not supId in properties[degree][ptnId]["sup"][rlea]:
+                        if not supId in properties[degree][ptnId]["sup"][rela]:
                             properties[degree][ptnId]["sup"][rela].append(supId)
 
     json.dump(properties,open(outputPath,"w"))
