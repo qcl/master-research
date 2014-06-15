@@ -10,6 +10,8 @@ def outputStatistics(jsonPath):
     # Read file in.
     properties = projizz.jsonRead(jsonPath)
 
+    for degree in properties:
+        print degree
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
