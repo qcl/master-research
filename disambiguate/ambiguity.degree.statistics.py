@@ -147,5 +147,5 @@ if __name__ == "__main__":
         outputPath = sys.argv[2]
         main(inputPtnPath,outputPath)
     else:
-        print "$ python ./yago.pattern.statistics.py [input-ptn-dir] [output-filename.json]"
+        print "$ python ./ambiguity.degree.statistics.py [input-ptn-dir] [output-filename.json]"
 
