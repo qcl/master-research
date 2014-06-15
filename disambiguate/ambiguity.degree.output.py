@@ -11,7 +11,7 @@ def outputStatistics(jsonPath):
     properties = projizz.jsonRead(jsonPath)
 
     for degree in range(1,18):
-        if not degree in properties:
+        if not "%d" % (degree) in properties:
             print "%d\t%d" % (degree,0)
         else:
             print "%d\t%d" % (degree,len(properties[degree]))
