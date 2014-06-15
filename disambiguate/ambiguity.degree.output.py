@@ -18,7 +18,7 @@ def outputStatistics(jsonPath):
         else:
             print "%s\t%d" % (degree,len(properties[degree]))
             for ptnId in properties[degree]:
-                for articleId in properties[degree]["occ"]:
+                for articleId in properties[degree][ptnId]["occ"]:
                     if not articleId in occDocs:
                         occDocs.append(articleId)
 
