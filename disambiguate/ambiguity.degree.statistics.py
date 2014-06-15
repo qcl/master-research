@@ -24,6 +24,8 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
 
     patterns = {}
 
+    statistics = {}
+
     count = 0
 
     for ans in itr:
@@ -55,10 +57,17 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
                     uniPtnIds[ptnId] = 0
                 uniPtnIds[ptnId] += 1           # count sentence level freq.
 
+
+        degrees = []
+
         for ptnId in uniPtnIds:
             
             ptnR = table[ptnId]["relations"]    # the pattern may used in those relations
             degree = len(ptnR)                  # the degree of ambiguity
+
+            # for articles statistics
+            if not degree in degrees:
+                degrees.append(degree)
 
             if not degree in properties:
                 properties[degree] = {}
@@ -76,11 +85,12 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
                     if not articleId in properties[degree][ptnId]["sup"][rela]:
                         properties[degree][ptnId]["sup"][rela].append(articleId) 
 
+        statistics[articleId] = degrees
+
         if count % 100 == 0:
             print "worker %d , deal with %d cases" % (jobid,count)
             
-
-    return properties
+    return properties,statistics
 
 def main(inputPtnPath,outputPath):
     
@@ -101,8 +111,10 @@ def main(inputPtnPath,outputPath):
     pool.close()
     pool.join()
 
+    statistics = {}
+
     for res in result:
-        r = res.get()
+        r,s = res.get()
 
         for degree in r:
             if not degree in properties:
@@ -123,6 +135,9 @@ def main(inputPtnPath,outputPath):
                         if not supId in properties[degree][ptnId]["sup"][rela]:
                             properties[degree][ptnId]["sup"][rela].append(supId)
 
+        for aid in s:
+            statistics[aid] = s[aid]
+
     json.dump(properties,open(outputPath,"w"))
 
     diff = datetime.now() - start_time
@@ -134,17 +149,20 @@ def main(inputPtnPath,outputPath):
     occDocs = []
     for degree in range(1,18):
         if not degree in properties:
-            print "%d\t%d\t%d\t%d" % (degree,0,ptnNum,len(occDocs))
+            print "%d\t%d\t%d\t%d" % (degree,0,0,0)
         else:
-            num = len(properties[degree])
-            ptnNum += num
-            for ptnId in properties[degree]:
-                for aid in properties[degree][ptnId]["occ"]:
-                    if not aid in occDocs:
-                        occDocs.append(aid)
+            occ = 0
+            occs = 0
+            for a in statistics:
+                ds = statistics[a]
+                if degree in ds:
+                    occ += 1
+                for i in ds:
+                    if i <= degree:
+                        occs += 1
+                        break
 
-            print "%d\t%d\t%d\t%d" % (degree,num,ptnNum,len(occDocs))
-
+            print "%d\t%d\t%d\t%d" % (degree,len(properties[degree]),occ,occs)
 
 
 if __name__ == "__main__":
