@@ -11,6 +11,8 @@ import simplejson as json
 import pymongo
 from datetime import datetime
 
+c_confidence = 0.7
+
 def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
     print "Worker %d : Read %s into filter" % (jobid,filename)
@@ -51,6 +53,10 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties):
                     continue
                 if "eval" in table[ptnId] and not table[ptnId]["eval"]:
                     continue                    # ignore eval=false 's pattern
+
+                # Check the confidence value
+                if table[ptnId]["confidence"] < c_confidence:
+                    continue
 
                 # here, is validated pattern.
                 if not ptnId in uniPtnIds:
@@ -113,8 +119,11 @@ def main(inputPtnPath,outputPath):
 
     statistics = {}
 
+    counter = 0
     for res in result:
         r,s = res.get()
+        counter += 1
+        print "%d / %d ..." % (counter,len(result))
 
         for degree in r:
             if not degree in properties:
@@ -147,9 +156,25 @@ def main(inputPtnPath,outputPath):
 
     ptnNum = 0
     occDocs = []
+
+    ptnDeg = {}
+
+    for ptnId in table: 
+        if table[ptnId]["used"]:
+            if "eval" in table[ptnId] and not table[ptnId]["eval"]:
+                continue
+
+            if table[ptnId]["confidence"] > c_confidence:
+                deg = len(table[ptnId]["observed"])
+                if not deg in ptnDeg:
+                    ptnDeg[deg] = 0
+
+                ptnDeg[deg] += 1
+
+
     for degree in range(1,18):
         if not degree in properties:
-            print "%d\t%d\t%d\t%d" % (degree,0,0,0)
+            print "%d\t%d\t%d\t%d\t%d" % (degree,0,0,0,0)
         else:
             occ = 0
             occs = 0
@@ -162,7 +187,7 @@ def main(inputPtnPath,outputPath):
                         occs += 1
                         break
 
-            print "%d\t%d\t%d\t%d" % (degree,len(properties[degree]),occ,occs)
+            print "%d\t%d\t%d\t%d\t%d" % (degree,ptnDeg[degree],len(properties[degree]),occ,occs)
 
     # Calculate the number of articles which has no pattern.
     noPtnCount = 0
