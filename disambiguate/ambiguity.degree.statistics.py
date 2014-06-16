@@ -166,7 +166,7 @@ def main(inputPtnPath,outputPath):
                 continue
 
             if table[ptnId]["confidence"] > c_confidence:
-                deg = len(table[ptnId]["observed"])
+                deg = len(table[ptnId]["relations"])
                 if not deg in ptnDeg:
                     ptnDeg[deg] = 0
 
