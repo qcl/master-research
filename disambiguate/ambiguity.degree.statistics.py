@@ -164,6 +164,15 @@ def main(inputPtnPath,outputPath):
 
             print "%d\t%d\t%d\t%d" % (degree,len(properties[degree]),occ,occs)
 
+    # Calculate the number of articles which has no pattern.
+    noPtnCount = 0
+    for a in statistics:
+        ds = statistics
+        if len(ds) == 0:
+            noPtnCount += 1
+
+    print noPtnCount,len(statistics)
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 2:
