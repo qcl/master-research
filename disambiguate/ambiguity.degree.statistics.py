@@ -167,7 +167,7 @@ def main(inputPtnPath,outputPath):
     # Calculate the number of articles which has no pattern.
     noPtnCount = 0
     for a in statistics:
-        ds = statistics
+        ds = statistics[a]
         if len(ds) == 0:
             noPtnCount += 1
 
