@@ -28,7 +28,7 @@ def main(inputResultFile):
             m = result[model]
 
             if not model in r:
-                r[model] = {"fp":0,"tn":0,"tp":0,"fn":0}
+                r[model] = {"fp":0,"tp":0,"fn":0}
             if not model in precision:
                 precision[model] = []
             if not model in recall:
@@ -37,7 +37,7 @@ def main(inputResultFile):
 
             j = r[model]
             j["tp"] += len(m["tp"])
-            j["tn"] += len(m["tn"])
+            #j["tn"] += len(m["tn"])
             j["fp"] += len(m["fp"])
             j["fn"] += len(m["fn"])
             #print model,"tp",len(m["tp"]),m
@@ -57,15 +57,15 @@ def main(inputResultFile):
             else:
                 rec = float(m["tp"])/float(m["tp"]+m["fn"])
         
-            if float(m["tp"]+m["tn"]+m["fp"]+m["fn"]) == .0:
-                acc = .0
-            else:
-                acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
-        
-            if pre+rec == .0:
-                fsc = .0
-            else:
-                fsc = (2*pre*rec)/(pre+rec)
+            #if float(m["tp"]+m["tn"]+m["fp"]+m["fn"]) == .0:
+            #    acc = .0
+            #else:
+            #    acc = float(m["tp"]+m["tn"])/float(m["tp"]+m["tn"]+m["fp"]+m["fn"])
+            #
+            #if pre+rec == .0:
+            #    fsc = .0
+            #else:
+            #    fsc = (2*pre*rec)/(pre+rec)
         
             precision[model].append(pre)
             recall[model].append(rec)
