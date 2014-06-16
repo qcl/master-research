@@ -48,8 +48,8 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             else:
                 keyname = "%d-1-%s" % (deg,typ)
                 expResult[keyname] = copy.deepcopy(partAns)
-
-
+    
+    print "worker %d build expResult" % (jobid)
 
     for ans in itr:
         count += 1
@@ -66,7 +66,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 
             args = keyname.split("-")
             degree = int(args[0])
-            ambig  = args[1]
+            ambigu = args[1]
             typ    = args[2]
 
             # Relation extraction
