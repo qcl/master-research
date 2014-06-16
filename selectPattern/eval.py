@@ -132,67 +132,56 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                 
                         elif ambigu == "all":
                             for ptnst in st[ptnId]:
-                                # TODO
+                                if typ == "t":
+                                    if domainRange[ptnst[0]]["domain"] in types:
+                                        if not ptnst[0] in relaEx:
+                                            relaEx.append(ptnst[0])
+                                else:
+                                    if not ptnst[0] in relaEx:
+                                        relaEx.append(ptnst[0])
                         else:
-                            # TODO
                             th = 0.75
                             if ambigu == "50":
                                 th = 0.5
-                            pass
+                            
+                            b = st[ptnId][0][1]["support"]
+                            if b > 0:
+                                for ptnst in st[ptnId]:
+                                    if float(ptnst[1]["support"])/float(b) >= th:
+                                        if typ == "t":
+                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx:
+                                                relaEx.append(ptnst[0])
+                                        else:
+                                            if not ptnst[0] in relaEx:
+                                                relaEx.append(ptnst[0])
+
             
             # Evaluation
-            # TODO
+            for attribute in expResult[keyname]:
 
-        # XXX
-                # if only one relation
-                if len(rfp) < 2:
+                # special case, ignore.
+                if attribute == "produced":
+                    continue
 
-                    if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
-                        relaEx.append(rfp[0])
+                postive = False
+                true = False
 
-                # more than one relation
+                if attribute in relaEx:
+                    postive = True
+                if attribute in relation:
+                    true = True
+            
+                if true:
+                    if postive:
+                        expResult[keyname][attribute]["tp"].append(ans["revid"])
+                    else:
+                        expResult[keyname][attribute]["fn"].append(ans["revid"])
                 else:
-                    # using the first as the answer
-                    if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
-                        relaEx.append(rfp[0])
-
-        # Remove impossible relations
-        toBeRemove = []
-        for attribute in relaEx:
-            # speical case, produced
-            if domainRange[attribute] == "":
-                continue
-
-            if not domainRange[attribute]["domain"] in types:
-                if not attribute in toBeRemove:
-                    toBeRemove.append(attribute)
-
-        for attribute in toBeRemove:
-            relaEx.remove(attribute)
-
-        # Evaluation
-        for attribute in partAns:
-            postive = False
-            true = False
-
-            if attribute in relaEx:
-                postive = True
-            if attribute in relation:
-                true = True
-
-            if true:
-                if postive:
-                    partAns[attribute]["tp"].append(ans["revid"])
-                else:
-                    partAns[attribute]["fn"].append(ans["revid"])
-            else:
-                if postive:
-                    partAns[attribute]["fp"].append(ans["revid"])
-                else:
-                    partAns[attribute]["tn"].append(ans["revid"])
-    return partAns
-        
-        # XXX
+                    if postive:
+                        expResult[keyname][attribute]["fp"].append(ans["revid"])
+                    else:
+                        # ignore true-negative
+                        pass
     
         if count % 100 == 0:
             print "worker #%d done %d." % (jobid,count)
@@ -203,7 +192,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 #   Main Program
 #
 #
-def main(inputPtnPath,outputPath,pspath,inputPath,confidence):
+def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
     
     #model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
@@ -224,30 +213,44 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence):
     pool.close()
     pool.join()
 
-    # XXX
-    # FIXME
+    expResult = {}
     for res in result:
         r = res.get()
-        for m in r:
-            properties[m]["tp"] += r[m]["tp"]
-            properties[m]["tn"] += r[m]["tn"]
-            properties[m]["fp"] += r[m]["fp"]
-            properties[m]["fn"] += r[m]["fn"]
+        for keyname in r:
 
-    print "start write out to %s" % (outputPath)
-    json.dump(properties,open(outputPath,"w"))
+            if not keyname in expResult:
+                expResult[keyname] = copy.deepcopy(properties)
+
+            for m in r[keyname]:
+                if m == "produced":
+                    continue
+                expResult[keyname][m]["tp"] += r[m]["tp"]
+                expResult[keyname][m]["fp"] += r[m]["fp"]
+                expResult[keyname][m]["fn"] += r[m]["fn"]
+
+
+    if not os.path.isdir(outputPath):
+        os.mkdir(outputPath)
+
+    for keyname in expResult:
+        p = expResult[keyname]
+        if not os.path.isdir(os.path.join(outputPath,keyname)):
+            os.mkdir(os.path.join(outputPath,keyname))
+        projizz.jsonWrite(p,os.path.join(outputPath,keyname,outputFilename))
+        print "start write out to %s" % (os.path.join(outputPath,keyname))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 5:
+    if len(sys.argv) > 6:
         inputPtnPath = sys.argv[1]
         inputPath = sys.argv[2]
         pspath = sys.argv[3]
         outputPath = sys.argv[4]
-        confidence = float(sys.argv[5])
-        main(inputPtnPath,outputPath,pspath,inputPath,confidence)
+        outputFilename = sys.argv[5]
+        confidence = float(sys.argv[6])
+        main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename)
     else:
-        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [output-filename.out] [confidence]"
+        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence]"
 
