@@ -72,6 +72,8 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,properties,confidence
                 if rela in relation:
                     properties[rela][ptnId]["support"] += 1
 
+    print "Worker %d done." % (jobid)
+
     return properties
 
 
@@ -84,7 +86,7 @@ def main(inputPtnPath,outputPath,confidence):
 
     #model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     # using new table (2014.06.16)
-    model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
+    model, table = projizz.readPrefixTreeModelWithTable("../yago/yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
 
     properties = projizz.buildYagoProperties({})
 
