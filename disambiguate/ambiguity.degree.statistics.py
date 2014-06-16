@@ -133,6 +133,9 @@ def main(inputPtnPath,outputPath):
                 if not ptnId in properties[degree]:
                     properties[degree][ptnId] = {"occ":[],"sup":{}}
 
+                # give up the code below for speed up
+                continue
+
                 for occId in r[degree][ptnId]["occ"]:
                     if not occId in properties[degree][ptnId]["occ"]:
                         properties[degree][ptnId]["occ"].append(occId)
@@ -151,8 +154,6 @@ def main(inputPtnPath,outputPath):
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
-   
-    # FIXME 儲存為JSON之後下面這段好像會跑非常非常久 
 
     ptnNum = 0
     occDocs = []
