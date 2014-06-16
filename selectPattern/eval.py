@@ -224,9 +224,9 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
             for m in r[keyname]:
                 if m == "produced":
                     continue
-                expResult[keyname][m]["tp"] += r[m]["tp"]
-                expResult[keyname][m]["fp"] += r[m]["fp"]
-                expResult[keyname][m]["fn"] += r[m]["fn"]
+                expResult[keyname][m]["tp"] += r[keyname][m]["tp"]
+                expResult[keyname][m]["fp"] += r[keyname][m]["fp"]
+                expResult[keyname][m]["fn"] += r[keyname][m]["fn"]
 
 
     if not os.path.isdir(outputPath):
