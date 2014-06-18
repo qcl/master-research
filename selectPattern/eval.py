@@ -96,6 +96,9 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                     if "eval" in table[ptnId] and not table[ptnId]["eval"]:
                         continue
 
+                    # if pattern is only one word, ignore (it's too general to decide which relation it relate to)
+                    #if table[ptnId][]
+
                     # check confidence
                     if table[ptnId]["confidence"] < confidence:
                         continue
