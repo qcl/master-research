@@ -97,7 +97,8 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                         continue
 
                     # if pattern is only one word, ignore (it's too general to decide which relation it relate to)
-                    #if table[ptnId][]
+                    if len(table[ptnId]["pattern"].split()) < 2:
+                        continue
 
                     # check confidence
                     if table[ptnId]["confidence"] < confidence:
