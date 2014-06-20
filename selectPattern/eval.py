@@ -86,7 +86,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 
                     ptnId = "%d" % (ptn[0])
 
-                    if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st):
+                    if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
                         continue
 
                     rfp = table[ptnId]["relations"]
