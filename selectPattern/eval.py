@@ -59,6 +59,10 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 
         # Now only consider properties, no references.
         relation = ans["observed"]
+
+        # origin properties, 理論上應該會比 observed 還要多
+        originRela = ans["properties"]
+        
         ptnEx = contentPtnJson[key]
         #article = projizz.articleSimpleSentenceFileter(contentJson[key])
 
@@ -81,27 +85,8 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                     # ptn[2]: end position in line
 
                     ptnId = "%d" % (ptn[0])
-                    
-                    # not in table
-                    if not ptnId in table:
-                        continue
-                    
-                    # not in `training set'
-                    if not ptnId in st:
-                        continue
 
-                    # if it's non-used pattern, ignore it.
-                    if not table[ptnId]["used"]:
-                        continue
-                    if "eval" in table[ptnId] and not table[ptnId]["eval"]:
-                        continue
-
-                    # if pattern is only one word, ignore (it's too general to decide which relation it relate to)
-                    if len(table[ptnId]["pattern"].split()) < 2:
-                        continue
-
-                    # check confidence
-                    if table[ptnId]["confidence"] < confidence:
+                    if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st):
                         continue
 
                     rfp = table[ptnId]["relations"]
