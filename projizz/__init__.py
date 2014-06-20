@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.10
+modify: 2014.06.20
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -360,6 +360,37 @@ def getSortedPatternStatistic(propertyStatistic):
 def getNamedEntityTokens(namedEntity):
     return namedEntity.replace("(","").replace(")","").replace(",","").replace("[","").replace("]","").replace("!","").replace("?","").replace("&","").replace("-","").replace("The","").replace("And","").replace("and","").replace("the","").replace(";","").replace("'s","").replace("\"","").replace("of","").split("_")
 
+def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
+    """isPatternValidate
+    檢查此一 pattern 是否可以在接下來的程序之中被使用。
+    ptnId: Pattern's id (string)
+    table: Pattern table
+    confidence: using confidence if confidence >= 0
+    """
+
+    # not in table
+    if not ptnId in table:
+        return False
+
+    # not in `training set'
+    if not st == None and not ptnId in st:
+        return False
+
+    # FIXME - some old table has no "used"
+    if not table[ptnId]["used"]:
+        return False
+    if "eval" in table[ptnId] and not table[ptnId]["eval"]:
+        return False
+
+    # XXX/TODO - ignore too short pattern (it's too general)
+    if len(table[ptnId]["pattern"].split()) < 2:
+        return False
+
+    # check confidence
+    if confidence >= 0 and table[ptnId]["confidence"] < confidence:
+        return False
+
+    return True
 
 #
 #   Classes
