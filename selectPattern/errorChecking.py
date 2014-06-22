@@ -18,9 +18,9 @@ from datetime import datetime
 # false - negative                 No  fn      tn
 
 # error type
-# (1)   
-# (2)
-# (3)
+# (1)   multiple choice, select other will got write 
+# (2)   in properties but not in observed
+# (3)   just a useless pattern?
 
 def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence):
     # read patterns in articles
@@ -81,6 +81,14 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 
             # Relation extraction
             relaEx = []
+            ptnExRela = {}  # rela: ptns
+
+            def recordPtnMakeRela(ptnId,rela,record):
+                if not rela in record:
+                    record[rela] = []
+                if not ptnId in recore[rela]:
+                    record[rela].append(ptnId)
+
             for line in ptnEx:
                 # line[0]: line number
                 # line[1]: array of patterns
@@ -92,23 +100,32 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 
                     ptnId = "%d" % (ptn[0])
 
+                    # validate the pattern 
                     if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
                         continue
 
+                    # get all possible relation of this pattern
                     rfp = table[ptnId]["relations"]
 
                     # check degree
                     if len(rfp) > degree:
                         continue
 
+                    #
+                    #   Decide to choice relation
+                    # 
+
                     if len(rfp) == 1:   # or degree == 1
                         if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
                             if typ == "t":
                                 if domainRange[rfp[0]]["domain"] in types:
                                     relaEx.append(rfp[0])
+                                    # FIXME For error checking
+                                    recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
                             else:
                                 relaEx.append(rfp[0])
-
+                                # FIXME For error checking
+                                recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
                     else:
                         if ambigu == "one":
                             if typ == "t":
@@ -118,12 +135,15 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                     if ptnst[1]["support"] > 0 and domainRange[ptnst[0]]["domain"] in types:
                                         if not ptnst[0] in relaEx:
                                             relaEx.append(ptnst[0])
+                                            # FIXME For error checking
+                                            recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                             break
-
                             
                             else:
                                 if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
                                     relaEx.append(rfp[0])
+                                    # FIXME For error checking
+                                    recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
                                 
                         elif ambigu == "all":
                             for ptnst in st[ptnId]:
@@ -131,9 +151,13 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                     if domainRange[ptnst[0]]["domain"] in types:
                                         if not ptnst[0] in relaEx:
                                             relaEx.append(ptnst[0])
+                                            # FIXME For error checking
+                                            recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                 else:
                                     if not ptnst[0] in relaEx:
                                         relaEx.append(ptnst[0])
+                                        # FIXME For error checking
+                                        recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                         else:
                             th = 0.75
                             if ambigu == "50":
@@ -146,9 +170,13 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                         if typ == "t":
                                             if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx:
                                                 relaEx.append(ptnst[0])
+                                                # FIXME For error checking
+                                                recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                         else:
                                             if not ptnst[0] in relaEx:
                                                 relaEx.append(ptnst[0])
+                                                # FIXME For error checking
+                                                recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
 
             
             # Evaluation
