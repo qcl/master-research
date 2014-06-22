@@ -201,7 +201,35 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                         expResult[keyname][attribute]["fn"].append(ans["revid"])
                 else:
                     if postive:
+                        # False Positive
                         expResult[keyname][attribute]["fp"].append(ans["revid"])
+                        # TODO - 分析錯誤原因
+                        if attribute in ptnExRela:
+                            if attribute in originRela:
+                                # type 2 error
+                                expResult[keyname][attribute]["et2"].append(ans["revid"])
+                            else:
+                                found = False
+                                ptns =  ptnExRela[attribute]    # get the patterns raise the Relation
+                                for pid in ptns:
+                                    for psbR in table[pid]["relations"]:
+                                        if psbR == attribute:
+                                            continue
+
+                                        # here means that the pattern can raise a `correct' relation in answer, may it choice or not
+                                        if domainRange[psbR]["domain"] in types and psbR in relation:
+                                            found = True
+                                            break
+
+                                if found:
+                                    # type 1 error
+                                    expResult[keyname][attribute]["et1"].append(ans["revid"])
+                                else:
+                                    # type 3 error
+                                    expResult[keyname][attribute]["et3"].append(ans["revid"])
+                        else:
+                            # 這是什麼情況？@@ 這種狀況基`本不可能發生吧XD
+                            pass
                     else:
                         # ignore true-negative
                         pass
@@ -219,7 +247,7 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
     
     #model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
-    properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[]})
+    properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[],"et1":[],"et2":[],"et3":[]})
     st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
     domainRange = projizz.getYagoRelationDomainRange()
 
@@ -250,6 +278,9 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
                 expResult[keyname][m]["tp"] += r[keyname][m]["tp"]
                 expResult[keyname][m]["fp"] += r[keyname][m]["fp"]
                 expResult[keyname][m]["fn"] += r[keyname][m]["fn"]
+                expResult[keyname][m]["et1"] += r[keyname][m]["et1"]
+                expResult[keyname][m]["et2"] += r[keyname][m]["et2"]
+                expResult[keyname][m]["et3"] += r[keyname][m]["et3"]
 
 
     if not os.path.isdir(outputPath):
