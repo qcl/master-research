@@ -86,7 +86,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             def recordPtnMakeRela(ptnId,rela,record):
                 if not rela in record:
                     record[rela] = []
-                if not ptnId in recore[rela]:
+                if not ptnId in record[rela]:
                     record[rela].append(ptnId)
 
             for line in ptnEx:
