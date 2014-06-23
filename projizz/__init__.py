@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.20
+modify: 2014.06.23
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -10,6 +10,7 @@ Add this to the $PYTHONPATH.
 #
 #   Imports
 #
+import os
 import re
 import nltk
 import copy
@@ -391,6 +392,13 @@ def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
         return False
 
     return True
+
+def checkPath(path):
+    """checkPath
+    if the path is not a dir, then mkdir it 
+    """
+    if not os.path.isdir(path):
+        os.mkdir(path)
 
 #
 #   Classes
