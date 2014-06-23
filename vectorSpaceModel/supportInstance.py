@@ -65,11 +65,22 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table):
                         if not ptnId in supportInstanceByFile[key]:
                             supportInstanceByFile[key][ptnId] = {}
                         if not rela in supportInstanceByFile[key][ptnId]:
-                            supportInstanceByFile[key][ptnId][rela]
+                            supportInstanceByFile[key][ptnId][rela] = []
 
-                        supportInstanceByFile[key][]
+                        if not line[0] in supportInstanceByFile[key][ptnId][rela]:
+                            supportInstanceByFile[key][ptnId][rela].append(line[0])
 
+        for ptnId in supportInstanceByFile[key]:
+            for rela in supportInstanceByFile[key][ptnId]:
+                lines = supportInstanceByFile[key][ptnId][rela]
+                supportInstanceByFile[key][ptnId][rela] = []
+                for lineN in lines:
+                    supportInstanceByFile[key][ptnId][rela].append(article[lineN])
 
+        if count % 100 == 0:
+            print "worker #%d done %d." % (jobid,count)
+
+    return supportInstanceByFile
 #
 #
 #
@@ -96,6 +107,8 @@ def preprocess(inputPath,inputPtnPath,outputPath):
     # Reducer
     # TODO
 
+    diff = datetime.now() - start_time
+    print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 #
 #
@@ -108,4 +121,4 @@ if __name__ == "__main__":
         outputPath = sys.argv[3]
         preprocess(inputPath,inputPtnPath,outputPath)
     else:
-        print "$ python ./preprocessModelForTraining.py [all-input-train-article-dir] [all-input-train-ptn-dir] [output-instance-dir]"
+        print "$ python ./supportInstance.py [all-input-train-article-dir] [all-input-train-ptn-dir] [output-instance-dir]"
