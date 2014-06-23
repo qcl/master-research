@@ -2,6 +2,7 @@
 # qcl
 # Proprecess for building VSM models to decide relation, at the same time, calculate the pattern's precision =p
 
+import os
 import sys
 import copy
 import projizz
@@ -58,7 +59,7 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table):
                 if not projizz.isPatternValidate(ptnId, table):
                     continue
 
-                for rela in table[ptnId]["relation"]:
+                for rela in table[ptnId]["relations"]:
                     # it's a support instance
                     if rela in relation:
                         
@@ -94,7 +95,10 @@ def preprocess(inputPath,inputPtnPath,outputPath):
     start_time = datetime.now()
 
     # Processes pool
-    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count())
+    proceessorNumber = multiprocessing.cpu_count()
+    if proceessorNumber > 20:
+        proceessorNumber = 20
+    pool = multiprocessing.Pool(processes=proceessorNumber)
     t = 0
     result = []
     for filename in os.listdir(inputPtnPath):
@@ -104,8 +108,27 @@ def preprocess(inputPath,inputPtnPath,outputPath):
     pool.close()
     pool.join()
 
+    patternInstances = {}
+
     # Reducer
-    # TODO
+    for r in result:
+        sibf = r.get()
+        for key in sibf:
+            for ptnId in sibf[key]:
+                if not ptnId in patternInstances:
+                    patternInstances[ptnId] = {}
+                for rela in sibf[key][ptnId]:
+                    for inst in sibf[key][ptnId][rela]:
+                        if not rela in patternInstances[ptnId]:
+                            patternInstances[ptnId][rela] = {}
+                        if not key in patternInstances[ptnId][rela]:
+                            patternInstances[ptnId][rela][key] = []
+                        patternInstances[ptnId][rela][key].append(inst)
+
+    
+    # Write to files
+    for ptnId in patternInstances:
+        projizz.jsonWrite(patternInstances[ptnId],os.path.join(outputPath,"%s.json" % (ptnId))) 
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
