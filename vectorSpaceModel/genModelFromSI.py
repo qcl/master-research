@@ -21,6 +21,11 @@ def mapper(jobid, filename, inputTestPath):
 #
 #
 def generate(inputSPIpath,inputTestPath,outputVSMpath):
+    
+    # Checking output path
+    projizz.checkPath(outputVSMpath)
+
+    model, table = projizz.readPrefixTreeModelWithTable("../yago/yagoPatternTree.model", "../patty/yagoPatternTreeWithConfidence.table")
 
     # Processes pool
     proceessorNumber = multiprocessing.cpu_count()
@@ -29,6 +34,7 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath):
     pool = multiprocessing.Pool(processes=proceessorNumber)
 
     # Collect not used keys
+    # because using 5-fold CV
     t = 0
     result = []
     for filename in os.listdir(inputTestPath):
@@ -43,8 +49,26 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath):
         ks = r.get()
         notUsedKeys += ks
 
-    print "not used:",notUsedKeys
-    print len(notUsedKeys)
+    # Build models for relation
+    # Paatern Selection
+    # TODO / FIXME 
+    # CHOICE (1) Build model by pattern (2) build model by relation
+    relations = projizz.buildYagoProperties({})
+
+    
+
+
+    ## Build by Relation -> need select patterns
+    
+
+
+
+    ## TODO Build by pattern
+
+
+    ### Build Model
+    ### Output pattern
+
 
 #
 #

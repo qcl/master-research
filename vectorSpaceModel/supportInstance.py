@@ -127,6 +127,11 @@ def preprocess(inputPath,inputPtnPath,outputPath):
 
     
     # Write to files
+    # NOTE
+    # Output Format:
+    # ptnId.json (json)
+    # rela: keys
+    #   key: line text
     for ptnId in patternInstances:
         projizz.jsonWrite(patternInstances[ptnId],os.path.join(outputPath,"%s.json" % (ptnId))) 
 
