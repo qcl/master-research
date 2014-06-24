@@ -9,14 +9,40 @@ import projizz
 #
 #
 #
-def mapper():
-    pass
+def mapper(jobid, filename, inputTestPath):
+    contentPtnJson = projizz.jsonRead( os.path.join(inputTestPath, filename) )
+    keys = map(lambda x: x, contentPtnJson)
+    print "Worker %d read %s, done." % (jobid, filename)
+    return keys
 
 #
 #
 #
 def generate(inputSPIpath,inputTestPath,outputVSMpath):
-    pass
+
+    # Processes pool
+    proceessorNumber = multiprocessing.cpu_count()
+    if proceessorNumber > 20:
+        proceessorNumber = 20
+    pool = multiprocessing.Pool(processes=proceessorNumber)
+
+    # Collect not used keys
+    t = 0
+    result = []
+    for filename in os.listdir(inputTestPath):
+        if ".json" in filename:
+            result.append( pool.apply_async( mapper, (t,filename,inputTestPath) )  )
+            t += 1
+    pool.close()
+    pool.join()
+
+    notUsedKeys = []
+    for r in result:
+        ks = r.get()
+        notUsedKeys += ks
+
+    print "not used:",notUsedKeys
+    print len(notUsedKeys)
 
 #
 #
