@@ -20,7 +20,7 @@ def mapper(jobid, filename, inputTestPath):
 #
 #
 #
-def generate(inputSPIpath,inputTestPath,outputVSMpath):
+def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
     
     # Checking output path
     projizz.checkPath(outputVSMpath)
@@ -74,11 +74,12 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath):
 #
 #
 if __name__ == "__main__":
-    if len(sys.argv) > 3:
+    if len(sys.argv) > 4:
         inputSPIpath = sys.argv[1]
         inputTestPath = sys.argv[2]
         outputVSMpath = sys.argv[3]
-        generate(inputSPIpath,inputTestPath,outputVSMpath)
+        confidence = float(sys.argv[4])
+        generate(inputSPIpath,inputTestPath,outputVSMpath,confidence)
     else:
-        print "$ python ./genModelFromSI.py [spi-all] [test-part-ptn] [output-model-dir]"
+        print "$ python ./genModelFromSI.py [spi-all] [test-part-ptn] [output-model-dir] [confidence]"
         
