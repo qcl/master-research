@@ -53,8 +53,10 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
     # Paatern Selection
     modelArticles = projizz.buildYagoProperties({})
     words = []
+    count = 0
     for filename in os.listdir(inputSPIpath):
         if ".json" in filename:
+            count += 1
             ptnId = filename[:-5]
 
             # ignore invalidate pattern
@@ -83,6 +85,10 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
 
                             # Term Freq
                             modelArticles[rela][token] += 1
+    
+            if count%100 == 0:
+                print "Read",count,"files"
+
 
     print "Build",len(modelArticles),"articles,",len(words),"tokens"
     
