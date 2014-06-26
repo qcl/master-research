@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.23
+modify: 2014.06.26
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -23,6 +23,7 @@ from .yagoRelation import yagoDomainRange
 from textblob import TextBlob
 from textblob_aptagger import PerceptronTagger
 
+from nltk.corpus import stopwords
 #
 #   Variables
 #
@@ -33,6 +34,8 @@ _removeRefWords = re.compile(r"\[\d+\]")
 _naiveSentenceSpliter = re.compile(r"\.\s+|\!\s+|\?\s+")
 
 _posTagger = PerceptronTagger()
+
+_stopwords = stopwords.words()
 
 #
 #   Functions
@@ -130,6 +133,18 @@ def getNaiveToken(string):
     return list of words
     """
     return removeRefWords(string).split()
+
+def removeStopwords(tokens):
+    """removeRefWords
+    input a tokens list, return a list that has no stopwords
+    """
+    _tokens = []
+    for token in tokens:
+        _token = token.lower()
+        if not _token in _stopwords:
+            _tokens.append(_token)
+
+    return _tokens
 
 def readPrefixTreeModelWithTable(modelJsonPath,tableJsonPath):
     """readPrefixTreeModelWithTable

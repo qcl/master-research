@@ -57,7 +57,36 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
     for filename in os.listdir(inputSPIpath):
         if ".json" in filename:
             ptnId = filename[:-5]
-            if projizz.isPatternValidate(ptnId, table, confi
+
+            # ignore invalidate pattern
+            if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
+                continue
+
+            ptnInstance = projizz.jsonRead( os.path.join(inputSPIpath,filename) )
+            for rela in ptnInstance:
+                for key in ptnInstance[rela]:
+                    # ignore in testing data's key
+                    if key in notUsedKeys:
+                        continue
+
+                    ptntks = table[ptnId]["pattern"].split()    # NOTE - may be need stemming
+                    for line in ptnInstance[rela][key]:
+                        for token in projizz.removeStopwords( projizz.getNaiveToken(line) ):
+                            # TODO - stemming
+                            if token in ptntks:
+                                continue
+
+                            if not token in modelArticles[rela]:
+                                modelArticles[rela][token] = 0
+
+                            # Term Freq
+                            modelArticles[rela][token] += 1
+
+
+
+
+
+
 
     
 
