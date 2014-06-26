@@ -80,10 +80,7 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
 
     for relation in modelArticles:
         print relation
-        f = open(os.path.join(outputVSMpath,"%s.txt" % (relation)),"w")
-        for line in modelArticles[relation]:
-            f.write("%s\n" % (line) )
-        f.close()
+        projizz.jsonWrite(modelArticles[relation],os.path.join(outputVSMpath,"%s.txt" % (relation)))
 
 #
 #
