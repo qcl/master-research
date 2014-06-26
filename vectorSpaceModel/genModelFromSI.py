@@ -49,11 +49,10 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
         ks = r.get()
         notUsedKeys += ks
 
-    # Build models for relation
+    ### Build Model
     # Paatern Selection
-    # TODO / FIXME 
-    # CHOICE (1) Build model by pattern (2) build model by relation
     modelArticles = projizz.buildYagoProperties({})
+    words = []
     for filename in os.listdir(inputSPIpath):
         if ".json" in filename:
             ptnId = filename[:-5]
@@ -79,27 +78,19 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
                             if not token in modelArticles[rela]:
                                 modelArticles[rela][token] = 0
 
+                            if not token in words:
+                                words.append(token)
+
                             # Term Freq
                             modelArticles[rela][token] += 1
 
-
-
-
-
-
+    print "Build",len(modelArticles),"articles,",len(words),"tokens"
+    
+    # IDF
+     
 
     
 
-
-    ## Build by Relation -> need select patterns
-    
-
-
-
-    ## TODO Build by pattern
-
-
-    ### Build Model
     ### Output pattern
 
 
