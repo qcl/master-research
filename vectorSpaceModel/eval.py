@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # qcl
-# do some statistics on pattern and relation
+# vector space eval
 
 import os
 import sys
@@ -16,11 +16,13 @@ from datetime import datetime
 # false - postive                 Yes  tp      fp     
 # false - negative                 No  fn      tn
 
-def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence):
-    # read patterns in articles
-    contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
-    
-    print "Worker %d : Read %s into filter" % (jobid,filename)
+def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence):
+
+    # read articles and patterns
+    contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
+    contentPtnJson = projizz.jsonRead(os.path.join(inputPtnPath,filename))
+
+    print "Worker %d : Read %s" % (jobid,filename)
 
     # connect to database
     connect = pymongo.Connection()
@@ -31,23 +33,12 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
     print "worker %d query=%d, result=%d" % (jobid,len(queries),itr.count())
 
     count = 0
-
-    # prepare keys for multiple-exp
-    # degree: 1 ~ 5
-    # ambigu: select 1, select n (threshold:.5, .75), select all
-    # type or not: no type info, type info
-    
     expResult = {}
 
-    for deg in range(1,6):
-        for typ in ["n","t"]:
-            if not deg == 1:
-                for amb in ["one","50","75","all"]:
-                    keyname = "%d-%s-%s" % (deg,amb,typ)
-                    expResult[keyname] = copy.deepcopy(partAns)
-            else:
-                keyname = "%d-1-%s" % (deg,typ)
-                expResult[keyname] = copy.deepcopy(partAns)
+    # threshold: 0.3 0.4 0.5 0.6 0.7 0.8
+
+    for th in range(3,9):
+        expResult[th] = copy.deepcopy(partAns)
     
     print "worker %d build expResult" % (jobid)
 
@@ -64,32 +55,33 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
         originRela = ans["properties"]
         
         ptnEx = contentPtnJson[key]
-        #article = projizz.articleSimpleSentenceFileter(contentJson[key])
+        article = projizz.articleSimpleSentenceFileter(contentJson[key])
 
+        # Relation extraction
+        relaEx = []
+        for line in ptnEx:
+            # line[0]: line number
+            # line[1]: array of patterns
+
+
+            for ptn in line[1]:
+                # ptn[0]: pattern ID
+                # ptn[1]: start position in line
+                # ptn[2]: end position in line
+
+                ptnId = "%d" % (ptn[0])
+
+                if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
+                    continue
+        
+                rfp = table[ptnId]["relations"]
+        
         for keyname in expResult:
 
-            args = keyname.split("-")
-            degree = int(args[0])
-            ambigu = args[1]
-            typ    = args[2]
+            threshold = float(keyname)/10
 
-            # Relation extraction
-            relaEx = []
-            for line in ptnEx:
-                # line[0]: line number
-                # line[1]: array of patterns
 
-                for ptn in line[1]:
-                    # ptn[0]: pattern ID
-                    # ptn[1]: start position in line
-                    # ptn[2]: end position in line
 
-                    ptnId = "%d" % (ptn[0])
-
-                    if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
-                        continue
-
-                    rfp = table[ptnId]["relations"]
 
                     # check degree
                     if len(rfp) > degree:
@@ -181,13 +173,13 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 #   Main Program
 #
 #
-def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
+def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilename): 
     
-    #model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[]})
-    st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
     domainRange = projizz.getYagoRelationDomainRange()
+
+    projizz.checkPath(outputPath)
 
     start_time = datetime.now()
 
@@ -197,7 +189,7 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence )))
+            result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence  )))
             t += 1
     pool.close()
     pool.join()
@@ -233,13 +225,16 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
 
 if __name__ == "__main__":
     if len(sys.argv) > 6:
-        inputPtnPath = sys.argv[1]
-        inputPath = sys.argv[2]
-        pspath = sys.argv[3]
-        outputPath = sys.argv[4]
-        outputFilename = sys.argv[5]
-        confidence = float(sys.argv[6])
-        main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename)
+        inputPath = sys.argv[1]
+        inputPtnPath = sys.argv[2]
+
+        vsmPath = sys.argv[3]
+        confidence = float(sys.argv[4])
+
+        outputPath = sys.argv[5]
+        outputFilename = sys.argv[6]
+
+        main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilename)
     else:
-        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence]"
+        print "$ python ./eval.py [input-dir] [input-ptn-dir] [vsm-dir] [confidence] [output-dir] [output-filename.out]"
 
