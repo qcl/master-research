@@ -53,7 +53,11 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath):
     # Paatern Selection
     # TODO / FIXME 
     # CHOICE (1) Build model by pattern (2) build model by relation
-    relations = projizz.buildYagoProperties({})
+    modelArticles = projizz.buildYagoProperties({})
+    for filename in os.listdir(inputSPIpath):
+        if ".json" in filename:
+            ptnId = filename[:-5]
+            if projizz.isPatternValidate(ptnId, table, confi
 
     
 
