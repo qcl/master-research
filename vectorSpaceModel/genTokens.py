@@ -5,6 +5,7 @@
 import os
 import sys
 import copy
+import math
 import projizz
 import pymongo
 import multiprocessing
@@ -72,12 +73,13 @@ def preprocess(inputPath,outputPath):
     result = []
     for filename in os.listdir(inputPath):
         if ".json" in filename:
-            result.append( pool.apply_async( mapper, (t,filename,inputPath,outputPath model, table))  )
+            result.append( pool.apply_async( mapper, (t,filename,inputPath,outputPath, model, table))  )
             t += 1
     pool.close()
     pool.join()
 
     words = {}
+    idf = {}
     tfs = {}
 
     # Reducer - DF
@@ -88,6 +90,10 @@ def preprocess(inputPath,outputPath):
         types += 1
 
         for t in tks:
+            
+            if tks[t] <= 0:
+                continue
+
             if t not in words:
                 words[t] = 0
             words[t] += 1
@@ -97,12 +103,28 @@ def preprocess(inputPath,outputPath):
     projizz.jsonWrite(words,os.path.join(outputPath,"documentFreq.df"))
 
     # Calculate idf
+    for w in words:
+        if words[w] == 0:
+            continue
 
+        idf[w] = math.log(float(types)/float(words[w]),10)
     
-
-
+    projizz.jsonWrite(idf,os.path.join(outputPath,"idf.idf"))
+    print "Write out idf file"
 
     # Calculate td-idf weight
+    for fn in tfs:
+        tks = tfs[fn]
+        weight = {}
+        for t in tks:
+            tf = tks[t]
+            if t not in idf:
+                continue
+            
+            weight[t] = tf * idf[t]
+
+        projizz.jsonWrite(weight,os.path.join(outputPath,fn))
+        print "build",fn,"tf-idf weight"
 
 
     diff = datetime.now() - start_time
