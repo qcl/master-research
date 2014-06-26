@@ -377,7 +377,7 @@ def getNamedEntityTokens(namedEntity):
     return namedEntity.replace("(","").replace(")","").replace(",","").replace("[","").replace("]","").replace("!","").replace("?","").replace("&","").replace("-","").replace("The","").replace("And","").replace("and","").replace("the","").replace(";","").replace("'s","").replace("\"","").replace("of","").split("_")
 
 def getTokens(string):
-    return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").split("_")
+    return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").split()
 
 def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
     """isPatternValidate
