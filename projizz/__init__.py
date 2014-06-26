@@ -35,7 +35,7 @@ _naiveSentenceSpliter = re.compile(r"\.\s+|\!\s+|\?\s+")
 
 _posTagger = PerceptronTagger()
 
-_stopwords = stopwords.words()
+_stopwords = stopwords.words("english")
 
 #
 #   Functions

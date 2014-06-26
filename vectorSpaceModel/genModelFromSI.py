@@ -56,12 +56,14 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
     count = 0
     for filename in os.listdir(inputSPIpath):
         if ".json" in filename:
-            count += 1
             ptnId = filename[:-5]
 
             # ignore invalidate pattern
             if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
                 continue
+
+            count += 1
+            print count,ptnId
 
             ptnInstance = projizz.jsonRead( os.path.join(inputSPIpath,filename) )
             for rela in ptnInstance:
@@ -72,6 +74,7 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
 
                     ptntks = table[ptnId]["pattern"].split()    # NOTE - may be need stemming
                     for line in ptnInstance[rela][key]:
+                        continue
                         for token in projizz.removeStopwords( projizz.getNaiveToken(line) ):
                             # TODO - stemming
                             if token in ptntks:
