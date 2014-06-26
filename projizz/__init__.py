@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.26
+modify: 2014.06.27
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -13,6 +13,7 @@ Add this to the $PYTHONPATH.
 import os
 import re
 import nltk
+import math
 import copy
 import simplejson as json
 
@@ -24,6 +25,7 @@ from textblob import TextBlob
 from textblob_aptagger import PerceptronTagger
 
 from nltk.corpus import stopwords
+from nltk.stem import *
 #
 #   Variables
 #
@@ -36,6 +38,8 @@ _naiveSentenceSpliter = re.compile(r"\.\s+|\!\s+|\?\s+")
 _posTagger = PerceptronTagger()
 
 _stopwords = stopwords.words("english")
+
+_stemmer = PorterStemmer()
 
 #
 #   Functions
@@ -417,6 +421,79 @@ def checkPath(path):
     """
     if not os.path.isdir(path):
         os.mkdir(path)
+
+def getVSMmodels(vsmPath):
+    """getVSMmodels
+    init the Vector Space Model
+    """
+    idf = jsonRead(os.path.join(vsmPath,"idf.idf"))
+    docs = {}
+    lens = {}
+
+    for filename in os.listdir(vsmPath):
+        if ".json" in filename:
+            rela = filename[:-5]
+            docs[rela] = jsonRead(os.path.join(vsmPath,filename))
+            
+            lens[rela] = getDictVectorLen(docs[rela])
+ 
+    return idf, docs, lens
+
+def getDictVectorLen(d):
+    s = 0.0
+    for v in d:
+        s += (d[v]*d[v])
+    return math.sqrt(s)
+
+def cosineSimilarity(v,w,vl=None,wl=None):
+    """cosineSimilarity
+    return the similarity bewteen dict(v) and dict(w), vl and wl is the length of v and w
+    """
+    if vl == None:
+        vl = getDictVectorLen(v)
+    if wl == None:
+        wl = getDictVectorLen(w)
+
+    inner = 0.0
+    for word in v:
+        if word in w:
+            inner += (v[word]*w[word])
+
+    return inner/(vl*wl)
+
+def vsmSimilarity(string, models, relas=None):
+    """vsmSimilarity
+    input: a string and (idf,docs,lens)
+    """
+    idf = models[0]
+    docs = models[1]
+    lens = models[2]
+
+    result = {} 
+    
+    tv = {}
+    tokens = getTokens(string)
+    for token in tokens:
+        t = _stemmer.stem(token)
+        if t not in idf:
+            continue
+        if t not in tv:
+            tv[t] = 0
+        tv[t] += 1
+
+    for w in tv:
+        tv[w] = tv[w]*idf[w]
+
+    if relas == None:
+        for rela in docs:
+            sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
+            result[rela] = sim
+    else:
+        for rela in relas:
+            sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
+            result[rela] = sim
+
+    return result
 
 #
 #   Classes
