@@ -51,7 +51,7 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
 
     ### Build Model
     # Paatern Selection
-    modelArticles = projizz.buildYagoProperties({})
+    modelArticles = projizz.buildYagoProperties([])
     words = []
     count = 0
     for filename in os.listdir(inputSPIpath):
@@ -72,36 +72,18 @@ def generate(inputSPIpath,inputTestPath,outputVSMpath,confidence):
                     if key in notUsedKeys:
                         continue
 
-                    ptntks = table[ptnId]["pattern"].split()    # NOTE - may be need stemming
                     for line in ptnInstance[rela][key]:
-                        continue
-                        for token in projizz.removeStopwords( projizz.getNaiveToken(line) ):
-                            # TODO - stemming
-                            if token in ptntks:
-                                continue
-
-                            if not token in modelArticles[rela]:
-                                modelArticles[rela][token] = 0
-
-                            if not token in words:
-                                words.append(token)
-
-                            # Term Freq
-                            modelArticles[rela][token] += 1
+                        modelArticles[rela].append(line)
     
             if count%100 == 0:
                 print "Read",count,"files"
 
-
-    print "Build",len(modelArticles),"articles,",len(words),"tokens"
-    
-    # IDF
-     
-
-    
-
-    ### Output pattern
-
+    for relation in modelArticles:
+        print relation
+        f = open(os.path.join(outputVSMpath,"%s.txt" % (relation)),"w")
+        for line in modelArticles[relation]:
+            f.write("%s\n" % (line) )
+        f.close()
 
 #
 #
