@@ -376,6 +376,9 @@ def getSortedPatternStatistic(propertyStatistic):
 def getNamedEntityTokens(namedEntity):
     return namedEntity.replace("(","").replace(")","").replace(",","").replace("[","").replace("]","").replace("!","").replace("?","").replace("&","").replace("-","").replace("The","").replace("And","").replace("and","").replace("the","").replace(";","").replace("'s","").replace("\"","").replace("of","").split("_")
 
+def getTokens(string):
+    return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").split("_")
+
 def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
     """isPatternValidate
     檢查此一 pattern 是否可以在接下來的程序之中被使用。
