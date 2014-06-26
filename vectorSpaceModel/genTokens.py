@@ -38,7 +38,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
 
             tks[t] += 1
 
-        if count % 500 == 0:
+        if count % 1000 == 0:
             print "worker %d done %d lines" % (jobid,count)
 
 
@@ -90,8 +90,13 @@ def preprocess(inputPath,outputPath):
         types += 1
 
         for t in tks:
-            
-            if tks[t] <= 0:
+           
+            # ignore only one time word
+            if tks[t] <= 1:
+                continue
+
+            # ignore the case contain number
+            if "0" in t or "1" in t or "2" in t or "3" in t or "4" in t or "5" in t or "6" in t or "7" in t or "8" in t or "9" in t:
                 continue
 
             if t not in words:
