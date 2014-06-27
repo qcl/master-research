@@ -90,7 +90,8 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                                 if pr not in relaEx[keyname]:
                                     relaEx[keyname].append(pr)
 
-            #### Evaluation
+        #### Evaluation
+        for keyname in expResult: 
             for attribute in expResult[keyname]:
 
                 # special case, ignore.
