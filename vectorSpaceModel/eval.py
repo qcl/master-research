@@ -71,7 +71,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 
                 ptnId = "%d" % (ptn[0])
 
-                if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
+                if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
                     continue
         
                 rfp = table[ptnId]["relations"]
