@@ -36,9 +36,9 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
     expResult = {}
     relaEx = {}
 
-    # threshold: 0.3 0.4 0.5 0.6 0.7 0.8
+    # threshold: 0.3 0.4 0.5 0.6 0.7
 
-    for th in range(3,9):
+    for th in range(20,80,5):
         expResult[th] = copy.deepcopy(partAns)
         relaEx[th] = []
     
@@ -81,7 +81,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 
                 # NOTE - if cosine value > threshold then there is a relation (?)
                 for keyname in expResult:
-                    threshold = float(keyname)/10.0
+                    threshold = float(keyname)/100.0
 
                     for pr in cosRlt:
                         # Check type
