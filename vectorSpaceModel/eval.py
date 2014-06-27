@@ -36,9 +36,8 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
     expResult = {}
     relaEx = {}
 
-    # threshold: 0.3 0.4 0.5 0.6 0.7
-
-    for th in range(10,60,5):
+    # set thresholds
+    for th in range(5,50,5):
         expResult[th] = copy.deepcopy(partAns)
         relaEx[th] = []
     
@@ -169,7 +168,7 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
 
     for keyname in expResult:
         p = expResult[keyname]
-        keydirName = "vsm-%02.0f-%d" % (confidence*100,keyname)
+        keydirName = "vsm-%d" % (keyname)
         projizz.checkPath( os.path.join(outputPath,keydirName))
         projizz.jsonWrite(p,os.path.join(outputPath,keydirName,outputFilename))
         print "start write out to %s" % (os.path.join(outputPath,keydirName))
