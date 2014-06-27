@@ -52,6 +52,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
             tks.pop(_sw)
         
     needRemove = []
+    maxTF = 0
     for t in tks:
         # ignore only one time word
         if tks[t] <= 1:
@@ -65,6 +66,9 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
             total -= tks[t]
             continue
 
+        if tks[t] > maxTF:
+            maxTF = tks[t]
+
     for rm in needRemove:
         tks.pop(rm)
 
@@ -73,7 +77,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
     # Calculate tf
     for t in tks:
         tc = tks[t]
-        tks[t] = float(tc)/float(total)
+        tks[t] = float(tc)/float(maxTF)
 
     projizz.jsonWrite(tks,os.path.join(outputPath,filename.replace(".json",".tf")))
     print "worker %d write out." % (jobid)
