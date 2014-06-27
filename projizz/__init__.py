@@ -454,10 +454,15 @@ def cosineSimilarity(v,w,vl=None,wl=None):
     if wl == None:
         wl = getDictVectorLen(w)
 
+    if vl*wl <= 0.0:
+        return 0.0
+
     inner = 0.0
     for word in v:
         if word in w:
             inner += (v[word]*w[word])
+
+    #print v,vl,wl,inner
 
     return inner/(vl*wl)
 
@@ -486,10 +491,15 @@ def vsmSimilarity(string, models, relas=None):
 
     if relas == None:
         for rela in docs:
+            if rela == "produced":
+                continue
             sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
             result[rela] = sim
     else:
         for rela in relas:
+            #print rela,string.encode("utf-8")
+            if rela == "produced":
+                continue
             sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
             result[rela] = sim
 

@@ -146,6 +146,7 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
             result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData  )))
+            #result.append( mapper( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData  ))
             t += 1
     pool.close()
     pool.join()
@@ -168,7 +169,7 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
 
     for keyname in expResult:
         p = expResult[keyname]
-        keydirName = "vsm-%2.0f-%d" % (confidence,keyname)
+        keydirName = "vsm-%02.0f-%d" % (confidence,keyname)
         projizz.checkPath( os.path.join(outputPath,keydirName))
         projizz.jsonWrite(p,os.path.join(outputPath,keydirName,outputFilename))
         print "start write out to %s" % (os.path.join(outputPath,keydirName))
