@@ -480,14 +480,19 @@ def vsmSimilarity(string, models, relas=None):
     tokens = getTokens(string)
     for token in tokens:
         t = _stemmer.stem(token)
-        if t not in idf:
+        if t not in idf:    # NOTE stopwords will not in idf
             continue
         if t not in tv:
             tv[t] = 0
         tv[t] += 1
 
+    maxTF = 0
     for w in tv:
-        tv[w] = tv[w]*idf[w]
+        if tv[w] > maxTF:
+            maxTF = tv[w]
+
+    for w in tv:
+        tv[w] = (float(tv[w])/float(maxTF))*idf[w]
 
     if relas == None:
         for rela in docs:
