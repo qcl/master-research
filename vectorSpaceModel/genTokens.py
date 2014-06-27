@@ -26,6 +26,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
     count = 0
+    total = 0
     for line in article:
         count += 1
         tokens = projizz.getTokens(line)
@@ -37,6 +38,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
                 tks[t] = 0
 
             tks[t] += 1
+            total += 1
 
         if count % 1000 == 0:
             print "worker %d done %d lines" % (jobid,count)
@@ -46,7 +48,32 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
     for sw in projizz._stopwords:
         _sw = stemmer.stem(sw)
         if _sw in tks:
+            total -= tks[_sw]
             tks.pop(_sw)
+        
+    needRemove = []
+    for t in tks:
+        # ignore only one time word
+        if tks[t] <= 1:
+            needRemove.append(t)
+            total -= tks[t]
+            continue
+
+        # ignore the case contain number
+        if "0" in t or "1" in t or "2" in t or "3" in t or "4" in t or "5" in t or "6" in t or "7" in t or "8" in t or "9" in t:
+            needRemove.append(t)
+            total -= tks[t]
+            continue
+
+    for rm in needRemove:
+        tks.pop(rm)
+
+    projizz.jsonWrite(tks,os.path.join(outputPath,filename.replace(".json",".tfc")))
+    
+    # Calculate tf
+    for t in tks:
+        tc = tks[t]
+        tks[t] = float(tc)/float(total)
 
     projizz.jsonWrite(tks,os.path.join(outputPath,filename.replace(".json",".tf")))
     print "worker %d write out." % (jobid)
@@ -90,15 +117,6 @@ def preprocess(inputPath,outputPath):
         types += 1
 
         for t in tks:
-           
-            # ignore only one time word
-            if tks[t] <= 1:
-                continue
-
-            # ignore the case contain number
-            if "0" in t or "1" in t or "2" in t or "3" in t or "4" in t or "5" in t or "6" in t or "7" in t or "8" in t or "9" in t:
-                continue
-
             if t not in words:
                 words[t] = 0
             words[t] += 1
