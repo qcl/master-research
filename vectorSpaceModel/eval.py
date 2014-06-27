@@ -16,7 +16,7 @@ from datetime import datetime
 # false - postive                 Yes  tp      fp     
 # false - negative                 No  fn      tn
 
-def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence):
+def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData):
 
     # read articles and patterns
     contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
@@ -34,11 +34,13 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 
     count = 0
     expResult = {}
+    relaEx = {}
 
     # threshold: 0.3 0.4 0.5 0.6 0.7 0.8
 
     for th in range(3,9):
         expResult[th] = copy.deepcopy(partAns)
+        relaEx[th] = []
     
     print "worker %d build expResult" % (jobid)
 
@@ -58,11 +60,9 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
         article = projizz.articleSimpleSentenceFileter(contentJson[key])
 
         # Relation extraction
-        relaEx = []
         for line in ptnEx:
             # line[0]: line number
             # line[1]: array of patterns
-
 
             for ptn in line[1]:
                 # ptn[0]: pattern ID
@@ -75,69 +75,22 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                     continue
         
                 rfp = table[ptnId]["relations"]
-        
-        for keyname in expResult:
+                
+                # TODO - Modlify string, remove pattern text in string?
+                cosRlt = projizz.vsmSimilarity( article[line[0]], vsmData, rfp )
 
-            threshold = float(keyname)/10
+                # NOTE - if cosine value > threshold then there is a relation (?)
+                for keyname in expResult:
+                    threshold = float(keyname)/10.0
 
+                    for pr in cosRlt:
+                        # Check type
+                        if domainRange[pr]["domain"] in types:
+                            if cosRlt[pr] > threshold:
+                                if pr not in relaEx[keyname]:
+                                    relaEx[keyname].append(pr)
 
-
-
-                    # check degree
-                    if len(rfp) > degree:
-                        continue
-
-                    if len(rfp) == 1:   # or degree == 1
-                        if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
-                            if typ == "t":
-                                if domainRange[rfp[0]]["domain"] in types:
-                                    relaEx.append(rfp[0])
-                            else:
-                                relaEx.append(rfp[0])
-
-                    else:
-                        if ambigu == "one":
-                            if typ == "t":
-                                for ptnst in st[ptnId]:
-                                    # ptnst[0] = relation
-                                    # ptnst[1] = {"support": , "total": }
-                                    if ptnst[1]["support"] > 0 and domainRange[ptnst[0]]["domain"] in types:
-                                        if not ptnst[0] in relaEx:
-                                            relaEx.append(ptnst[0])
-                                            break
-
-                            
-                            else:
-                                if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
-                                    relaEx.append(rfp[0])
-                                
-                        elif ambigu == "all":
-                            for ptnst in st[ptnId]:
-                                if typ == "t":
-                                    if domainRange[ptnst[0]]["domain"] in types:
-                                        if not ptnst[0] in relaEx:
-                                            relaEx.append(ptnst[0])
-                                else:
-                                    if not ptnst[0] in relaEx:
-                                        relaEx.append(ptnst[0])
-                        else:
-                            th = 0.75
-                            if ambigu == "50":
-                                th = 0.5
-                            
-                            b = st[ptnId][0][1]["support"]
-                            if b > 0:
-                                for ptnst in st[ptnId]:
-                                    if float(ptnst[1]["support"])/float(b) >= th:
-                                        if typ == "t":
-                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx:
-                                                relaEx.append(ptnst[0])
-                                        else:
-                                            if not ptnst[0] in relaEx:
-                                                relaEx.append(ptnst[0])
-
-            
-            # Evaluation
+            #### Evaluation
             for attribute in expResult[keyname]:
 
                 # special case, ignore.
@@ -147,7 +100,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                 postive = False
                 true = False
 
-                if attribute in relaEx:
+                if attribute in relaEx[keyname]:
                     postive = True
                 if attribute in relation:
                     true = True
@@ -178,6 +131,8 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
     model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[]})
     domainRange = projizz.getYagoRelationDomainRange()
+    idf,docs,lens = projizz.getVSMmodels(vsmPath)
+    vsmData = (idf, docs, lens)
 
     projizz.checkPath(outputPath)
 
@@ -189,7 +144,7 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence  )))
+            result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData  )))
             t += 1
     pool.close()
     pool.join()
@@ -210,15 +165,12 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
                 expResult[keyname][m]["fn"] += r[keyname][m]["fn"]
 
 
-    if not os.path.isdir(outputPath):
-        os.mkdir(outputPath)
-
     for keyname in expResult:
         p = expResult[keyname]
-        if not os.path.isdir(os.path.join(outputPath,keyname)):
-            os.mkdir(os.path.join(outputPath,keyname))
-        projizz.jsonWrite(p,os.path.join(outputPath,keyname,outputFilename))
-        print "start write out to %s" % (os.path.join(outputPath,keyname))
+        keydirName = "vsm-%2.0f-%d" % (confidence,keyname)
+        projizz.checkPath( os.path.join(outputPath,keydirName))
+        projizz.jsonWrite(p,os.path.join(outputPath,keydirName,outputFilename))
+        print "start write out to %s" % (os.path.join(outputPath,keydirName))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
