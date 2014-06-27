@@ -497,8 +497,7 @@ def vsmSimilarity(string, models, relas=None):
             result[rela] = sim
     else:
         for rela in relas:
-            #print rela,string.encode("utf-8")
-            if rela == "produced":
+            if rela not in docs:
                 continue
             sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
             result[rela] = sim
