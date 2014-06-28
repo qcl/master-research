@@ -74,7 +74,11 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                     continue
         
                 rfp = table[ptnId]["relations"]
-                
+
+                # check degree
+                if len(rfp) > 5:
+                    continue
+
                 # TODO - Modlify string, remove pattern text in string?
                 cosRlt = projizz.vsmSimilarity( article[line[0]], vsmData, rfp )
 

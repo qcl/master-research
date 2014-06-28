@@ -62,6 +62,10 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                 if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
                     continue
 
+                # give up degree > 5 's pattern
+                if len(table[ptnId]["relations"]) > 5:
+                    continue
+
                 for rela in table[ptnId]["relations"]:
                     # it's a support instance
                     if rela in relation:
