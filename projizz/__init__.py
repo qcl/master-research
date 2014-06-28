@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.27
+modify: 2014.06.28
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -383,6 +383,11 @@ def getNamedEntityTokens(namedEntity):
 def getTokens(string):
     return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").replace("."," ").split()
 
+def naiveRemovePateernInLine(ptnText,string):
+    ptntks = ptnText.split()
+
+
+
 def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
     """isPatternValidate
     檢查此一 pattern 是否可以在接下來的程序之中被使用。
@@ -466,7 +471,7 @@ def cosineSimilarity(v,w,vl=None,wl=None):
 
     return inner/(vl*wl)
 
-def vsmSimilarity(string, models, relas=None):
+def vsmSimilarity(string, models, relas=None, ptntext=None):
     """vsmSimilarity
     input: a string and (idf,docs,lens)
     """
@@ -475,12 +480,23 @@ def vsmSimilarity(string, models, relas=None):
     lens = models[2]
 
     result = {} 
-    
+   
+    # Prepare remove ptn words
+    ptnw = []
+    if not ptntext == None:
+        for w in ptntext.split():
+            if "[[" not in w:
+                t = _stemmer.stem(w)
+                if not t in ptnw:
+                    ptnw.append(t)
+
     tv = {}
     tokens = getTokens(string)
     for token in tokens:
         t = _stemmer.stem(token)
         if t not in idf:    # NOTE stopwords will not in idf
+            continue
+        if t in ptnw:   # remove ptn words
             continue
         if t not in tv:
             tv[t] = 0

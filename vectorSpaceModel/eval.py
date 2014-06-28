@@ -37,7 +37,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
     relaEx = {}
 
     # set thresholds
-    for th in range(5,50,5):
+    for th in range(0,51,5):
         expResult[th] = copy.deepcopy(partAns)
         relaEx[th] = []
     
@@ -70,6 +70,9 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 
                 ptnId = "%d" % (ptn[0])
 
+                ptntks = table[ptnId]["pattern"]
+                lineText = article[line[0]]
+
                 if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
                     continue
         
@@ -80,7 +83,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                     continue
 
                 # TODO - Modlify string, remove pattern text in string?
-                cosRlt = projizz.vsmSimilarity( article[line[0]], vsmData, rfp )
+                cosRlt = projizz.vsmSimilarity( lineText, vsmData, relas=rfp, ptntext=ptntks )
 
                 # NOTE - if cosine value > threshold then there is a relation (?)
                 for keyname in expResult:
@@ -132,7 +135,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 #
 def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilename): 
     
-    model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
+    model, table = projizz.readPrefixTreeModelWithTable("../yago/yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[]})
     domainRange = projizz.getYagoRelationDomainRange()
     idf,docs,lens = projizz.getVSMmodels(vsmPath)
