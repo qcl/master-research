@@ -95,7 +95,7 @@ def main(inputResultFile):
         if model == "produced":
             continue
 
-        string = "%s\t%.08f\t%.08f\ttp=%d\tfp=%d\tfn=%d" % (model,sum(precision[model])/float(len(precision[model])),sum(recall[model])/float(len(recall[model])),sum(tp[mo]),sum(fp[model]),sum(fn[model])) + string
+        string = "%s\t%.08f\t%.08f\ttp=%d\tfp=%d\tfn=%d" % (model,sum(precision[model])/float(len(precision[model])),sum(recall[model])/float(len(recall[model])),sum(tp[model]),sum(fp[model]),sum(fn[model])) + string
 
         print string
 
