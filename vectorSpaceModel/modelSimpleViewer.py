@@ -20,6 +20,6 @@ if __name__ == "__main__":
             threshold = float(sys.argv[2])
         else:
             threshold = 0.0
-        viewer(path,viewer)
+        viewer(tfidfWeightFilePath,viewer)
     else:
         print "$ python ./modelSimpleViewer.py [tfidfModel.json] (threshold)"
