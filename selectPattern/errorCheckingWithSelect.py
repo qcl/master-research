@@ -79,7 +79,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             ambigu = args[1]
             typ    = args[2]
 
-            threshold = 0.5
+            threshold = 0.3
 
 
             # Relation extraction
