@@ -16,7 +16,7 @@ from datetime import datetime
 # false - postive                 Yes  tp      fp     
 # false - negative                 No  fn      tn
 
-def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData):
+def mapper(jobid, filename, inputPath, inputPtnPath, table, st, partAns, domainRange, confidence, vsmData):
 
     # read articles and patterns
     contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
@@ -82,6 +82,10 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
                 if len(rfp) > 5:
                     continue
 
+                # if no support, ignore this pattern
+                if st[ptnId][0][1]["support"] <= 0:
+                    continue
+
                 # TODO - Modlify string, remove pattern text in string?
                 cosRlt = projizz.vsmSimilarity( lineText, vsmData, relas=rfp, ptntext=ptntks )
 
@@ -133,12 +137,13 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, partAns, domainRange
 #   Main Program
 #
 #
-def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilename): 
+def main(inputPath, inputPtnPath, vsmPath, confidence, psfile, outputPath, outputFilename): 
     
     model, table = projizz.readPrefixTreeModelWithTable("../yago/yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[]})
     domainRange = projizz.getYagoRelationDomainRange()
     idf,docs,lens = projizz.getVSMmodels(vsmPath)
+    st = projizz.getSortedPatternStatistic( projizz.jsonRead(psfile) )
     vsmData = (idf, docs, lens)
 
     projizz.checkPath(outputPath)
@@ -151,7 +156,7 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData  )))
+            result.append(pool.apply_async(mapper, ( t, filename, inputPath, inputPtnPath, table, st, partAns, domainRange, confidence, vsmData  )))
             #result.append( mapper( t, filename, inputPath, inputPtnPath, table, partAns, domainRange, confidence, vsmData  ))
             t += 1
     pool.close()
@@ -184,17 +189,18 @@ def main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilenam
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 6:
+    if len(sys.argv) > 7:
         inputPath = sys.argv[1]
         inputPtnPath = sys.argv[2]
 
         vsmPath = sys.argv[3]
         confidence = float(sys.argv[4])
+        psfile = sys.argv[5]
 
-        outputPath = sys.argv[5]
-        outputFilename = sys.argv[6]
+        outputPath = sys.argv[6]
+        outputFilename = sys.argv[7]
 
-        main(inputPath, inputPtnPath, vsmPath, confidence, outputPath, outputFilename)
+        main(inputPath, inputPtnPath, vsmPath, confidence, psfile, outputPath, outputFilename)
     else:
-        print "$ python ./eval.py [input-dir] [input-ptn-dir] [vsm-dir] [confidence] [output-dir] [output-filename.out]"
+        print "$ python ./eval.py [input-dir] [input-ptn-dir] [vsm-dir] [confidence] [psfile] [output-dir] [output-filename.out]"
 
