@@ -73,7 +73,7 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, st, partAns, domainR
                 ptntks = table[ptnId]["pattern"]
                 lineText = article[line[0]]
 
-                if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
+                if not projizz.isPatternValidate(ptnId, table, confidence=confidence, st=st):
                     continue
         
                 rfp = table[ptnId]["relations"]
