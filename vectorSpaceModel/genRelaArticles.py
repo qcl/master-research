@@ -72,15 +72,24 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
        
                         # TODO - remove pattern text.
                         if not rela in linesByRela:
-                            linesByRela[rela] = []
+                            linesByRela[rela] = {}
                         if not line[0] in linesByRela[rela]:
-                            linesByRela[rela].append(line[0])
+                            linesByRela[rela][line[0]] = []
+                        if not ptnId in linesByRela[rela][line[0]]:
+                            linesByRela[rela][line[0]].append(ptnId)
 
         for rela in linesByRela:
             if not rela in linesByRelations:
                 linesByRelations[rela] = []
             for lineN in linesByRela[rela]:
-                linesByRelations[rela].append(article[lineN])
+                text = projizz.getTokens( article[lineN].lower() )
+                for ptnId in linesByRela[lineN]:
+                    ptntext = table[ptnId]["pattern"].split()
+                    for ptntk in ptntext:
+                        if ptntk in text:
+                            text.remove(ptntk)
+                l = ' '.join(text)
+                linesByRelations[rela].append(l)
 
         if count % 100 == 0:
             print "worker #%d done %d." % (jobid,count)
