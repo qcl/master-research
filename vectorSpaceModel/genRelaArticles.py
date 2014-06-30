@@ -83,7 +83,7 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                 linesByRelations[rela] = []
             for lineN in linesByRela[rela]:
                 text = projizz.getTokens( article[lineN].lower() )
-                for ptnId in linesByRela[lineN]:
+                for ptnId in linesByRela[rela][lineN]:
                     ptntext = table[ptnId]["pattern"].split()
                     for ptntk in ptntext:
                         if ptntk in text:
@@ -117,6 +117,7 @@ def preprocess(inputPath,inputPtnPath,outputPath,confidence):
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             result.append( pool.apply_async( mapper, (t,filename,inputPath,inputPtnPath, model, table, confidence))  )
+            #result.append( mapper(t,filename,inputPath,inputPtnPath, model, table, confidence))
             t += 1
     pool.close()
     pool.join()
