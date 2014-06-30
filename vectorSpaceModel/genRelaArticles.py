@@ -69,7 +69,8 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                 for rela in table[ptnId]["relations"]:
                     # it's a support instance
                     if rela in relation:
-        
+       
+                        # TODO - remove pattern text.
                         if not rela in linesByRela:
                             linesByRela[rela] = []
                         if not line[0] in linesByRela[rela]:
