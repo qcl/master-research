@@ -36,6 +36,7 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
 
     linesByRelations = {}
 
+
     for ans in itr:
         count += 1
 
@@ -70,13 +71,16 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                     # it's a support instance
                     if rela in relation:
        
-                        # TODO - remove pattern text.
+                        # NOTE - remove pattern text.
                         if not rela in linesByRela:
                             linesByRela[rela] = {}
                         if not line[0] in linesByRela[rela]:
                             linesByRela[rela][line[0]] = []
                         if not ptnId in linesByRela[rela][line[0]]:
                             linesByRela[rela][line[0]].append(ptnId)
+
+                    else:
+                        pass
 
         for rela in linesByRela:
             if not rela in linesByRelations:
