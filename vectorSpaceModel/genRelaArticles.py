@@ -35,7 +35,7 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
     supportInstanceByFile = {}
 
     linesByRelations = {}
-
+    linesNoRelaByRelations = {}
 
     for ans in itr:
         count += 1
@@ -48,6 +48,7 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
        
         supportInstanceByFile[key] = {}
         linesByRela = {}
+        linesByNoRela = {}
 
         for line in ptnEx:
             # line[0]: line number
@@ -80,7 +81,12 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                             linesByRela[rela][line[0]].append(ptnId)
 
                     else:
-                        pass
+                        if not rela in linesByNoRela:
+                            linesByNoRela[rela] = {}
+                        if not line[0] in linesByNoRela[rela]:
+                            linesByNoRela[rela][line[0]] = []
+                        if not ptnId in linesByNoRela[rela][line[0]]:
+                            linesByNoRela[rela][line[0]].append(ptnId)
 
         for rela in linesByRela:
             if not rela in linesByRelations:
@@ -95,10 +101,25 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                 l = ' '.join(text)
                 linesByRelations[rela].append(l)
 
+        for rela in linesByNoRela:
+            if not rela in linesNoRelaByRelations:
+                linesNoRelaByRelations[rela] = []
+            for lineN in linesByNoRela[rela]:
+                text = projizz.getTokens( article[lineN].lower() )
+                for ptnId in linesByNoRela[rela][lineN]:
+                    ptntext = table[ptnId]["pattern"].split()
+                    for ptntk in ptntext:
+                        if ptntk in text:
+                            text.remove(ptntk)
+                l = ' '.join(text)
+                linesNoRelaByRelations[rela].append(l)
+
+
+
         if count % 100 == 0:
             print "worker #%d done %d." % (jobid,count)
 
-    return linesByRelations
+    return linesByRelations,linesNoRelaByRelations
 #
 #
 #
@@ -127,15 +148,21 @@ def preprocess(inputPath,inputPtnPath,outputPath,confidence):
     pool.join()
 
     modelArticles = {}
+    negAritcles = {}
 
     # Reducer
     for r in result:
-        sibr = r.get()
+        sibr, osibr = r.get()
 
         for rela in sibr:
             if not rela in modelArticles:
                 modelArticles[rela] = []
             modelArticles[rela] += sibr[rela]
+
+        for rela in osibr:
+            if not rela in negAritcles:
+                negAritcles[rela] = []
+            negAritcles[rela] += osibr[rela]
 
     #
     #   relation.json: [line, line, line, ....]
@@ -144,6 +171,10 @@ def preprocess(inputPath,inputPtnPath,outputPath,confidence):
     for rela in modelArticles:
         print rela
         projizz.jsonWrite(modelArticles[rela],os.path.join(outputPath,"%s.json" % (rela))) 
+
+    for rela in negAritcles:
+        print rela
+        projizz.jsonWrite(negAritcles[rela],os.path.join(outputPath,"%s.neg" % (rela))) 
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
