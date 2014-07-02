@@ -58,6 +58,8 @@ def mapper(jobid, filename, inputPath, inputPtnPath, table, st, partAns, domainR
         ptnEx = contentPtnJson[key]
         article = projizz.articleSimpleSentenceFileter(contentJson[key])
 
+        # TODO
+
         # Relation extraction
         for line in ptnEx:
             # line[0]: line number
