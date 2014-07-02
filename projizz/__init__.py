@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.28
+modify: 2014.07.03
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -16,6 +16,8 @@ import nltk
 import math
 import copy
 import simplejson as json
+
+from itertools import chain
 
 from .yago import relations as yagoRelations
 from .dbpedia import relations as dbpediaRelations
@@ -385,7 +387,7 @@ def getTokens(string):
 
 # TODO
 def getStemedTokens(string):
-    pass
+    return list(set(_stemmer.stem(word) for word in getTokens(string) ))
 
 # TODO
 def naiveRemovePateernInLine(ptnText,string):
@@ -549,5 +551,34 @@ class naiveNLTKTokenizer(nltk.tokenize.api.TokenizerI):
         """
         for span in s.split():
             yield span
+
+class NaiveBayesClassifer(object):
+    """Naive Bayes Classifier
+    Implement the algorithm @ http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
+    """
+    
+    self.wordList = None
+    self.prior = None
+    self.condprob = None
+
+    def __init__(self,trainData=None):
+        
+        if trainData == None:
+            return
+
+        ### Training    TODO
+        self.wordList = chain.from_iterable( tokenize(words) for words, _ in dataset)
+
+    def save(self,modelPath):
+        projizz.jsonWrite((self.wordList, self.prior, self.condprob),modelPath)
+
+    def load(self,modelPath):
+        self.wordList, self.prior, self.condprob = projizz.jsonRead(modelPath)
+
+    def classify(self,document):
+        pass
+
+    def test(self,documents):
+        pass
 
 
