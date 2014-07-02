@@ -15,7 +15,7 @@ from nltk.stem import *
 #
 #
 #
-def mapper(jobid,filename,inputPath,outputPath,model,table):
+def mapper(jobid,filename,inputPath,topN,outputPath,model,table):
 
     # Read article
     article = projizz.jsonRead( os.path.join(inputPath,filename) )
@@ -52,7 +52,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
             tks.pop(_sw)
         
     needRemove = []
-    maxTF = 0
+    maxTF = 1
     for t in tks:
         # ignore only one time word
         if tks[t] <= 1:
@@ -66,18 +66,26 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
             total -= tks[t]
             continue
 
-        if tks[t] > maxTF:
-            maxTF = tks[t]
+        #if tks[t] > maxTF:
+        #    maxTF = tks[t]
 
     for rm in needRemove:
         tks.pop(rm)
 
     projizz.jsonWrite(tks,os.path.join(outputPath,filename.replace(".json",".tfc")))
     
+    ### select top N words
+    # sort by tfc
+    sortedTks = sorted(tks.items(), key=lambda x:x[1], reverse=True) 
+    tks = {}
+    maxTF = sortedTks[0][1]
     # Calculate tf
-    for t in tks:
-        tc = tks[t]
-        tks[t] = float(tc)/float(maxTF)
+    top = 0
+    for t,c in sortedTks:
+        top += 1
+        tks[t] = float(c)/float(maxTF) 
+        if top == topN:
+            break
 
     projizz.jsonWrite(tks,os.path.join(outputPath,filename.replace(".json",".tf")))
     print "worker %d write out." % (jobid)
@@ -86,7 +94,7 @@ def mapper(jobid,filename,inputPath,outputPath,model,table):
 #
 #
 #
-def preprocess(inputPath,outputPath):
+def preprocess(inputPath,topN,outputPath):
 
     # Checking output path
     projizz.checkPath(outputPath)
@@ -104,7 +112,7 @@ def preprocess(inputPath,outputPath):
     result = []
     for filename in os.listdir(inputPath):
         if ".json" in filename:
-            result.append( pool.apply_async( mapper, (t,filename,inputPath,outputPath, model, table))  )
+            result.append( pool.apply_async( mapper, (t,filename,inputPath, topN, outputPath, model, table))  )
             t += 1
     pool.close()
     pool.join()
@@ -161,10 +169,11 @@ def preprocess(inputPath,outputPath):
 #
 #
 if __name__ == "__main__":
-    if len(sys.argv) > 2:
+    if len(sys.argv) > 3:
         # args
         inputPath = sys.argv[1]
-        outputPath = sys.argv[2]
-        preprocess(inputPath,outputPath)
+        topN = int(sys.argv[2])
+        outputPath = sys.argv[3]
+        preprocess(inputPath,topN,outputPath)
     else:
-        print "$ python ./genTokens.py [model article .json dir] [output-dir]"
+        print "$ python ./genTopNTokens.py [model article .json dir] [topN] [output-dir]"

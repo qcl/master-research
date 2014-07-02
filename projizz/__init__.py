@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.06.27
+modify: 2014.06.28
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -383,6 +383,11 @@ def getNamedEntityTokens(namedEntity):
 def getTokens(string):
     return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").replace("."," ").split()
 
+def naiveRemovePateernInLine(ptnText,string):
+    ptntks = ptnText.split()
+
+
+
 def isPatternValidate(ptnId,table,confidence=-1.0,st=None):
     """isPatternValidate
     檢查此一 pattern 是否可以在接下來的程序之中被使用。
@@ -454,14 +459,19 @@ def cosineSimilarity(v,w,vl=None,wl=None):
     if wl == None:
         wl = getDictVectorLen(w)
 
+    if vl*wl <= 0.0:
+        return 0.0
+
     inner = 0.0
     for word in v:
         if word in w:
             inner += (v[word]*w[word])
 
+    #print v,vl,wl,inner
+
     return inner/(vl*wl)
 
-def vsmSimilarity(string, models, relas=None):
+def vsmSimilarity(string, models, relas=None, ptntext=None):
     """vsmSimilarity
     input: a string and (idf,docs,lens)
     """
@@ -470,26 +480,46 @@ def vsmSimilarity(string, models, relas=None):
     lens = models[2]
 
     result = {} 
-    
+   
+    # Prepare remove ptn words
+    ptnw = []
+    if not ptntext == None:
+        for w in ptntext.split():
+            if "[[" not in w:
+                t = _stemmer.stem(w)
+                if not t in ptnw:
+                    ptnw.append(t)
+
     tv = {}
     tokens = getTokens(string)
     for token in tokens:
         t = _stemmer.stem(token)
-        if t not in idf:
+        if t not in idf:    # NOTE stopwords will not in idf
+            continue
+        if t in ptnw:   # remove ptn words
             continue
         if t not in tv:
             tv[t] = 0
         tv[t] += 1
 
+    maxTF = 0
     for w in tv:
-        tv[w] = tv[w]*idf[w]
+        if tv[w] > maxTF:
+            maxTF = tv[w]
+
+    for w in tv:
+        tv[w] = (float(tv[w])/float(maxTF))*idf[w]
 
     if relas == None:
         for rela in docs:
+            if rela == "produced":
+                continue
             sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
             result[rela] = sim
     else:
         for rela in relas:
+            if rela not in docs:
+                continue
             sim = cosineSimilarity(tv,docs[rela],wl=lens[rela])
             result[rela] = sim
 

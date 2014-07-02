@@ -35,6 +35,11 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
     supportInstanceByFile = {}
 
     linesByRelations = {}
+    linesNoRelaByRelations = {}
+
+    POS = {}
+    NEG = {}
+
 
     for ans in itr:
         count += 1
@@ -47,6 +52,10 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
        
         supportInstanceByFile[key] = {}
         linesByRela = {}
+        linesByNoRela = {}
+
+        pos = {}
+        neg = {}
 
         for line in ptnEx:
             # line[0]: line number
@@ -62,25 +71,85 @@ def mapper(jobid,filename,inputPath,inputPtnPath,model,table,confidence):
                 if not projizz.isPatternValidate(ptnId, table, confidence=confidence):
                     continue
 
+                # give up degree > 5 's pattern
+                if len(table[ptnId]["relations"]) > 5:
+                    continue
+
                 for rela in table[ptnId]["relations"]:
                     # it's a support instance
                     if rela in relation:
-        
+       
+                        # NOTE - remove pattern text.
                         if not rela in linesByRela:
-                            linesByRela[rela] = []
+                            linesByRela[rela] = {}
                         if not line[0] in linesByRela[rela]:
-                            linesByRela[rela].append(line[0])
+                            linesByRela[rela][line[0]] = []
+                        if not ptnId in linesByRela[rela][line[0]]:
+                            linesByRela[rela][line[0]].append(ptnId)
+
+                        # For binary classifier
+                        if not rela in pos:
+                            pos[rela] = []
+                        if not lineText[0] == "^" and line[0] not in pos[rela]:
+                            pos[rela].append(line[0])
+
+                    else:
+                        if not rela in linesByNoRela:
+                            linesByNoRela[rela] = {}
+                        if not line[0] in linesByNoRela[rela]:
+                            linesByNoRela[rela][line[0]] = []
+                        if not ptnId in linesByNoRela[rela][line[0]]:
+                            linesByNoRela[rela][line[0]].append(ptnId)
+                        
+                        # For binary classifier
+                        if not rela in neg:
+                            neg[rela] = []
+                        if not lineText[0] == "^" and line[0] not in neg[rela]:
+                            neg[rela].append(line[0])
 
         for rela in linesByRela:
             if not rela in linesByRelations:
                 linesByRelations[rela] = []
             for lineN in linesByRela[rela]:
-                linesByRelations[rela].append(article[lineN])
+                text = projizz.getTokens( article[lineN].lower() )
+                for ptnId in linesByRela[rela][lineN]:
+                    ptntext = table[ptnId]["pattern"].split()
+                    for ptntk in ptntext:
+                        if ptntk in text:
+                            text.remove(ptntk)
+                l = ' '.join(text)
+                linesByRelations[rela].append(l)
+
+        for rela in linesByNoRela:
+            if not rela in linesNoRelaByRelations:
+                linesNoRelaByRelations[rela] = []
+            for lineN in linesByNoRela[rela]:
+                text = projizz.getTokens( article[lineN].lower() )
+                for ptnId in linesByNoRela[rela][lineN]:
+                    ptntext = table[ptnId]["pattern"].split()
+                    for ptntk in ptntext:
+                        if ptntk in text:
+                            text.remove(ptntk)
+                l = ' '.join(text)
+                linesNoRelaByRelations[rela].append(l)
+
+        # For binary classifier
+        for rela in pos:
+            if not rela in POS:
+                POS[rela] = []
+            for lineN in pos[rela]:
+                POS[rela].append( {"text":article[lineN],"label":"pos"} )
+
+        for rela in neg:
+            if not rela in NEG:
+                NEG[rela] = []
+            for lineN in neg[rela]:
+                NEG[rela].append( {"text":article[lineN],"label":"neg"} )
 
         if count % 100 == 0:
             print "worker #%d done %d." % (jobid,count)
 
-    return linesByRelations
+    return linesByRelations,linesNoRelaByRelations,POS,NEG
 #
 #
 #
@@ -103,20 +172,40 @@ def preprocess(inputPath,inputPtnPath,outputPath,confidence):
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             result.append( pool.apply_async( mapper, (t,filename,inputPath,inputPtnPath, model, table, confidence))  )
+            #result.append( mapper(t,filename,inputPath,inputPtnPath, model, table, confidence))
             t += 1
     pool.close()
     pool.join()
 
     modelArticles = {}
+    negAritcles = {}
+
+    POSArticles = {}
+    NEGArticles = {}
 
     # Reducer
     for r in result:
-        sibr = r.get()
+        sibr, osibr, p, n = r.get()
 
         for rela in sibr:
             if not rela in modelArticles:
                 modelArticles[rela] = []
             modelArticles[rela] += sibr[rela]
+
+        for rela in osibr:
+            if not rela in negAritcles:
+                negAritcles[rela] = []
+            negAritcles[rela] += osibr[rela]
+
+        for rela in p:
+            if not rela in POSArticles:
+                POSArticles[rela] = []
+            POSArticles[rela] += p[rela]
+
+        for rela in n:
+            if not rela in NEGArticles:
+                NEGArticles[rela] = []
+            NEGArticles[rela] += n[rela]
 
     #
     #   relation.json: [line, line, line, ....]
@@ -125,6 +214,18 @@ def preprocess(inputPath,inputPtnPath,outputPath,confidence):
     for rela in modelArticles:
         print rela
         projizz.jsonWrite(modelArticles[rela],os.path.join(outputPath,"%s.json" % (rela))) 
+
+    for rela in negAritcles:
+        print rela
+        projizz.jsonWrite(negAritcles[rela],os.path.join(outputPath,"%s.other" % (rela))) 
+
+    for rela in POSArticles:
+        print rela
+        projizz.jsonWrite(POSArticles[rela],os.path.join(outputPath,"%s.pos" % (rela)))
+        
+    for rela in NEGArticles:
+        print rela
+        projizz.jsonWrite(NEGArticles[rela],os.path.join(outputPath,"%s.neg" % (rela)))
 
     diff = datetime.now() - start_time
     print "Spend %d.%d seconds" % (diff.seconds, diff.microseconds)
