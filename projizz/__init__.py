@@ -383,6 +383,11 @@ def getNamedEntityTokens(namedEntity):
 def getTokens(string):
     return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").replace("."," ").split()
 
+# TODO
+def getStemedTokens(string):
+    pass
+
+# TODO
 def naiveRemovePateernInLine(ptnText,string):
     ptntks = ptnText.split()
 
