@@ -318,5 +318,5 @@ if __name__ == "__main__":
         nbcPath = sys.argv[7]
         main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename,nbcPath)
     else:
-        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence] [nbc path]"
+        print "$ python ./errorChecking.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence] [nbc path]"
 
