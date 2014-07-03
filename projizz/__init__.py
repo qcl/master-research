@@ -652,10 +652,10 @@ class NaiveBayesClassifier(object):
         debugMsg("Done Training in %d.%d seconds" % (_diff.seconds, _diff.microseconds))
 
     def save(self,modelPath):
-        projizz.jsonWrite((self.wordList, self.prior, self.condprob),modelPath)
+        jsonWrite((self.wordList, self.prior, self.condprob),modelPath)
 
     def load(self,modelPath):
-        self.wordList, self.prior, self.condprob = projizz.jsonRead(modelPath)
+        self.wordList, self.prior, self.condprob = jsonRead(modelPath)
 
     def classify(self,document):
         w = self.tokenize(document)
