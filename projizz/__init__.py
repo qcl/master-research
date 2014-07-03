@@ -657,15 +657,15 @@ class NaiveBayesClassifer(object):
         score = {}
         
         for c in self.prior:
-            #score[c] = math.log10(self.prior[c])
-            score[c] = self.prior[c]
+            score[c] = math.log10(self.prior[c])
+            #score[c] = self.prior[c]
         
         for t in w:
             if t in self.condprob:  # this may cost many time!
                 tc = self.condprob[t]
                 for c in score:
-                    #score[c] += math.log10(tc[c])
-                    score[c] = score[c] * tc[c]
+                    score[c] += math.log10(tc[c])
+                    #score[c] = score[c] * tc[c]
 
         #for c in self.prior:
         #    #score[c] = math.log10(self.prior[c])
@@ -676,8 +676,8 @@ class NaiveBayesClassifer(object):
         #            score[c] = score[c] * self.condprob[t][c]
         
         sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
-        for i in sortedScore:
-            print i,math.pow(10, i[1])
+        #for i in sortedScore:
+        #    print i,math.pow(10, i[1])
         return sortedScore[0][0]
 
     def test(self,documents):
