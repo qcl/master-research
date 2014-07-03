@@ -544,6 +544,7 @@ def getNBClassifiers(classifierModelPath):
 
     for relation in getYagoRelation():
         if relation == "produced":
+            classifiers[relation] = None
             continue
 
         nbcFilename = os.path.join(classifierModelPath,"%s.nbc" % (relation))
