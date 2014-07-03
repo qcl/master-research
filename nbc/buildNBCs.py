@@ -15,14 +15,21 @@ def buildModels(inputpath,outputPath):
         if relation == "produced":
             continue
 
-        posInstances = projizz.jsonRead( os.path.join(inputpath,"%s.pos" % (relation)) )
-        negInstances = projizz.jsonRead( os.path.join(inputpath,"%s.neg" % (relation)) )
-
         instances = []
-        for data in posInstances:
-            instances.append( (data["text"], data["label"]) )
-        for data in negInstances:
-            instances.append( (data["text"], data["label"]) )
+        filepath = os.path.join(inputpath,"%s.pos" % (relation))
+        if os.path.exists(filepath):
+            posInstances = projizz.jsonRead( filepath )
+            for data in posInstances:
+                instances.append( (data["text"], data["label"]) )
+        filepath = os.path.join(inputpath,"%s.neg" % (relation))
+        if os.path.exists(filepath):
+            negInstances = projizz.jsonRead( filepath )
+            for data in negInstances:
+                instances.append( (data["text"], data["label"]) )
+
+        if len(instances) == 0:
+            print "Cannot build %s.nbc because there are no training data." % (relation)
+            continue
 
         classifier = projizz.NaiveBayesClassifier(instances)
         classifier.save( os.path.join(outputPath,"%s.nbc" % (relation)) )
