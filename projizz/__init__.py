@@ -553,6 +553,7 @@ class naiveNLTKTokenizer(nltk.tokenize.api.TokenizerI):
         for span in s.split():
             yield span
 
+#
 class NaiveBayesClassifer(object):
     """Naive Bayes Classifier
     Implement the algorithm @ http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
@@ -660,6 +661,8 @@ class NaiveBayesClassifer(object):
                 if t in self.wordList:
                     score[c] += math.log10(self.condprob[t][c])
         sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
+        #for i in sortedScore:
+        #    print i,math.pow(10, i[1])
         return sortedScore[0][0]
 
     def test(self,documents):
