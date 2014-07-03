@@ -17,6 +17,7 @@ import math
 import copy
 import simplejson as json
 
+from datetime import datetime
 from itertools import chain
 
 from .yago import relations as yagoRelations
@@ -557,17 +558,92 @@ class NaiveBayesClassifer(object):
     Implement the algorithm @ http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
     """
     
-    self.wordList = None
-    self.prior = None
-    self.condprob = None
+    debug = True
+    wordList = None
+    prior = None
+    condprob = None
+
+
+    def _tokenize(self, words):
+        if isinstance(words,basestring):
+            return getTokens(words)
+        else:
+            return (w for w in words)
+
+    def debugMsg(self,string):
+        if self.debug:
+            print string
 
     def __init__(self,trainData=None):
         
+        debugMsg = self.debugMsg
+
+        debugMsg("Projizz NaiveBayesClassifer Initialize")
+
         if trainData == None:
             return
 
-        ### Training    TODO
-        self.wordList = chain.from_iterable( tokenize(words) for words, _ in dataset)
+        ### Initialize
+        self.prior = {}
+        self.condprob = {}
+
+        countTokensOfTerm = {}
+        countDocsInClass = {}
+
+        ### training
+        debugMsg("Start Training")
+        _startTime = datetime.now() 
+        # V <- ExtractVocabulary(D)
+        self.wordList = list(set(chain.from_iterable( self._tokenize(words) for words, _ in trainData)))
+        debugMsg("Build V, # tokens = %d" % (len(self.wordList)))
+
+        # D <- CountDocs(D)
+        N = len(trainData)
+        debugMsg("Training size = %d" % (N))
+
+        # get all types
+        types = list(set(map(lambda x:x[1], trainData)))
+        debugMsg("Types = %s" % (types))
+
+        for words, c in trainData:
+            if c not in countDocsInClass:
+                countDocsInClass[c] = 0
+                countTokensOfTerm[c] = {}
+
+            # CountDocInClass(D,c)
+            countDocsInClass[c] += 1
+            
+            tokens = self._tokenize(words)
+            for token in tokens:
+                if token not in countTokensOfTerm[c]:
+                    countTokensOfTerm[c][token] = 0
+                # countTokensOfTerm(text_c,t)
+                countTokensOfTerm[c][token] += 1
+
+        debugMsg("Done countDocsInClass, countTokensOfTerm")
+
+        for c in types:
+            self.prior[c] = float(countDocsInClass[c])/float(N)
+
+            #print c,sum(map(lambda x:countTokensOfTerm[c][x],countTokensOfTerm[c]))
+            #print c,len(self.wordList)
+
+            sum_t_ct = float( sum( map( lambda x:countTokensOfTerm[c][x],countTokensOfTerm[c]) ) + len(self.wordList) )
+
+            for token in self.wordList:
+                if token not in self.condprob:
+                    self.condprob[token] = {}
+                    for _c in types:
+                        self.condprob[token][_c] = 0
+
+                t_ct = 0
+                if c in countTokensOfTerm and token in countTokensOfTerm[c]:
+                    t_ct = countTokensOfTerm[c][token]
+                self.condprob[token][c] = float(t_ct+1)/sum_t_ct
+
+        _diff = datetime.now() - _startTime
+        debugMsg("Done prior, condprob")
+        debugMsg("Done Training in %d.%d seconds" % (_diff.seconds, _diff.microseconds))
 
     def save(self,modelPath):
         projizz.jsonWrite((self.wordList, self.prior, self.condprob),modelPath)
@@ -576,9 +652,22 @@ class NaiveBayesClassifer(object):
         self.wordList, self.prior, self.condprob = projizz.jsonRead(modelPath)
 
     def classify(self,document):
-        pass
+        w = self._tokenize(document)
+        score = {}
+        for c in self.prior:
+            score[c] = math.log10(self.prior[c])
+            for t in w:
+                if t in self.wordList:
+                    score[c] += math.log10(self.condprob[t][c])
+        sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
+        return sortedScore[0][0]
 
     def test(self,documents):
-        pass
-
+        acc = 0
+        n = len(documents)
+        for words, _c in documents:
+            c = self.classify(words)
+            if c == _c:
+                acc += 1
+        return float(acc)/float(n)
 

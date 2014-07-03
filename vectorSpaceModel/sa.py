@@ -55,11 +55,30 @@ test = [
     ("I can't believe I'm doing this.","neg")
 ]
 
-cl = NaiveBayesClassifier(train)
+train = [
+    ("Chinese Beijing Chinese","yes"),
+    ("Chinese Chinese Shanghai","yes"),
+    ("Chinese Macao","yes"),
+    ("Tokyo Japan Chinese","no")
+        ]
 
-print cl.classify("Their burgers are amazing")
+test = [
+    ("Chinese Chinese Chinese Tokyo Japan","yes")
+        ]
 
-print cl.accuracy(test)
 
-print projizz_get_words_from_dataset(train)
-print projizz.getStemedTokens("This this is a tt tt test test")
+
+#cl = NaiveBayesClassifier(train)
+#
+#print cl.classify("Their burgers are amazing")
+#
+#print cl.accuracy(test)
+
+#print projizz_get_words_from_dataset(train)
+#print projizz.getStemedTokens("This this is a tt tt test test")
+
+cl2 = projizz.NaiveBayesClassifer(train)
+
+print cl2.classify("Chinese Chinese Chinese Tokyo Japan")
+print cl2.classify("Tokyo Japan")
+print cl2.classify("Taiwan")
