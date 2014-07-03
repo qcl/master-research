@@ -19,7 +19,8 @@ from datetime import datetime
 def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence):
     # read patterns in articles
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
-    
+    contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
+
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
     # connect to database
@@ -64,7 +65,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
         originRela = ans["properties"]
         
         ptnEx = contentPtnJson[key]
-        #article = projizz.articleSimpleSentenceFileter(contentJson[key])
+        article = projizz.articleSimpleSentenceFileter(contentJson[key])
 
         for keyname in expResult:
 
@@ -78,6 +79,10 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
             for line in ptnEx:
                 # line[0]: line number
                 # line[1]: array of patterns
+
+                lineText = article[line[0]]
+                if lineText[0] == "^":  # It's a wikipeida reference comments, ignore it!
+                    continue
 
                 for ptn in line[1]:
                     # ptn[0]: pattern ID
