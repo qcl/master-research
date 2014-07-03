@@ -149,7 +149,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                             break
                             
                             else:
-                                if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx and not classifiers[rfp[0]] == None and classifiers[rfp[0]].classify(lineText) == "pos"
+                                if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx and not classifiers[rfp[0]] == None and classifiers[rfp[0]].classify(lineText) == "pos":
                                     relaEx.append(rfp[0])
                                     # FIXME For error checking
                                     recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
@@ -177,7 +177,7 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                 for ptnst in st[ptnId]:
                                     if float(ptnst[1]["support"])/float(b) >= th:
                                         if typ == "t":
-                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText):
+                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText) == "pos":
                                                 relaEx.append(ptnst[0])
                                                 # FIXME For error checking
                                                 recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
