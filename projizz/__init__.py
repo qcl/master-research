@@ -563,7 +563,7 @@ class NaiveBayesClassifer(object):
     wordList = None
     prior = None
     condprob = None
-
+    tokenize = None
 
     def _tokenize(self, words):
         if isinstance(words,basestring):
@@ -575,12 +575,17 @@ class NaiveBayesClassifer(object):
         if self.debug:
             print string
 
-    def __init__(self,trainData=None):
+    def __init__(self,trainData=None,tokenizer=None):
         
         debugMsg = self.debugMsg
 
         debugMsg("Projizz NaiveBayesClassifer Initialize")
 
+        if tokenizer == None:
+            self.tokenize = self._tokenize
+        else:
+            self.tokenize = tokenizer
+        
         if trainData == None:
             return
 
@@ -595,7 +600,7 @@ class NaiveBayesClassifer(object):
         debugMsg("Start Training")
         _startTime = datetime.now() 
         # V <- ExtractVocabulary(D)
-        self.wordList = list(set(chain.from_iterable( self._tokenize(words) for words, _ in trainData)))
+        self.wordList = list(set(chain.from_iterable( self.tokenize(words) for words, _ in trainData)))
         debugMsg("Build V, # tokens = %d" % (len(self.wordList)))
 
         # D <- CountDocs(D)
@@ -653,7 +658,7 @@ class NaiveBayesClassifer(object):
         self.wordList, self.prior, self.condprob = projizz.jsonRead(modelPath)
 
     def classify(self,document):
-        w = self._tokenize(document)
+        w = self.tokenize(document)
         score = {}
         
         for c in self.prior:
