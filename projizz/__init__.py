@@ -656,10 +656,12 @@ class NaiveBayesClassifer(object):
         w = self._tokenize(document)
         score = {}
         for c in self.prior:
-            score[c] = math.log10(self.prior[c])
+            #score[c] = math.log10(self.prior[c])
+            score[c] = self.prior[c]
             for t in w:
                 if t in self.wordList:
-                    score[c] += math.log10(self.condprob[t][c])
+                    #score[c] += math.log10(self.condprob[t][c])
+                    score[c] = score[c] * self.condprob[t][c]
         sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
         #for i in sortedScore:
         #    print i,math.pow(10, i[1])
