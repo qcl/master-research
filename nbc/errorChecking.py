@@ -22,7 +22,7 @@ from datetime import datetime
 # (2)   in properties but not in observed
 # (3)   just a useless pattern?
 
-def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence):
+def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,classifiers):
     # read patterns in articles
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
     contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
@@ -124,13 +124,17 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                         if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
                             if typ == "t":
                                 if domainRange[rfp[0]]["domain"] in types:
+                                    pr = rfp[0]
+                                    if not classifiers[pr] == None and classifiers[pr].classify(lineText) == "pos":
+                                        relaEx.append(rfp[0])
+                                        # FIXME For error checking
+                                        recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
+                            else:
+                                pr = rfp[0]
+                                if not classifiers[pr] == None and classifiers[pr].classify(lineText) == "pos":
                                     relaEx.append(rfp[0])
                                     # FIXME For error checking
                                     recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
-                            else:
-                                relaEx.append(rfp[0])
-                                # FIXME For error checking
-                                recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
                     else:
                         if ambigu == "one":
                             if typ == "t":
@@ -138,14 +142,14 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                     # ptnst[0] = relation
                                     # ptnst[1] = {"support": , "total": }
                                     if ptnst[1]["support"] > 0 and domainRange[ptnst[0]]["domain"] in types:
-                                        if not ptnst[0] in relaEx:
+                                        if not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText) == "pos":
                                             relaEx.append(ptnst[0])
                                             # FIXME For error checking
                                             recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                             break
                             
                             else:
-                                if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx:
+                                if st[ptnId][0][1]["support"] > 0 and not rfp[0] in relaEx and not classifiers[rfp[0]] == None and classifiers[rfp[0]].classify(lineText) == "pos"
                                     relaEx.append(rfp[0])
                                     # FIXME For error checking
                                     recordPtnMakeRela(ptnId, rfp[0], ptnExRela)
@@ -154,12 +158,12 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                             for ptnst in st[ptnId]:
                                 if typ == "t":
                                     if domainRange[ptnst[0]]["domain"] in types:
-                                        if not ptnst[0] in relaEx:
+                                        if not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText) == "pos":
                                             relaEx.append(ptnst[0])
                                             # FIXME For error checking
                                             recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                 else:
-                                    if not ptnst[0] in relaEx:
+                                    if not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText) == "pos":
                                         relaEx.append(ptnst[0])
                                         # FIXME For error checking
                                         recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
@@ -173,12 +177,12 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
                                 for ptnst in st[ptnId]:
                                     if float(ptnst[1]["support"])/float(b) >= th:
                                         if typ == "t":
-                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx:
+                                            if domainRange[ptnst[0]]["domain"] in types and not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText):
                                                 relaEx.append(ptnst[0])
                                                 # FIXME For error checking
                                                 recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
                                         else:
-                                            if not ptnst[0] in relaEx:
+                                            if not ptnst[0] in relaEx and not classifiers[ptnst[0]] == None and classifiers[ptnst[0]].classify(lineText) == "pos":
                                                 relaEx.append(ptnst[0])
                                                 # FIXME For error checking
                                                 recordPtnMakeRela(ptnId, ptnst[0], ptnExRela)
@@ -248,13 +252,15 @@ def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRang
 #   Main Program
 #
 #
-def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
+def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename,nbcPath):
     
     #model, table = projizz.readPrefixTreeModelWithTable("./yagoPatternTree.model","./yagoPatternTree.table")
     model, table = projizz.readPrefixTreeModelWithTable("../yago//yagoPatternTree.model","../patty/yagoPatternTreeWithConfidence.table")
     properties = projizz.buildYagoProperties({"tp":[],"fp":[],"fn":[],"et1":[],"et2":[],"et3":[]})
     st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
     domainRange = projizz.getYagoRelationDomainRange()
+
+    classifiers = projizz.getNBClassifiers(nbcPath)
 
     start_time = datetime.now()
 
@@ -264,7 +270,7 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename):
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence )))
+            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,classifiers )))
             t += 1
     pool.close()
     pool.join()
@@ -310,7 +316,7 @@ if __name__ == "__main__":
         outputFilename = sys.argv[5]
         confidence = float(sys.argv[6])
         nbcPath = sys.argv[7]
-        main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename)
+        main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename,nbcPath)
     else:
-        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence]"
+        print "$ python ./eval.py [input-ptn-dir] [input-article-dir] [pattern statistic json path] [outpu-path] [output-filename.out] [confidence] [nbc path]"
 
