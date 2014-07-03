@@ -20,9 +20,9 @@ def buildModels(inputpath,outputPath):
 
         instances = []
         for data in posInstances:
-            instances.append( (data["text", data["label"]]) )
+            instances.append( (data["text"], data["label"]) )
         for data in negInstances:
-            instances.append( (data["text", data["label"]]) )
+            instances.append( (data["text"], data["label"]) )
 
         classifier = projizz.NaiveBayesClassifier(instances)
         classifier.save( os.path.join(outputPath,"%s.nbc" % (relation)) )
