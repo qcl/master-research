@@ -582,7 +582,7 @@ class NaiveBayesClassifier(object):
     Implement the algorithm @ http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
     """
     
-    debug = True
+    debug = False
     wordList = None
     prior = None
     condprob = None
