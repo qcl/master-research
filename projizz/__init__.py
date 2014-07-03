@@ -2,7 +2,7 @@
 """
 projizz by qcl
 create: 2014.05.17
-modify: 2014.07.03
+modify: 2014.07.04
 
 The python library for operation Projizz.
 Add this to the $PYTHONPATH.
@@ -538,6 +538,23 @@ def vsmSimilarity(string, models, relas=None, ptntext=None):
 
     return result
 
+def getNBClassifiers(classifierModelPath):
+    
+    classifiers = {}
+
+    for relation in getYagoRelation():
+        if relation == "produced":
+            continue
+
+        nbcFilename = os.path.join(classifierModelPath,"%s.nbc" % (relation))
+        if os.path.exists(nbcFilename):
+            classifiers[relation] = NaiveBayesClassifier()
+            classifiers[relation].load(nbcFilename)
+        else:
+            classifiers[relation] = None
+
+    return classifiers
+
 #
 #   Classes
 #
@@ -676,14 +693,6 @@ class NaiveBayesClassifier(object):
                 for c in score:
                     score[c] += math.log10(tc[c])
                     #score[c] = score[c] * tc[c]
-
-        #for c in self.prior:
-        #    #score[c] = math.log10(self.prior[c])
-        #    score[c] = self.prior[c]
-        #    for t in w:
-        #        if t in self.wordList:
-        #            #score[c] += math.log10(self.condprob[t][c])
-        #            score[c] = score[c] * self.condprob[t][c]
         
         sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
         #for i in sortedScore:
