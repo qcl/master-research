@@ -386,9 +386,14 @@ def getNamedEntityTokens(namedEntity):
 def getTokens(string):
     return string.lower().replace("("," ").replace(")"," ").replace(","," ").replace("["," ").replace("]"," ").replace("!"," ").replace("?"," ").replace("&"," ").replace("-"," ").replace("{"," ").replace("}"," ").replace(";"," ").replace("\""," ").replace("'"," ").replace("."," ").split()
 
-# TODO
+def getTokensWithoutNumbers(string):
+    return filter(lambda x: False if "1" in x or "2" in x or "3" in x or "4" in x or "5" in x or "6" in x or "7" in x or "7" in x or "8" in x or "9" in x else True,getTokens(string))
+
 def getStemedTokens(string):
     return list(set(_stemmer.stem(word) for word in getTokens(string) ))
+
+def getStemedTokensWithoutNumbers(string):
+    return filter(lambda x: False if "1" in x or "2" in x or "3" in x or "4" in x or "5" in x or "6" in x or "7" in x or "7" in x or "8" in x or "9" in x else True,getStemedTokens(string))
 
 # TODO
 def naiveRemovePateernInLine(ptnText,string):
