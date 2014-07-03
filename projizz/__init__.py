@@ -554,7 +554,7 @@ class naiveNLTKTokenizer(nltk.tokenize.api.TokenizerI):
             yield span
 
 #
-class NaiveBayesClassifer(object):
+class NaiveBayesClassifier(object):
     """Naive Bayes Classifier
     Implement the algorithm @ http://nlp.stanford.edu/IR-book/html/htmledition/naive-bayes-text-classification-1.html
     """
