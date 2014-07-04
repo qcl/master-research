@@ -653,11 +653,27 @@ class NaiveBayesClassifier(object):
 
         debugMsg("Done countDocsInClass, countTokensOfTerm")
 
+        ### NOTE FIXME remove words that only appear once.
+        toRemoved = []
+        for token in self.wordList:
+            total = 0
+            for c in types:
+                if token in countTokensOfTerm[c]:
+                    total += countTokensOfTerm[c][token]
+            
+            if total < 2:
+                toRemoved.append(token)
+           
+        ### NOTE FIXME Just not count those words
+        for token in toRemoved:
+            self.wordList.remove(token)
+            for c in types:
+                if token in countTokensOfTerm[c]:
+                    countTokensOfTerm[c].pop(token)
+
+        ###
         for c in self.classes:
             self.prior.append( float(countDocsInClass[c])/float(N) )
-
-            #print c,sum(map(lambda x:countTokensOfTerm[c][x],countTokensOfTerm[c]))
-            #print c,len(self.wordList)
 
             sum_t_ct = float( sum( map( lambda x:countTokensOfTerm[c][x],countTokensOfTerm[c]) ) + len(self.wordList) )
 
