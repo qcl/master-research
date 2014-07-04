@@ -22,11 +22,12 @@ from datetime import datetime
 # (2)   in properties but not in observed
 # (3)   just a useless pattern?
 
-def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,classifiers):
+def filterFunction(jobid,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,nbcPath):
     # read patterns in articles
     contentPtnJson = json.load(open(os.path.join(inputPtnPath,filename),"r"))
     contentJson = projizz.jsonRead(os.path.join(inputPath,filename))
     
+    classifiers = projizz.getNBClassifiers(nbcPath)
     print "Worker %d : Read %s into filter" % (jobid,filename)
 
     # connect to database
@@ -260,17 +261,21 @@ def main(inputPtnPath,outputPath,pspath,inputPath,confidence,outputFilename,nbcP
     st = projizz.getSortedPatternStatistic(projizz.jsonRead(pspath))
     domainRange = projizz.getYagoRelationDomainRange()
 
-    classifiers = projizz.getNBClassifiers(nbcPath)
 
     start_time = datetime.now()
 
-    pool = multiprocessing.Pool(processes=multiprocessing.cpu_count()) 
+    cpuCount = multiprocessing.cpu_count()
+    if cpuCount > 8:
+        cpuCount = 8
+
+    pool = multiprocessing.Pool(processes=cpuCount) 
     t = 0
     result = []
     for filename in os.listdir(inputPtnPath):
         if ".json" in filename:
             partAns = copy.deepcopy(properties)
-            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,classifiers )))
+            #result.append(filterFunction(t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,classifiers ))
+            result.append(pool.apply_async(filterFunction, (t,filename,inputPtnPath,model,table,partAns,st,domainRange,inputPath,confidence,nbcPath )))
             t += 1
     pool.close()
     pool.join()
