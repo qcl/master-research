@@ -77,7 +77,7 @@ test = [
 #print projizz_get_words_from_dataset(train)
 #print projizz.getStemedTokens("This this is a tt tt test test")
 
-cl2 = projizz.NaiveBayesClassifer(train)
+cl2 = projizz.NaiveBayesClassifier(train)
 
 print cl2.classify("Chinese Chinese Chinese Tokyo Japan")
 print cl2.classify("Tokyo Japan")

@@ -587,6 +587,7 @@ class NaiveBayesClassifier(object):
     prior = None
     condprob = None
     tokenize = None
+    classes = None
 
     def _tokenize(self, words):
         if isinstance(words,basestring):
@@ -613,7 +614,7 @@ class NaiveBayesClassifier(object):
             return
 
         ### Initialize
-        self.prior = {}
+        self.prior = []
         self.condprob = {}
 
         countTokensOfTerm = {}
@@ -632,6 +633,7 @@ class NaiveBayesClassifier(object):
 
         # get all types
         types = list(set(map(lambda x:x[1], trainData)))
+        self.classes = types
         debugMsg("Types = %s" % (types))
 
         for words, c in trainData:
@@ -651,8 +653,8 @@ class NaiveBayesClassifier(object):
 
         debugMsg("Done countDocsInClass, countTokensOfTerm")
 
-        for c in types:
-            self.prior[c] = float(countDocsInClass[c])/float(N)
+        for c in self.classes:
+            self.prior.append( float(countDocsInClass[c])/float(N) )
 
             #print c,sum(map(lambda x:countTokensOfTerm[c][x],countTokensOfTerm[c]))
             #print c,len(self.wordList)
@@ -661,39 +663,42 @@ class NaiveBayesClassifier(object):
 
             for token in self.wordList:
                 if token not in self.condprob:
-                    self.condprob[token] = {}
-                    for _c in types:
-                        self.condprob[token][_c] = 0
+                    self.condprob[token] = []
+                    #for _c in types:
+                    #    self.condprob[token][_c] = 0
 
                 t_ct = 0
                 if c in countTokensOfTerm and token in countTokensOfTerm[c]:
                     t_ct = countTokensOfTerm[c][token]
-                self.condprob[token][c] = float(t_ct+1)/sum_t_ct
+                self.condprob[token].append( float(t_ct+1)/sum_t_ct )
 
         _diff = datetime.now() - _startTime
         debugMsg("Done prior, condprob")
         debugMsg("Done Training in %d.%d seconds" % (_diff.seconds, _diff.microseconds))
 
     def save(self,modelPath):
-        jsonWrite(( self.prior, self.condprob),modelPath)
+        jsonWrite((self.classes, self.prior, self.condprob),modelPath)
 
     def load(self,modelPath):
-        self.prior, self.condprob = jsonRead(modelPath)
+        self.classes, self.prior, self.condprob = jsonRead(modelPath)
 
     def classify(self,document):
         w = self.tokenize(document)
         score = {}
-        
-        for c in self.prior:
-            score[c] = math.log10(self.prior[c])
-            #score[c] = self.prior[c]
+        classIndexTable = {}
+       
+        for c in self.classes:
+            index = self.classes.index(c)
+            classIndexTable[c] = index
+            score[c] = math.log10(self.prior[index])
+            #score[c] = self.prior[index]
         
         for t in w:
             if t in self.condprob:  # this may cost many time!
                 tc = self.condprob[t]
                 for c in score:
-                    score[c] += math.log10(tc[c])
-                    #score[c] = score[c] * tc[c]
+                    score[c] += math.log10(tc[classIndexTable[c]])
+                    #score[c] = score[c] * tc[classIndexTable[c]]
         
         sortedScore = sorted(score.items(), key=lambda x:x[1], reverse=True)
         #for i in sortedScore:
