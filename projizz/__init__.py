@@ -624,7 +624,7 @@ class NaiveBayesClassifier(object):
         debugMsg("Start Training")
         _startTime = datetime.now() 
         # V <- ExtractVocabulary(D)
-        self.wordList = list(set(chain.from_iterable( self.tokenize(words) for words, _ in trainData)))
+        self.wordList = set(chain.from_iterable( self.tokenize(words) for words, _ in trainData))
         debugMsg("Build V, # tokens = %d" % (len(self.wordList)))
 
         # D <- CountDocs(D)
