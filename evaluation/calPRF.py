@@ -90,7 +90,7 @@ def calculate(filesPath):
         _r = 0.0
 
         if float(tp+fp) > 0.0:
-            _p = float(fp)/float(tp+fp)
+            _p = float(tp)/float(tp+fp)
 
         if float(tp+fn) > 0.0:
             _r = float(tp)/float(tp+fn)
