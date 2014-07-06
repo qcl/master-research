@@ -91,12 +91,16 @@ Note that
 * [PATTY: a taxonomy of relational patterns with semantic types](http://dl.acm.org/citation.cfm?id=2391076)
     * http://www.mpi-inf.mpg.de/yago-naga/patty/
     * https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/
+* TREC KBA
 
 # Tools
 * MongoDB
-* Stanford parser?
+* <del>Stanford parser</del>
 * Python
     * [RDFLib](https://github.com/RDFLib/rdflib)
+    * TextBlob
+    * NLTK
+    * SimpleJson
 
 # Dataset (may) Used
 * [DBpedia](http://wiki.dbpedia.org/Datasets)
@@ -122,3 +126,4 @@ Note that
     * 27,390781
 * [PATTY](http://www.mpi-inf.mpg.de/yago-naga/patty/)
     * [PATTY Online](https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/)
+* YAGO
