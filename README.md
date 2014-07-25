@@ -64,6 +64,17 @@ Note that
 * If topic model is suitable:
     * birth is a topic, occupation change is a topic,...
 
+* 23.21 mins 24 core 33w
+* Spend 1393.446886 seconds
+* 1 core spend 24 mins to deal 13750 docs
+* 1 core 592docs/mins
+* 16 core
+* 1432.828743 seconds
+* about 3 mins
+* 177.767400 s  8 core 6.6w
+* 1 core spend 3 min to deal 8250 docs
+* 1 core 2750/mins
+
 ###Effectiveness
 * Patterns
     1. entity types
