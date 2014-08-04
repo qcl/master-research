@@ -28,7 +28,10 @@ def fileter(path):
             ratings = si.ratings
             if len(ratings) <= 0:
                 continue
-            
+            else:
+                founds.append(si)
+                continue
+
             doc_id = si.doc_id
 
             _found = False
@@ -43,9 +46,11 @@ def fileter(path):
                 if _found:
                     founds.append(si)
                     break
-        print "fileter found %d StreamItem in %s" % (len(founds),path)
+        if len(founds) > 0:
+            print "fileter found %d StreamItem in %s" % (len(founds),path)
     except:
-        print "fileter cannot read",path
+        pass
+        #print "fileter cannot read",path
 
     return founds
 
