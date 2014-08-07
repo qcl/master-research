@@ -1,4 +1,4 @@
-Projizz I/O
+qcl 's research -- Detection of Entity Properties in Content Stream
 -----------
 Preprocess for KBA - filter target attributes/properties rapidly.
 
@@ -95,8 +95,6 @@ Note that
 * Testing effectiveness and efficient
     * Efficiency: enough documents, number of documents created by human per second, ...
 
-# Schedule
-
 # References
 * [Identifying constant and unique relations by using time-series text](http://dl.acm.org/citation.cfm?id=2391044)
 * [PATTY: a taxonomy of relational patterns with semantic types](http://dl.acm.org/citation.cfm?id=2391076)
@@ -110,10 +108,11 @@ Note that
 * Python
     * [RDFLib](https://github.com/RDFLib/rdflib)
     * TextBlob
+        * Aptagger
     * NLTK
     * SimpleJson
 
-# Dataset (may) Used
+# Dataset Used
 * [DBpedia](http://wiki.dbpedia.org/Datasets)
     * [Download](http://wiki.dbpedia.org/Downloads39)
         * DBpedia Ontology
@@ -138,3 +137,4 @@ Note that
 * [PATTY](http://www.mpi-inf.mpg.de/yago-naga/patty/)
     * [PATTY Online](https://d5gate.ag5.mpi-sb.mpg.de/pattyweb/)
 * YAGO
+    * YAGO Facts
