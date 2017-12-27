@@ -34,7 +34,7 @@ Given a _target entity_ to be tracked, find its _(new)_ _related_ _information_ 
     * Testing Dataset
 
 ## Issues
-###Target
+### Target
 Target entities have different types, different types have different patterns, different patterns related to differnet types. 
 
 Note that
@@ -54,7 +54,7 @@ Note that
 3. Tell out the position of the information
 4. Tell out if the information is related to the interesting targets
 
-###Efficiency
+### Efficiency
 * Data sturcture and algorithms
 * Filtering: (1) and (2)
 * Extract: (3) and (4)
@@ -75,18 +75,18 @@ Note that
 * 1 core spend 3 min to deal 8250 docs
 * 1 core 2750/mins
 
-###Effectiveness
+### Effectiveness
 * Patterns
     1. entity types
     2. dynamic (new) v.s. static 
     3. related information, related to some patterns
     4. exact information, target entites, mention disambiguation
 
-###Others (暫時沒想到分法)
+### Others (暫時沒想到分法)
 * Pattern coverage
 * Pattern use
 
-###Statistics
+### Statistics
 * Statistics of samples
 * Distribution of features
 * Number of features/wiki
